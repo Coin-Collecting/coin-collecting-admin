@@ -1,0 +1,1 @@
+CREATE DATABASE coins_db;

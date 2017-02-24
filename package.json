@@ -4,7 +4,6 @@
   "description": "Making this app to learn and practice",
   "main": "index.js",
   "scripts": {
-    "mysql": "docker-compose up",
     "graphql": "nodemon --exec babel-node --presets es2015,stage-0 -- graphql/index.js",
     "start": "",
     "test": "echo \"Error: no test specified\" && exit 1"

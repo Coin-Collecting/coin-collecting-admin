@@ -2,9 +2,13 @@
 
 ## Running
 
-### MySql
+### MySql (Docker)
 ```
-npm run mysql
+docker-compose up
+```
+
+```
+docker-compose down
 ```
 
 ### GraphQl
