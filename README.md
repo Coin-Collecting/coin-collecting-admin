@@ -1,6 +1,18 @@
 # Coin Collection API
+Simple app for organizing, viewing and collecting coins.
 
-Sample Query
+## Prerequisites
+```
+npm i -g yarn
+```
+## Install and Run
+```
+yarn
+npm start
+```
+App should be listening on port 5000
+
+## Sample Query
 ```
 query ($id: ID!) {
   coin(id: $id) {
