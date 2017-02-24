@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2a523cf-e2e3-4722-b682-3ff5d77d71b9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/01-mint.sql" afterPath="$PROJECT_DIR$/db/01-mint.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/02-denomination.sql" afterPath="$PROJECT_DIR$/db/02-denomination.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/03-edges.sql" afterPath="$PROJECT_DIR$/db/03-edges.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/04-composition.sql" afterPath="$PROJECT_DIR$/db/04-composition.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/05-designer.sql" afterPath="$PROJECT_DIR$/db/05-designer.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/06-image.sql" afterPath="$PROJECT_DIR$/db/06-image.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/07-issue.sql" afterPath="$PROJECT_DIR$/db/07-issue.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/08-variety.sql" afterPath="$PROJECT_DIR$/db/08-variety.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/10-coin.sql" afterPath="$PROJECT_DIR$/db/10-coin.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema.js" afterPath="$PROJECT_DIR$/schema.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/types/coin.js" afterPath="$PROJECT_DIR$/types/coin.js" />
     </list>
     <ignored path="GraphQl-Sample-App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,101 +25,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="coin.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/types/coin.js">
+      <file leaf-file-name="schema.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/schema.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="943">
-              <caret line="55" column="3" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
-              <folding />
+            <state relative-caret-position="346">
+              <caret line="150" column="24" selection-start-line="150" selection-start-column="24" selection-end-line="150" selection-end-column="24" />
+              <folding>
+                <element signature="e#16#177#0" expanded="true" />
+                <element signature="e#188#346#0" expanded="true" />
+                <element signature="e#359#486#0" expanded="true" />
+                <element signature="e#609#779#0" expanded="false" />
+                <element signature="e#792#884#0" expanded="false" />
+                <element signature="e#903#1087#0" expanded="false" />
+                <element signature="e#1107#1213#0" expanded="false" />
+                <element signature="e#1233#1419#0" expanded="false" />
+                <element signature="e#1440#1548#0" expanded="false" />
+                <element signature="e#1564#1742#0" expanded="false" />
+                <element signature="e#1759#1859#0" expanded="false" />
+                <element signature="e#1871#2041#0" expanded="false" />
+                <element signature="e#2054#2146#0" expanded="false" />
+                <element signature="e#2159#2331#0" expanded="false" />
+                <element signature="e#2345#2439#0" expanded="false" />
+                <element signature="e#2452#2624#0" expanded="false" />
+                <element signature="e#2638#2732#0" expanded="false" />
+                <element signature="e#2744#2914#0" expanded="false" />
+                <element signature="e#2927#3019#0" expanded="false" />
+                <element signature="e#3034#3210#0" expanded="false" />
+                <element signature="e#3227#3325#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="10-coin.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="475">
+                <caret line="101" column="3" selection-start-line="101" selection-start-column="3" selection-end-line="101" selection-end-column="3" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+          <provider editor-type-id="MarkdownFxPreviewEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="10-coin.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/10-coin.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="01-mint.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/01-mint.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="02-denomination.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/02-denomination.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="03-edges.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/03-edges.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="04-composition.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/04-composition.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="05-designer.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/05-designer.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="06-image.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/06-image.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="07-issue.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/07-issue.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="08-variety.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/08-variety.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="46">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -147,7 +96,6 @@
         <option value="$PROJECT_DIR$/database/mocks/designer.js" />
         <option value="$PROJECT_DIR$/database/index.js" />
         <option value="$PROJECT_DIR$/types/mints.js" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/queries/coin.js" />
         <option value="$PROJECT_DIR$/queries/mint.js" />
         <option value="$PROJECT_DIR$/queries/index.js" />
@@ -160,7 +108,6 @@
         <option value="$PROJECT_DIR$/types/mint.js" />
         <option value="$PROJECT_DIR$/queries.js" />
         <option value="$PROJECT_DIR$/types/variety.js" />
-        <option value="$PROJECT_DIR$/schema.js" />
         <option value="$PROJECT_DIR$/types/coin.js" />
         <option value="$PROJECT_DIR$/db/01-mint.sql" />
         <option value="$PROJECT_DIR$/db/02-denomination.sql" />
@@ -171,6 +118,8 @@
         <option value="$PROJECT_DIR$/db/07-issue.sql" />
         <option value="$PROJECT_DIR$/db/08-variety.sql" />
         <option value="$PROJECT_DIR$/db/10-coin.sql" />
+        <option value="$PROJECT_DIR$/schema.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -356,12 +305,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1487955310824</updated>
-      <workItem from="1487955312158" duration="14307000" />
+      <workItem from="1487955312158" duration="14871000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14307000" />
+    <option name="totallyTimeSpent" value="14871000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1440" y="540" width="1440" height="900" extended-state="0" />
@@ -374,7 +323,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29638556" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16144578" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -472,14 +421,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="11" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -624,50 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="368">
-            <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/schema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="150" column="29" selection-start-line="150" selection-start-column="29" selection-end-line="150" selection-end-column="29" />
-          <folding>
-            <element signature="e#16#177#0" expanded="true" />
-            <element signature="e#188#346#0" expanded="true" />
-            <element signature="e#359#486#0" expanded="true" />
-            <element signature="e#609#779#0" expanded="false" />
-            <element signature="e#792#884#0" expanded="false" />
-            <element signature="e#903#1087#0" expanded="false" />
-            <element signature="e#1107#1213#0" expanded="false" />
-            <element signature="e#1233#1419#0" expanded="false" />
-            <element signature="e#1440#1548#0" expanded="false" />
-            <element signature="e#1564#1742#0" expanded="false" />
-            <element signature="e#1759#1859#0" expanded="false" />
-            <element signature="e#1871#2041#0" expanded="false" />
-            <element signature="e#2054#2146#0" expanded="false" />
-            <element signature="e#2159#2331#0" expanded="false" />
-            <element signature="e#2345#2439#0" expanded="false" />
-            <element signature="e#2452#2624#0" expanded="false" />
-            <element signature="e#2638#2732#0" expanded="false" />
-            <element signature="e#2744#2914#0" expanded="false" />
-            <element signature="e#2927#3019#0" expanded="false" />
-            <element signature="e#3034#3210#0" expanded="false" />
-            <element signature="e#3227#3325#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/types/coin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="943">
@@ -742,10 +639,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/10-coin.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="46">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="150" column="24" selection-start-line="150" selection-start-column="24" selection-end-line="150" selection-end-column="24" />
+          <folding>
+            <element signature="e#16#177#0" expanded="true" />
+            <element signature="e#188#346#0" expanded="true" />
+            <element signature="e#359#486#0" expanded="true" />
+            <element signature="e#609#779#0" expanded="false" />
+            <element signature="e#792#884#0" expanded="false" />
+            <element signature="e#903#1087#0" expanded="false" />
+            <element signature="e#1107#1213#0" expanded="false" />
+            <element signature="e#1233#1419#0" expanded="false" />
+            <element signature="e#1440#1548#0" expanded="false" />
+            <element signature="e#1564#1742#0" expanded="false" />
+            <element signature="e#1759#1859#0" expanded="false" />
+            <element signature="e#1871#2041#0" expanded="false" />
+            <element signature="e#2054#2146#0" expanded="false" />
+            <element signature="e#2159#2331#0" expanded="false" />
+            <element signature="e#2345#2439#0" expanded="false" />
+            <element signature="e#2452#2624#0" expanded="false" />
+            <element signature="e#2638#2732#0" expanded="false" />
+            <element signature="e#2744#2914#0" expanded="false" />
+            <element signature="e#2927#3019#0" expanded="false" />
+            <element signature="e#3034#3210#0" expanded="false" />
+            <element signature="e#3227#3325#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="475">
+            <caret line="101" column="3" selection-start-line="101" selection-start-column="3" selection-end-line="101" selection-end-column="3" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
       </provider>
     </entry>
   </component>

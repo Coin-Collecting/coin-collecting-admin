@@ -1,6 +1,5 @@
 USE coins_db;
 
-DROP TABLE IF EXISTS `coins`;
 CREATE TABLE `coins` (
   `id` int(10) NOT NULL UNIQUE,
   `variety` varchar(50) DEFAULT NULL,

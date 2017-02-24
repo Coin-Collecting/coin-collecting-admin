@@ -140,7 +140,7 @@ const MutationType = new GraphQLObjectType({
     },
     createCoin: {
       type: CoinType,
-      description: 'Create a coin with id',
+      description: 'Create a new coin',
       args: {
         id: { type: new GraphQLNonNull(GraphQLString) },
         variety: { type: new GraphQLNonNull(GraphQLString) },

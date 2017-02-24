@@ -12,7 +12,9 @@ npm start
 ```
 App should be listening on port 5000
 
-## Sample Query
+# Sample Queries and Mutations
+
+## Get A Coin by ID
 ```
 query ($id: ID!) {
   coin(id: $id) {
@@ -70,4 +72,31 @@ query ($id: ID!) {
   }
 }
 
+```
+
+## Get All Coins
+```
+{
+  coins {
+    id
+  }
+}
+```
+
+## Create a New Coin
+```
+mutation {
+  createCoin(id: "55", mint: "1", year: "1900", mintage: 1000, variety: "1", keyDate: true) {
+    id
+  }
+}
+```
+
+## Delete a Coin by ID
+```
+mutation {
+  deleteCoin(id: "1") {
+    id
+  }
+}
 ```
