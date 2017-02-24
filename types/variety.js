@@ -21,9 +21,21 @@ import {
   getDesignerByID,
   getIssueByID,
   getImageByID,
-  getEdgeByID,
   getCompositionByID
  } from '../database';
+
+// SEQUELIZE
+const Sequelize = require('sequelize');
+
+const connection = new Sequelize("coins_db", "root", "", {
+  'host': '127.0.0.1',
+  'port': '3301',
+});
+
+const Edge = connection.define("edge", {
+  type: Sequelize.STRING,
+  note: Sequelize.STRING,
+});
 
 export const VarietyType = new GraphQLObjectType({
   name: 'Variety',
@@ -52,7 +64,7 @@ export const VarietyType = new GraphQLObjectType({
     edge: {
       type: EdgeType,
       description: 'Describes the sides of the coins surface',
-      resolve: obj => getEdgeByID(obj.edge),
+      resolve: obj => Edge.findById(obj.edge).then( res => res.dataValues),
     },
     composition: {
       type: CompositionType,

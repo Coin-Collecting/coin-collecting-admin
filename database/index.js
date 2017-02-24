@@ -3,7 +3,6 @@ let VARIETIES = require('./mocks/variety').default;
 let DESIGNERS = require('./mocks/designer').default;
 let ISSUES = require('./mocks/issue').default;
 let IMAGES = require('./mocks/image').default;
-let EDGES = require('./mocks/edge').default;
 let COMPOSITIONS = require('./mocks/composition').default;
 
 let getVarietyByID = function (id) {
@@ -26,10 +25,6 @@ let getImageByID = function (id) {
   return IMAGES[id];
 }
 
-let getEdgeByID = function (id) {
-  return EDGES[id];
-}
-
 let getCompositionByID = function (id) {
   return COMPOSITIONS[id];
 }
@@ -40,6 +35,5 @@ export {
   getDesignerByID,
   getIssueByID,
   getImageByID,
-  getEdgeByID,
   getCompositionByID,
 }
