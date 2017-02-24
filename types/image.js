@@ -1,8 +1,10 @@
+// DEPENDENCIES
 import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
 
+// IMAGE TYPE
 export const ImageType = new GraphQLObjectType({
   name: 'Image',
   description: '...',

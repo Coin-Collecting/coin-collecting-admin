@@ -1,8 +1,10 @@
+// DEPENDENCIES
 import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
 
+// DESIGNER TYPE
 export const DesignerType = new GraphQLObjectType({
   name: 'Designer',
   description: '...',

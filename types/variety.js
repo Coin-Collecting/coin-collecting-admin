@@ -14,47 +14,16 @@ import {
   CompositionType,
 } from "./index.js";
 
-// SEQUELIZE
-const Sequelize = require('sequelize');
+// QUERIES
+import {
+  Edge,
+  Designer,
+  Issue,
+  Image,
+  Composition,
+} from '../queries';
 
-const connection = new Sequelize("coins_db", "root", "", {
-  'host': '127.0.0.1',
-  'port': '3301',
-});
-
-const Edge = connection.define("edge", {
-  type: Sequelize.STRING,
-  note: Sequelize.STRING,
-});
-
-const Designer = connection.define('designer', {
-  name: Sequelize.STRING,
-});
-
-const Issue = connection.define('issue', {
-  name: Sequelize.STRING,
-  description: Sequelize.STRING,
-  denomination: Sequelize.STRING,
-  startYear: Sequelize.STRING,
-  endYear: Sequelize.STRING,
-});
-
-const Composition = connection.define("composition", {
-  gold: Sequelize.FLOAT,
-  silver: Sequelize.FLOAT,
-  copper: Sequelize.FLOAT,
-  nickel: Sequelize.FLOAT,
-  brass: Sequelize.FLOAT,
-  zinc: Sequelize.FLOAT,
-  steel: Sequelize.FLOAT,
-  tin: Sequelize.FLOAT,
-});
-
-const Image = connection.define('image', {
-  obverse: Sequelize.STRING,
-  reverse: Sequelize.STRING,
-});
-
+// VARIETY TYPE
 export const VarietyType = new GraphQLObjectType({
   name: 'Variety',
   description: '...',

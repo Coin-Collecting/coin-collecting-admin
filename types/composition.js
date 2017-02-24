@@ -1,9 +1,11 @@
+// DEPENDENCIES
 import {
   GraphQLObjectType,
   GraphQLString,
   GraphQLFloat,
 } from 'graphql';
 
+// COMPOSITION TYPE
 export const CompositionType = new GraphQLObjectType({
   name: 'Composition',
   description: '...',

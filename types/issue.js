@@ -1,23 +1,16 @@
+// DEPENDCENCIES
 import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
 
+// TYPES
 import { DenominationType } from "./index.js";
 
-// SEQUELIZE
-const Sequelize = require('sequelize');
+// QUERIES
+import { Denomination } from "../queries.js";
 
-const connection = new Sequelize("coins_db", "root", "", {
-  'host': '127.0.0.1',
-  'port': '3301',
-});
-
-const Denomination = connection.define("denomination", {
-  kind: Sequelize.STRING,
-  val: Sequelize.FLOAT,
-});
-
+// ISSUE TYPE
 export const IssueType = new GraphQLObjectType({
   name: 'Issue',
   description: '...',

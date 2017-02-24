@@ -2,30 +2,22 @@
 import {
   GraphQLObjectType,
   GraphQLSchema,
-  GraphQLString,
+  GraphQLList,
   GraphQLNonNull,
   GraphQLID,
 } from 'graphql';
 
 // TYPES
-import { CoinType } from "./types";
+import {
+  CoinType,
+  MintType,
+} from "./types";
 
-// SEQUELIZE
-const Sequelize = require('sequelize');
-
-const connection = new Sequelize("coins_db", "root", "", {
-  'host': '127.0.0.1',
-  'port': '3301',
-});
-
-const Coin = connection.define("coin", {
-  variety: Sequelize.STRING,
-  year: Sequelize.STRING,
-  mint: Sequelize.STRING,
-  mintage: Sequelize.STRING,
-  keyDate: Sequelize.BOOLEAN,
-  description: Sequelize.STRING,
-});
+// Queries
+import {
+  Mint,
+  Coin,
+} from "./queries.js";
 
 const QueryType = new GraphQLObjectType({
   name: 'Query',
@@ -33,11 +25,20 @@ const QueryType = new GraphQLObjectType({
   fields: () => ({
     coin: {
       type: CoinType,
-      args: {
-        id: {type: new GraphQLNonNull(GraphQLID)},
-      },
+      args: {id: {type: new GraphQLNonNull(GraphQLID)}},
       resolve: (root, args) => Coin.findById(args.id).then( res => res.dataValues),
     },
+    mint: {
+      type: MintType,
+      args: {id: {type: new GraphQLNonNull(GraphQLID)}},
+      resolve: (root, args) => Mint.findById(args.id).then( res => res.dataValues),
+    },
+    mints: {
+      type: new GraphQLList(MintType),
+      resolve: (root, args) => Mint.findAll({
+        attributes: ['mark', 'name', 'id']
+      })
+    }
   }),
 });
 

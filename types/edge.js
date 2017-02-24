@@ -1,8 +1,10 @@
+// DEPENDENCIES
 import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
 
+// EDGE TYPE
 export const EdgeType = new GraphQLObjectType({
   name: 'Edge',
   description: '...',

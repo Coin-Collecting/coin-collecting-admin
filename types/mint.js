@@ -1,8 +1,10 @@
+// DEPENDENCIES
 import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
 
+// MINT TYPE
 export const MintType = new GraphQLObjectType({
   name: 'Mint',
   description: '...',
@@ -24,3 +26,4 @@ export const MintType = new GraphQLObjectType({
     },
   }),
 });
+

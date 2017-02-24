@@ -1,8 +1,11 @@
+// DEPENDENCIES
 import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
 
+
+// DENOMINATION TYPE
 export const DenominationType = new GraphQLObjectType({
   name: 'Denomination',
   description: '...',

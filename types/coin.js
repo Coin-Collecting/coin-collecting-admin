@@ -2,42 +2,17 @@
 import {
   GraphQLObjectType,
   GraphQLString,
-  GraphQLFloat,
-  GraphQLNonNull,
-  GraphQLID,
   GraphQLBoolean,
+  GraphQLFloat,
 } from 'graphql';
 
 // TYPES
-import {
-  VarietyType,
-  MintType,
- } from './index.js';
+import { VarietyType, MintType } from './index.js';
 
-// SEQUELIZE
-const Sequelize = require('sequelize');
-const connection = new Sequelize("coins_db", "root", "", {
-  'host': '127.0.0.1',
-  'port': '3301',
-});
+// QUERIES
+import { Mint, Variety } from "../queries.js";
 
-const Mint = connection.define("mint", {
-  name: Sequelize.STRING,
-  mark: Sequelize.STRING,
-});
-
-const Variety = connection.define("variety", {
-  issue: Sequelize.STRING,
-  designer: Sequelize.STRING,
-  images: Sequelize.STRING,
-  edge: Sequelize.STRING,
-  composition: Sequelize.STRING,
-  name: Sequelize.STRING,
-  description: Sequelize.STRING,
-  mass: Sequelize.FLOAT,
-  diameter: Sequelize.FLOAT,
-});
-
+// COIN TYPE
 export const CoinType = new GraphQLObjectType({
   name: 'Coin',
   description: '...',

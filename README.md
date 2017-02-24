@@ -35,8 +35,8 @@ query ($id: ID!) {
         name
         denomination {
           id
-          type
-          value
+          kind
+          val
         }
         startYear
         description

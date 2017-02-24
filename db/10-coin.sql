@@ -4,8 +4,9 @@ DROP TABLE IF EXISTS `coins`;
 CREATE TABLE `coins` (
   `id` int(10) DEFAULT NULL,
   `variety` varchar(50) DEFAULT NULL,
-  `year` varchar(4) DEFAULT NULL,
   `mint` varchar(10) DEFAULT NULL,
+
+  `year` varchar(4) DEFAULT NULL,
   `mintage` float(10) DEFAULT NULL,
   `keyDate` BOOLEAN DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
