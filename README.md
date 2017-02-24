@@ -1,4 +1,4 @@
-# Coin Collection API
+# US Coin Collection API
 Simple app for organizing, viewing and collecting coins.
 
 ## Prerequisites
