@@ -48,7 +48,7 @@ export const CoinType = new GraphQLObjectType({
       resolve: obj => obj.keyDate,
     },
     description: {
-      type: GraphQLBoolean,
+      type: GraphQLString,
       description: '...',
       resolve: obj => obj.description,
     }

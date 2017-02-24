@@ -2,7 +2,7 @@ USE coins_db;
 
 DROP TABLE IF EXISTS `compositions`;
 CREATE TABLE `compositions` (
-  `id` int(10) DEFAULT NULL,
+  `id` int(10) NOT NULL UNIQUE,
   `gold` float(8) DEFAULT 0,
   `silver` float(8) DEFAULT 0,
   `copper` float(8) DEFAULT 0,

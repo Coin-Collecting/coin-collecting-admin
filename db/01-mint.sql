@@ -2,7 +2,7 @@ USE coins_db;
 
 DROP TABLE IF EXISTS `mints`;
 CREATE TABLE `mints` (
-  `id` int(10) DEFAULT NULL,
+  `id` int(10) NOT NULL UNIQUE,
   `name` varchar(201) DEFAULT NULL,
   `mark` varchar(5) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

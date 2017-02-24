@@ -2,7 +2,7 @@ USE coins_db;
 
 DROP TABLE IF EXISTS `varieties`;
 CREATE TABLE `varieties` (
-  `id` int(10) DEFAULT NULL,
+  `id` int(10) NOT NULL UNIQUE,
   `issue` varchar(10) DEFAULT NULL,
   `designer` varchar(10) DEFAULT NULL,
   `images` varchar(10) DEFAULT NULL,

@@ -2,7 +2,7 @@ USE coins_db;
 
 DROP TABLE IF EXISTS `edges`;
 CREATE TABLE `edges` (
-  `id` int(10) DEFAULT NULL,
+  `id` int(10) NOT NULL UNIQUE,
   `type` varchar(50) DEFAULT NULL,
   `note` varchar(500) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

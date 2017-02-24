@@ -4,7 +4,10 @@ import {
   GraphQLSchema,
   GraphQLList,
   GraphQLNonNull,
+  GraphQLFloat,
+  GraphQLBoolean,
   GraphQLID,
+  GraphQLString,
 } from 'graphql';
 
 // TYPES
@@ -33,6 +36,7 @@ import {
   Variety,
 } from "./queries.js";
 
+// QUERIES
 const QueryType = new GraphQLObjectType({
   name: 'Query',
   description: '...',
@@ -121,6 +125,45 @@ const QueryType = new GraphQLObjectType({
   }),
 });
 
+// MUTATIONS
+const MutationType = new GraphQLObjectType({
+  name: 'Mutations',
+  description: 'These are the things we can change',
+  fields: () => ({
+    deleteCoin: {
+      type: CoinType,
+      description: 'Delete a coin with id',
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve: (value, { id }) => Coin.destroy({where: { id: id }}),
+    },
+    createCoin: {
+      type: CoinType,
+      description: 'Create a coin with id',
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        variety: { type: new GraphQLNonNull(GraphQLString) },
+        mint: { type: new GraphQLNonNull(GraphQLString) },
+        mintage: { type: new GraphQLNonNull(GraphQLFloat) },
+        keyDate: { type: new GraphQLNonNull(GraphQLBoolean) },
+        year: { type: new GraphQLNonNull(GraphQLString) },
+        description: { type: GraphQLString },
+      },
+      resolve: (value, args) => Coin.create({
+        id: args.id,
+        variety: args.variety,
+        mint: args.mint,
+        mintage: args.mintage,
+        keyDate: args.keyDate,
+        year: args.year,
+        description: args.description,
+      }),
+    }
+  }),
+});
+
 export default new GraphQLSchema({
   query: QueryType,
+  mutation: MutationType,
 });

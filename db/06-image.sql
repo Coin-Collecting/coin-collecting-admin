@@ -2,7 +2,7 @@ USE coins_db;
 
 DROP TABLE IF EXISTS `images`;
 CREATE TABLE `images` (
-  `id` int(10) DEFAULT NULL,
+  `id` int(10) NOT NULL UNIQUE,
   `obverse` varchar(600) DEFAULT NULL,
   `reverse` varchar(600) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
