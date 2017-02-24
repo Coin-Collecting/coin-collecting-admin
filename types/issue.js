@@ -4,7 +4,7 @@ import {
 } from 'graphql';
 
 import { DenominationType } from "./index.js";
-import { getDenominationByID } from "../api/index.js";
+import { getDenominationByID } from "../database/index.js";
 
 export const IssueType = new GraphQLObjectType({
   name: 'Issue',

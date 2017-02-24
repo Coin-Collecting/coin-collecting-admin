@@ -11,7 +11,7 @@ import {
 import { CoinType } from "./types";
 
 // API FUNCTIONS
-import { getCoinByID } from './api';
+import { getCoinByID } from './database';
 
 
 const QueryType = new GraphQLObjectType({

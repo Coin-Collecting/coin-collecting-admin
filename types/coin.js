@@ -14,11 +14,11 @@ import {
   MintType,
  } from './index.js';
 
-// API FUNCTIONS
+// DATABASE FUNCTIONS
 import {
   getVarietyByID,
   getMintByID,
-} from '../api';
+} from '../database';
 
 
 export const CoinType = new GraphQLObjectType({

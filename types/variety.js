@@ -16,14 +16,14 @@ import {
   CompositionType,
 } from "./index.js";
 
-// API FUNCTIONS
+// DATABASE FUNCTIONS
 import {
   getDesignerByID,
   getIssueByID,
   getImageByID,
   getEdgeByID,
   getCompositionByID
- } from '../api';
+ } from '../database';
 
 export const VarietyType = new GraphQLObjectType({
   name: 'Variety',
