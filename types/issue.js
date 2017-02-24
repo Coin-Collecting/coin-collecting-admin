@@ -4,7 +4,19 @@ import {
 } from 'graphql';
 
 import { DenominationType } from "./index.js";
-import { getDenominationByID } from "../database/index.js";
+
+// SEQUELIZE
+const Sequelize = require('sequelize');
+
+const connection = new Sequelize("coins_db", "root", "", {
+  'host': '127.0.0.1',
+  'port': '3301',
+});
+
+const Denomination = connection.define("denomination", {
+  kind: Sequelize.STRING,
+  val: Sequelize.FLOAT,
+});
 
 export const IssueType = new GraphQLObjectType({
   name: 'Issue',
@@ -28,7 +40,7 @@ export const IssueType = new GraphQLObjectType({
     denomination: {
       type: DenominationType,
       description: '...',
-      resolve: obj => getDenominationByID(obj.denomination),
+      resolve: obj => Denomination.findById(obj.denomination).then( res => res.dataValues),
     },
     startYear: {
       type: GraphQLString,

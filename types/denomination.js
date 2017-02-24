@@ -12,15 +12,15 @@ export const DenominationType = new GraphQLObjectType({
       description: '...',
       resolve: obj => obj.id,
     },
-    type: {
+    kind: {
       type: GraphQLString,
       description: '...',
-      resolve: obj => obj.type,
+      resolve: obj => obj.kind,
     },
-    value: {
+    val: {
       type: GraphQLString,
       description: '...',
-      resolve: obj => obj.value,
+      resolve: obj => obj.val,
     },
   }),
 });

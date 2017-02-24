@@ -5,8 +5,6 @@ let ISSUES = require('./mocks/issue').default;
 let IMAGES = require('./mocks/image').default;
 let EDGES = require('./mocks/edge').default;
 let COMPOSITIONS = require('./mocks/composition').default;
-let DENOMINATIONS = require('./mocks/denomination').default;
-let MINTS = require('./mocks/mint').default;
 
 let getVarietyByID = function (id) {
   return VARIETIES[id];
@@ -36,14 +34,6 @@ let getCompositionByID = function (id) {
   return COMPOSITIONS[id];
 }
 
-let getDenominationByID = function (id) {
-  return DENOMINATIONS[id];
-}
-
-let getMintByID = function (id) {
-  return MINTS[id];
-}
-
 export {
   getVarietyByID,
   getCoinByID,
@@ -52,6 +42,4 @@ export {
   getImageByID,
   getEdgeByID,
   getCompositionByID,
-  getDenominationByID,
-  getMintByID,
 }

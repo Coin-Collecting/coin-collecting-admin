@@ -14,12 +14,22 @@ import {
   MintType,
  } from './index.js';
 
+// SEQUELIZE
+const Sequelize = require('sequelize');
+const connection = new Sequelize("coins_db", "root", "", {
+  'host': '127.0.0.1',
+  'port': '3301',
+});
+
+const Mint = connection.define("mint", {
+  name: Sequelize.STRING,
+  mark: Sequelize.STRING,
+});
+
 // DATABASE FUNCTIONS
 import {
   getVarietyByID,
-  getMintByID,
 } from '../database';
-
 
 export const CoinType = new GraphQLObjectType({
   name: 'Coin',
@@ -38,7 +48,7 @@ export const CoinType = new GraphQLObjectType({
     mint: {
       type: MintType,
       description: '...',
-      resolve: obj => getMintByID(obj.mint),
+      resolve: obj => Mint.findById(obj.mint).then( article => article.dataValues)
     },
     mintage: {
       type: GraphQLFloat,
