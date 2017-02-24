@@ -3,8 +3,6 @@ import {
   GraphQLObjectType,
   GraphQLString,
   GraphQLFloat,
-  GraphQLNonNull,
-  GraphQLID,
 } from 'graphql';
 
 // TYPES
@@ -15,14 +13,6 @@ import {
   EdgeType,
   CompositionType,
 } from "./index.js";
-
-// DATABASE FUNCTIONS
-import {
-  getDesignerByID,
-  getIssueByID,
-  getImageByID,
-  getCompositionByID
- } from '../database';
 
 // SEQUELIZE
 const Sequelize = require('sequelize');
@@ -37,6 +27,34 @@ const Edge = connection.define("edge", {
   note: Sequelize.STRING,
 });
 
+const Designer = connection.define('designer', {
+  name: Sequelize.STRING,
+});
+
+const Issue = connection.define('issue', {
+  name: Sequelize.STRING,
+  description: Sequelize.STRING,
+  denomination: Sequelize.STRING,
+  startYear: Sequelize.STRING,
+  endYear: Sequelize.STRING,
+});
+
+const Composition = connection.define("composition", {
+  gold: Sequelize.FLOAT,
+  silver: Sequelize.FLOAT,
+  copper: Sequelize.FLOAT,
+  nickel: Sequelize.FLOAT,
+  brass: Sequelize.FLOAT,
+  zinc: Sequelize.FLOAT,
+  steel: Sequelize.FLOAT,
+  tin: Sequelize.FLOAT,
+});
+
+const Image = connection.define('image', {
+  obverse: Sequelize.STRING,
+  reverse: Sequelize.STRING,
+});
+
 export const VarietyType = new GraphQLObjectType({
   name: 'Variety',
   description: '...',
@@ -48,18 +66,18 @@ export const VarietyType = new GraphQLObjectType({
     },
     designer: {
       type: DesignerType,
-      description: '...',
-      resolve: obj => getDesignerByID(obj.designer),
+      description: 'Field that contains a designers name',
+      resolve: obj => Designer.findById(obj.designer).then( res => res.dataValues),
     },
     issue: {
       type: IssueType,
       description: '...',
-      resolve: obj => getIssueByID(obj.issue),
+      resolve: obj => Issue.findById(obj.issue).then( res => res.dataValues),
     },
     images: {
       type: ImageType,
-      description: '...',
-      resolve: obj => getImageByID(obj.images),
+      description: 'Image object that contains 2 urls for coin images (obverse and reverse)',
+      resolve: obj => Image.findById(obj.images).then( res => res.dataValues),
     },
     edge: {
       type: EdgeType,
@@ -69,7 +87,7 @@ export const VarietyType = new GraphQLObjectType({
     composition: {
       type: CompositionType,
       description: 'What metals the coin is made up of',
-      resolve: obj => getCompositionByID(obj.composition),
+      resolve: obj => Composition.findById(obj.composition).then( res => res.dataValues),
     },
     name: {
       type: GraphQLString,

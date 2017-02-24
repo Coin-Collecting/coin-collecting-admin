@@ -26,10 +26,17 @@ const Mint = connection.define("mint", {
   mark: Sequelize.STRING,
 });
 
-// DATABASE FUNCTIONS
-import {
-  getVarietyByID,
-} from '../database';
+const Variety = connection.define("variety", {
+  issue: Sequelize.STRING,
+  designer: Sequelize.STRING,
+  images: Sequelize.STRING,
+  edge: Sequelize.STRING,
+  composition: Sequelize.STRING,
+  name: Sequelize.STRING,
+  description: Sequelize.STRING,
+  mass: Sequelize.FLOAT,
+  diameter: Sequelize.FLOAT,
+});
 
 export const CoinType = new GraphQLObjectType({
   name: 'Coin',
@@ -43,7 +50,7 @@ export const CoinType = new GraphQLObjectType({
     variety: {
       type: VarietyType,
       description: '...',
-      resolve: obj => getVarietyByID(obj.variety),
+      resolve: obj => Variety.findById(obj.variety).then( article => article.dataValues)
     },
     mint: {
       type: MintType,
@@ -64,6 +71,11 @@ export const CoinType = new GraphQLObjectType({
       type: GraphQLBoolean,
       description: '...',
       resolve: obj => obj.keyDate,
+    },
+    description: {
+      type: GraphQLBoolean,
+      description: '...',
+      resolve: obj => obj.description,
     }
   }),
 });

@@ -10,9 +10,22 @@ import {
 // TYPES
 import { CoinType } from "./types";
 
-// API FUNCTIONS
-import { getCoinByID } from './database';
+// SEQUELIZE
+const Sequelize = require('sequelize');
 
+const connection = new Sequelize("coins_db", "root", "", {
+  'host': '127.0.0.1',
+  'port': '3301',
+});
+
+const Coin = connection.define("coin", {
+  variety: Sequelize.STRING,
+  year: Sequelize.STRING,
+  mint: Sequelize.STRING,
+  mintage: Sequelize.STRING,
+  keyDate: Sequelize.BOOLEAN,
+  description: Sequelize.STRING,
+});
 
 const QueryType = new GraphQLObjectType({
   name: 'Query',
@@ -23,7 +36,7 @@ const QueryType = new GraphQLObjectType({
       args: {
         id: {type: new GraphQLNonNull(GraphQLID)},
       },
-      resolve: (root, args) => getCoinByID(args.id),
+      resolve: (root, args) => Coin.findById(args.id).then( res => res.dataValues),
     },
   }),
 });
