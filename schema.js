@@ -42,6 +42,10 @@ const QueryType = new GraphQLObjectType({
       args: {id: {type: new GraphQLNonNull(GraphQLID)}},
       resolve: (root, args) => Coin.findById(args.id).then( res => res.dataValues),
     },
+    coins: {
+      type: new GraphQLList(CoinType),
+      resolve: (root, args) => Coin.findAll()
+    },
     composition: {
       type: CompositionType,
       args: {id: {type: new GraphQLNonNull(GraphQLID)}},
