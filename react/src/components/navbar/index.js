@@ -14,6 +14,9 @@ class NavBar extends React.Component {
 						<Link to="/coins">Coins</Link>
 					</li>
 					<li>
+						<Link to="/varieties">Varieties</Link>
+					</li>
+					<li>
 						<Link to="/issues">Issues</Link>
 					</li>
 				</ul>

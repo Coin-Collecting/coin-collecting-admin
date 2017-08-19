@@ -10,7 +10,7 @@ class Coins extends React.Component {
 		const { coins } = data;
 		console.log({coins});
 		return (
-			<article className="issues-page">
+			<article className="coins-page">
 				<h1>Coins</h1>
 				<hr/>
 				<h3>Create New Coin</h3>
