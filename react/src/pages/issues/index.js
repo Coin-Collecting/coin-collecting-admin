@@ -1,5 +1,6 @@
 import React, { PropTypes } from "react";
 import { graphql, gql, compose } from 'react-apollo';
+import DenominationSelect from '../../components/denomination-select';
 
 import './style.scss';
 
@@ -43,13 +44,7 @@ class Issues extends React.Component {
 				  })}
 				/>
 				<p>Denomination ID:</p>
-				<input
-					type="text"
-					value={this.state.denomination}
-					onChange={e => this.setState({
-						denomination: e.target.value,
-					})}
-				/>
+				<DenominationSelect/>
 				<p>From Year:</p>
 				<input
 					type="text"
