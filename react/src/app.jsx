@@ -1,6 +1,7 @@
 import React from 'react';
-
+import { routes } from './routes';
 import { ApolloProvider, ApolloClient, createNetworkInterface } from 'react-apollo';
+import './default-styles.scss';
 
 const client = new ApolloClient({
 	networkInterface: createNetworkInterface({
@@ -8,20 +9,11 @@ const client = new ApolloClient({
 	}),
 });
 
-import {
-	BrowserRouter as Router,
-	Route,
-} from 'react-router-dom'
-
-import HomePage from './pages/homepage';
-
 export default class App extends React.Component {
   render() {
     return (
     	<ApolloProvider client={client}>
-				<Router>
-					<Route exact path="/" component={HomePage}/>
-				</Router>
+				{ routes }
 			</ApolloProvider>
     )
   }

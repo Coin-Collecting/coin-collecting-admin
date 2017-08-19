@@ -1,0 +1,19 @@
+.issues-page {
+  table {
+    border-collapse: collapse;
+    width: 100%;
+
+    thead {
+      background-color: #5c5c5c;
+      color: #fff;
+      font-weight: 400;
+      text-align: left;
+    }
+
+    th,
+    td {
+      border: solid 1px #000;
+      padding: 10px;
+    }
+  }
+}

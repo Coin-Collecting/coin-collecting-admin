@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "graphql": "nodemon --exec babel-node --presets es2015,stage-0 -- graphql/index.js",
-    "start": "cd client && npm start",
+    "start": "cd react && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
