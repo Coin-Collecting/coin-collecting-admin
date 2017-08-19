@@ -16,7 +16,6 @@ class Coins extends React.Component {
 				<h3>Create New Coin</h3>
 				<p>Not yet implemented</p>
 				<hr/>
-				<h3>Coins</h3>
 				<table>
 					<thead>
 						<tr>

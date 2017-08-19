@@ -16,7 +16,6 @@ class Issues extends React.Component {
 				<h3>Create New Issue</h3>
 				<p>Not yet implemented</p>
 				<hr/>
-				<h3>Issues</h3>
 				<table>
 					<thead>
 						<tr>
