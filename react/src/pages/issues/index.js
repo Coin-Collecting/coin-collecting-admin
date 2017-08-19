@@ -14,7 +14,18 @@ class Issues extends React.Component {
 				<h1>Issues</h1>
 				<hr/>
 				<h3>Create New Issue</h3>
-				<p>Not yet implemented</p>
+				<p>Name:</p>
+				<input type="text"/>
+				<p>Denomination ID:</p>
+				<input type="text"/>
+				<p>From Year:</p>
+				<input type="text"/>
+				<p>To Year:</p>
+				<input type="text"/>
+				<p>Description:</p>
+				<input type="text"/>
+				<br/>
+				<button>Add Issue</button>
 				<hr/>
 				<table>
 					<thead>
