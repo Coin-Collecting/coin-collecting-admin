@@ -157,6 +157,34 @@ const MutationType = new GraphQLObjectType({
         year: args.year,
         description: args.description,
       }),
+    },
+    createIssue: {
+      type: IssueType,
+      description: 'Create a issue',
+      args: {
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        description: { type: GraphQLString },
+        denomination: { type: new GraphQLNonNull(GraphQLString) },
+        startYear: { type: new GraphQLNonNull(GraphQLString) },
+        endYear: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve: (value, args) => {
+        const {
+          name,
+          description,
+          denomination,
+          startYear,
+          endYear,
+        } = args;
+
+        return Issue.create({
+          name,
+          description,
+          denomination,
+          startYear,
+          endYear,
+        });
+      }
     }
   }),
 });
