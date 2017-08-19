@@ -15,7 +15,7 @@ docker-compose down
 ```
 npm run graphql
 ```
-
+Will be running on: http://localhost:5000/graphql
 ### ClientApp
 ```
 npm start

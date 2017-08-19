@@ -142,7 +142,6 @@ const MutationType = new GraphQLObjectType({
       type: CoinType,
       description: 'Create a new coin',
       args: {
-        id: { type: new GraphQLNonNull(GraphQLString) },
         variety: { type: new GraphQLNonNull(GraphQLString) },
         mint: { type: new GraphQLNonNull(GraphQLString) },
         mintage: { type: new GraphQLNonNull(GraphQLFloat) },
@@ -151,7 +150,6 @@ const MutationType = new GraphQLObjectType({
         description: { type: GraphQLString },
       },
       resolve: (value, args) => Coin.create({
-        id: args.id,
         variety: args.variety,
         mint: args.mint,
         mintage: args.mintage,
