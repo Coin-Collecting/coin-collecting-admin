@@ -50,7 +50,6 @@ CREATE TABLE `coins` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `variety` varchar(50) DEFAULT NULL,
   `mint` varchar(10) DEFAULT NULL,
-
   `year` varchar(4) DEFAULT NULL,
   `mintage` float(10) DEFAULT NULL,
   `keyDate` BOOLEAN DEFAULT NULL,

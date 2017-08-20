@@ -7,10 +7,6 @@ html {
 
 h1 {
   font-size: 28px;
-
-  &:before {
-    content: '> ';
-  }
 }
 
 h2 {

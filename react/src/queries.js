@@ -1,5 +1,40 @@
 import { gql } from 'react-apollo';
 
+export const DesignersQuery = gql`
+	query {
+		designers {
+			id
+			name
+		}
+	}
+`;
+
+export const CompositionsQuery = gql`
+	query {
+		compositions {
+			id
+			gold
+			steel
+			silver
+			copper
+			zinc
+			nickel
+			tin
+			brass
+		}
+	}
+`;
+
+export const EdgesQuery = gql`
+	query {
+		edges {
+			id
+			type
+			note
+		}
+	}
+`;
+
 export const DenominationsQuery = gql`
 	query {
 		denominations {
