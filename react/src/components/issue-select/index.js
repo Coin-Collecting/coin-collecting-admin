@@ -1,13 +1,10 @@
 import React, { PropTypes } from "react";
-import { graphql } from 'react-apollo';
-import { IssuesQuery } from '../../queries';
+import { gql } from 'react-apollo';
 import './style.scss';
 
 class IssueSelect extends React.Component {
 	render() {
-		const { data, onChange, issue } = this.props;
-		const { issues } = data;
-		if (data.loading) return (<span/>);
+		const { data, onChange, issue, issues } = this.props;
 
 		return (
 			<aside className="issue-select">
@@ -35,7 +32,25 @@ class IssueSelect extends React.Component {
 IssueSelect.propTypes = {
 	data: PropTypes.object,
 	issue: PropTypes.string,
+	issues: PropTypes.array,
 	onChange: PropTypes.func,
 };
 
-export default graphql(IssuesQuery)(IssueSelect);
+IssueSelect.fragments = {
+	entry: gql`
+		fragment IssueSelectIssue on Issue {
+			id
+			name
+			startYear
+			endYear
+			description
+			denomination {
+				id
+				kind
+				val
+			}
+		}
+	`,
+};
+
+export default IssueSelect;

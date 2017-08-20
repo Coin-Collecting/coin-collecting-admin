@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
-import { graphql, compose } from 'react-apollo';
+import { graphql, compose, gql } from 'react-apollo';
 import { getCompositionString } from '../../util';
-import { VarietiesQuery, CreateVarietyQuery } from '../../queries';
+import { VarietiesQuery, IssuesQuery, CreateVarietyQuery } from '../../queries';
 import IssueSelect from '../../components/issue-select';
 import EdgeSelect from '../../components/edge-select';
 import CompositionSelect from '../../components/composition-select';
@@ -32,7 +32,8 @@ class Varieties extends React.Component {
 	render() {
 		const { data } = this.props;
 		if (data.loading) return (<div>Loading...</div>);
-		const { varieties } = data;
+		const { varieties, issues } = data;
+
 		return (
 			<div className="varieties-page">
 				<h1>Variety Page</h1>
@@ -52,6 +53,7 @@ class Varieties extends React.Component {
 					<li>
 						<IssueSelect
 							issue={this.state.issue}
+							issues={issues}
 							onChange={e => this.setState({
 								issue: e.target.value,
 							})}
@@ -175,6 +177,56 @@ const addVarietyMutation = graphql(CreateVarietyQuery, {
 });
 
 export default compose(
-	graphql(VarietiesQuery),
+	graphql(gql`
+		query {
+			varieties {
+				id
+				name
+				description
+				mass
+				diameter
+				issue {
+					id
+					name
+					startYear
+					endYear
+					description
+					denomination {
+						id
+						kind
+						val
+					}
+				}
+				edge {
+					id
+					type
+				}
+				composition {
+					id
+					gold
+					steel
+					silver
+					copper
+					zinc
+					nickel
+					tin
+					brass
+				}
+				designer {
+					id
+					name
+				}
+				images {
+					id
+					obverse
+					reverse
+				}
+			}
+			issues {
+				...IssueSelectIssue
+			}
+		}
+		${IssueSelect.fragments.entry}
+	`),
 	addVarietyMutation,
 )(Varieties);

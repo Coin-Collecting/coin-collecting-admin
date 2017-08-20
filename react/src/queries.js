@@ -1,10 +1,96 @@
 import { gql } from 'react-apollo';
 
+
+export const IssuesQuery = gql`
+	query {
+		issues {
+			id
+			name
+			startYear
+			endYear
+			description
+			denomination {
+				id
+				kind
+				val
+			}
+		}
+	}
+`;
+
+export const VarietiesQuery = gql`
+	query {
+		varieties {
+			id
+			name
+			description
+			mass
+			diameter
+			issue {
+				id
+				name
+				startYear
+				endYear
+				description
+				denomination {
+					id
+					kind
+					val
+				}
+			}
+			edge {
+				id
+				type
+			}
+			composition {
+				id
+				gold
+				steel
+				silver
+				copper
+				zinc
+				nickel
+				tin
+				brass
+			}
+			designer {
+				id
+				name
+			}
+			images {
+				id
+				obverse
+				reverse
+			}
+		}
+	}
+`;
+
 export const DesignersQuery = gql`
 	query {
 		designers {
 			id
 			name
+		}
+	}
+`;
+
+export const CoinsQuery = gql`
+	query {
+		coins {
+			id
+			variety {
+				id
+				name
+			}
+			year
+			mint {
+				id
+				mark
+			}
+			mintage
+			keyDate
+			description
 		}
 	}
 `;
@@ -65,23 +151,6 @@ export const CreateIssueQuery = gql`
 	}
 `;
 
-export const IssuesQuery = gql`
-	query {
-		issues {
-			id
-			name
-			startYear
-			endYear
-			description
-			denomination {
-				id
-				kind
-				val
-			}
-		}
-	}
-`;
-
 export const CreateVarietyQuery = gql`
 	mutation (
 	$name: String!,
@@ -105,54 +174,6 @@ export const CreateVarietyQuery = gql`
 			images: "1",
 		) {
 			id
-		}
-	}
-`;
-
-export const VarietiesQuery = gql`
-	query {
-		varieties {
-			id
-			name
-			description
-			mass
-			diameter
-			issue {
-				id
-				name
-				startYear
-				endYear
-				description
-				denomination {
-					id
-					kind
-					val
-				}
-			}
-			edge {
-				id
-				type
-			}
-			composition {
-				id
-				gold
-				steel
-				silver
-				copper
-				zinc
-				nickel
-				tin
-				brass
-			}
-			designer {
-				id
-				name
-			}
-			images {
-				id
-				obverse
-				reverse
-			}
 		}
 	}
 `;
