@@ -1,6 +1,7 @@
 import React, { PropTypes } from "react";
-import { graphql, gql, compose } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import DenominationSelect from '../../components/denomination-select';
+import { IssuesQuery, CreateIssueQuery } from '../../queries';
 
 import './style.scss';
 
@@ -18,17 +19,13 @@ class Issues extends React.Component {
 
 	addIssue() {
 		const { addIssue } = this.props;
-
-		addIssue(this.state).then(res => {
-			console.log(res);
-		})
+		addIssue(this.state).then(res => this.props.data.refetch());
 	}
 
 	render() {
-		const { data, addIssue } = this.props;
+		const { data } = this.props;
 		if (data.loading) return (<div>Loading...</div>);
 		const { issues } = data;
-		console.log({issues});
 
 		return (
 			<div className="issues-page">
@@ -58,6 +55,7 @@ class Issues extends React.Component {
 							<input
 								placeholder="From Year"
 								type="text"
+								maxLength={4}
 								value={this.state.startYear}
 								onChange={e => this.setState({
 									startYear: e.target.value,
@@ -68,6 +66,7 @@ class Issues extends React.Component {
 							<input
 								placeholder="To Year"
 								type="text"
+								maxLength={4}
 								value={this.state.endYear}
 								onChange={e => this.setState({
 									endYear: e.target.value,
@@ -126,57 +125,18 @@ Issues.propTypes = {
 	addIssue: PropTypes.func,
 };
 
-
 // UPDATE an existing fundraiser
-const addIssueMutation = graphql(
-	gql`
-		mutation (
-			$name: String!,
-			$description: String,
-			$denomination: String!,
-			$startYear: String!,
-			$endYear: String!,
-		) {
-			createIssue(
-				name: $name,
-				description: $description,
-				denomination: $denomination,
-				startYear: $startYear,
-				endYear: $endYear
-			) {
-				id
-			}
-		}
- `, {
+const addIssueMutation = graphql(CreateIssueQuery, {
 	props: ({ mutate }) => ({
 		addIssue: ({name, description, denomination, startYear, endYear}) => mutate({
 			variables: {
-				name,
-				description,
-				denomination,
-				startYear,
-				endYear,
+				name, description, denomination, startYear, endYear,
 			},
 		}),
 	}),
 });
 
 export default compose(
-	graphql(gql`
-		query {
-			issues {
-				id
-				name
-				startYear
-				endYear
-				description
-				denomination {
-					id
-					kind
-					val
-				}
-			}
-		}
-	`),
+	graphql(IssuesQuery),
 	addIssueMutation,
 )(Issues);
