@@ -32,7 +32,7 @@ class Varieties extends React.Component {
 	render() {
 		const { data } = this.props;
 		if (data.loading) return (<div>Loading...</div>);
-		const { varieties, issues } = data;
+		const { varieties, issues, edges, compositions, designers } = data;
 
 		return (
 			<div className="varieties-page">
@@ -61,7 +61,8 @@ class Varieties extends React.Component {
 					</li>
 					<li>
 						<EdgeSelect
-							issue={this.state.edge}
+							edge={this.state.edge}
+							edges={edges}
 							onChange={e => this.setState({
 								edge: e.target.value,
 							})}
@@ -69,7 +70,8 @@ class Varieties extends React.Component {
 					</li>
 					<li>
 						<CompositionSelect
-							issue={this.state.composition}
+							composition={this.state.composition}
+							compositions={compositions}
 							onChange={e => this.setState({
 								composition: e.target.value,
 							})}
@@ -77,7 +79,8 @@ class Varieties extends React.Component {
 					</li>
 					<li>
 						<DesignerSelect
-							issue={this.state.designer}
+							designer={this.state.designer}
+							designers={designers}
 							onChange={e => this.setState({
 								designer: e.target.value,
 							})}
@@ -222,11 +225,15 @@ export default compose(
 					reverse
 				}
 			}
-			issues {
-				...IssueSelectIssue
-			}
+			issues {...IssueSelectIssue}
+			edges {...EdgeSelectEdge}
+			compositions {...CompositionSelectComposition}
+			designers {...DesignerSelectDesigner}
 		}
 		${IssueSelect.fragments.entry}
+		${EdgeSelect.fragments.entry}
+		${CompositionSelect.fragments.entry}
+		${DesignerSelect.fragments.entry}
 	`),
 	addVarietyMutation,
 )(Varieties);

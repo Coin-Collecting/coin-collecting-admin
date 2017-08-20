@@ -1,23 +1,5 @@
 import { gql } from 'react-apollo';
 
-
-export const IssuesQuery = gql`
-	query {
-		issues {
-			id
-			name
-			startYear
-			endYear
-			description
-			denomination {
-				id
-				kind
-				val
-			}
-		}
-	}
-`;
-
 export const VarietiesQuery = gql`
 	query {
 		varieties {
@@ -66,15 +48,6 @@ export const VarietiesQuery = gql`
 	}
 `;
 
-export const DesignersQuery = gql`
-	query {
-		designers {
-			id
-			name
-		}
-	}
-`;
-
 export const CoinsQuery = gql`
 	query {
 		coins {
@@ -95,31 +68,6 @@ export const CoinsQuery = gql`
 	}
 `;
 
-export const CompositionsQuery = gql`
-	query {
-		compositions {
-			id
-			gold
-			steel
-			silver
-			copper
-			zinc
-			nickel
-			tin
-			brass
-		}
-	}
-`;
-
-export const EdgesQuery = gql`
-	query {
-		edges {
-			id
-			type
-			note
-		}
-	}
-`;
 
 export const DenominationsQuery = gql`
 	query {

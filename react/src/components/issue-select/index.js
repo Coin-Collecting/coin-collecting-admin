@@ -4,7 +4,7 @@ import './style.scss';
 
 class IssueSelect extends React.Component {
 	render() {
-		const { data, onChange, issue, issues } = this.props;
+		const { onChange, issue, issues } = this.props;
 
 		return (
 			<aside className="issue-select">
@@ -30,7 +30,6 @@ class IssueSelect extends React.Component {
 }
 
 IssueSelect.propTypes = {
-	data: PropTypes.object,
 	issue: PropTypes.string,
 	issues: PropTypes.array,
 	onChange: PropTypes.func,

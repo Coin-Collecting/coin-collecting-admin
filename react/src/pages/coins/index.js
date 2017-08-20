@@ -153,9 +153,7 @@ export default graphql(gql`
 			keyDate
 			description
 		}
-		varieties {
-			...VarietySelectVariety
-		}
+		varieties {...VarietySelectVariety}
 	}
 	${VarietySelect.fragments.entry}
 `)(Coins);

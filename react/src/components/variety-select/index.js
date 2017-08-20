@@ -5,7 +5,7 @@ import './style.scss';
 
 class VarietySelect extends React.Component {
 	render() {
-		const { data, onChange, variety, varieties } = this.props;
+		const { onChange, variety, varieties } = this.props;
 		return (
 			<aside className="variety-select">
 				<select onChange={onChange} value={variety}>
@@ -29,7 +29,6 @@ class VarietySelect extends React.Component {
 }
 
 VarietySelect.propTypes = {
-	data: PropTypes.object,
 	variety: PropTypes.string,
 	varieties: PropTypes.array,
 	onChange: PropTypes.func,

@@ -1,13 +1,10 @@
 import React, { PropTypes } from "react";
-import { graphql, compose } from 'react-apollo';
-import { EdgesQuery } from '../../queries';
+import { gql } from 'react-apollo';
 import './style.scss';
 
 class EdgeSelect extends React.Component {
 	render() {
-		const { data, onChange, edge } = this.props;
-		const { edges } = data;
-		if (data.loading) return (<span/>);
+		const { onChange, edge, edges } = this.props;
 
 		return (
 			<aside className="edge-select">
@@ -30,11 +27,19 @@ class EdgeSelect extends React.Component {
 }
 
 EdgeSelect.propTypes = {
-	data: PropTypes.object,
 	edge: PropTypes.string,
+	edges: PropTypes.array,
 	onChange: PropTypes.func,
 };
 
-export default compose(
-	graphql(EdgesQuery),
-)(EdgeSelect);
+EdgeSelect.fragments = {
+	entry: gql`
+		fragment EdgeSelectEdge on Edge {
+			id
+			type
+			note
+		}
+	`,
+};
+
+export default EdgeSelect;

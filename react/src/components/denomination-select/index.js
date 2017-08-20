@@ -1,13 +1,10 @@
 import React, { PropTypes } from "react";
-import { graphql } from 'react-apollo';
-import { DenominationsQuery } from '../../queries';
+import { gql } from 'react-apollo';
 import './style.scss';
 
 class DenominationSelect extends React.Component {
 	render() {
-		const { data, onChange, denomination } = this.props;
-		const { denominations } = data;
-		if (data.loading) return (<span/>);
+		const { onChange, denomination, denominations } = this.props;
 
 		return (
 			<aside className="denomination-select">
@@ -30,9 +27,19 @@ class DenominationSelect extends React.Component {
 }
 
 DenominationSelect.propTypes = {
-	data: PropTypes.object,
 	denomination: PropTypes.string,
+	denominations: PropTypes.array,
 	onChange: PropTypes.func,
 };
 
-export default graphql(DenominationsQuery)(DenominationSelect);
+DenominationSelect.fragments = {
+	entry: gql`
+		fragment DenominationSelectDenomination on Denomination {
+			id
+			kind
+			val
+		}
+	`,
+};
+
+export default DenominationSelect;

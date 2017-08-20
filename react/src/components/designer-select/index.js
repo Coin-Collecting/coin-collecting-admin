@@ -1,13 +1,10 @@
 import React, { PropTypes } from "react";
-import { graphql, compose } from 'react-apollo';
-import { DesignersQuery } from '../../queries';
+import { gql } from 'react-apollo';
 import './style.scss';
 
 class DesignerSelect extends React.Component {
 	render() {
-		const { data, onChange, designer } = this.props;
-		const { designers } = data;
-		if (data.loading) return (<span/>);
+		const { onChange, designer, designers } = this.props;
 
 		return (
 			<aside className="designer-select">
@@ -30,11 +27,18 @@ class DesignerSelect extends React.Component {
 }
 
 DesignerSelect.propTypes = {
-	data: PropTypes.object,
 	designer: PropTypes.string,
+	designers: PropTypes.array,
 	onChange: PropTypes.func,
 };
 
-export default compose(
-	graphql(DesignersQuery),
-)(DesignerSelect);
+DesignerSelect.fragments = {
+	entry: gql`
+		fragment DesignerSelectDesigner on Designer {
+			id
+			name
+		}
+	`,
+};
+
+export default DesignerSelect;

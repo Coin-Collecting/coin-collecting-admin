@@ -1,14 +1,11 @@
 import React, { PropTypes } from "react";
-import { graphql, compose } from 'react-apollo';
-import { CompositionsQuery } from '../../queries';
+import { gql } from 'react-apollo';
 import './style.scss';
 import { getCompositionString } from '../../util';
 
 class CompositionSelect extends React.Component {
 	render() {
-		const { data, onChange, composition } = this.props;
-		const { compositions } = data;
-		if (data.loading) return (<span/>);
+		const { onChange, composition, compositions } = this.props;
 
 		return (
 			<aside className="composition-select">
@@ -31,11 +28,25 @@ class CompositionSelect extends React.Component {
 }
 
 CompositionSelect.propTypes = {
-	data: PropTypes.object,
 	composition: PropTypes.string,
+	compositions: PropTypes.array,
 	onChange: PropTypes.func,
 };
 
-export default compose(
-	graphql(CompositionsQuery),
-)(CompositionSelect);
+CompositionSelect.fragments = {
+	entry: gql`
+		fragment CompositionSelectComposition on Composition {
+			id
+			gold
+			steel
+			silver
+			copper
+			zinc
+			nickel
+			tin
+			brass
+		}
+	`,
+};
+
+export default CompositionSelect;

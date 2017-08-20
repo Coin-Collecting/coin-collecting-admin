@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
-import { graphql, compose } from 'react-apollo';
+import { graphql, compose, gql } from 'react-apollo';
 import DenominationSelect from '../../components/denomination-select';
-import { IssuesQuery, CreateIssueQuery } from '../../queries';
+import { CreateIssueQuery } from '../../queries';
 
 import './style.scss';
 
@@ -25,7 +25,7 @@ class Issues extends React.Component {
 	render() {
 		const { data } = this.props;
 		if (data.loading) return (<div>Loading...</div>);
-		const { issues } = data;
+		const { issues, denominations } = data;
 
 		return (
 			<div className="issues-page">
@@ -46,6 +46,7 @@ class Issues extends React.Component {
 						<li>
 							<DenominationSelect
 								denomination={this.state.denomination}
+								denominations={denominations}
 								onChange={e => this.setState({
 									denomination: e.target.value,
 								})}
@@ -137,6 +138,23 @@ const addIssueMutation = graphql(CreateIssueQuery, {
 });
 
 export default compose(
-	graphql(IssuesQuery),
+	graphql(gql`
+		query {
+			issues {
+				id
+				name
+				startYear
+				endYear
+				description
+				denomination {
+					id
+					kind
+					val
+				}
+			}
+			denominations {...DenominationSelectDenomination}
+		}
+		${DenominationSelect.fragments.entry}
+	`),
 	addIssueMutation,
 )(Issues);
