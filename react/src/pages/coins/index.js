@@ -1,7 +1,9 @@
 import React, { PropTypes } from "react";
-import { graphql, gql } from 'react-apollo';
-import { CoinsQuery, VarietiesQuery } from '../../queries';
+import { graphql, gql, compose } from 'react-apollo';
+import { CreateCoinMutation } from '../../mutations';
+
 import VarietySelect from '../../components/variety-select';
+import MintSelect from '../../components/mint-select';
 
 import './style.scss';
 
@@ -13,20 +15,21 @@ class Coins extends React.Component {
 			year: undefined,
 			mint: undefined,
 			mintage: undefined,
-			keyDate: undefined,
+			keyDate: false,
 			description: undefined,
 		}
 	}
 
 	addCoin() {
-		const { addCoin } = this.props;
-		addCoin(this.state).then(res => this.props.data.refetch());
+		const { createCoin } = this.props;
+		console.log(this.state);
+		createCoin(this.state).then(res => this.props.data.refetch());
 	}
 
 	render() {
 		const { data } = this.props;
 		if (data.loading) return (<div>Loading...</div>);
-		const { coins, varieties } = data;
+		const { coins, varieties, mints } = data;
 
 		return (
 			<div className="coins-page">
@@ -54,10 +57,9 @@ class Coins extends React.Component {
 							/>
 						</li>
 						<li>
-							<input
-								type="text"
-								placeholder="Mint"
-								value={this.state.mint}
+							<MintSelect
+								mint={this.state.mint}
+								mints={mints}
 								onChange={e => this.setState({
 									mint: e.target.value,
 								})}
@@ -112,18 +114,20 @@ class Coins extends React.Component {
 							</tr>
 						</thead>
 						<tbody>
-						{ coins.map(coin => {
-							return (
-								<tr key={'issue:' + coin.id}>
-									<td>{ coin.variety.name }</td>
-									<td>{ coin.year }</td>
-									<td>{ coin.mint.mark }</td>
-									<td>{ coin.mintage }</td>
-									<td>{ coin.keyDate }</td>
-									<td>{ coin.description }</td>
-								</tr>
-							)
-						})}
+						{ coins && coins.length > 0 ?
+							coins.map(coin => {
+								return (
+									<tr key={'issue:' + coin.id}>
+										<td>{ coin.variety.name }</td>
+										<td>{ coin.year }</td>
+										<td>{ coin.mint.mark }</td>
+										<td>{ coin.mintage }</td>
+										<td>{ coin.keyDate ? 'Y' : '' }</td>
+										<td>{ coin.description }</td>
+									</tr>
+								)
+							})
+						: null }
 						</tbody>
 					</table>
 				</article>
@@ -134,9 +138,19 @@ class Coins extends React.Component {
 
 Coins.propTypes = {
 	data: PropTypes.object,
+	createCoin: PropTypes.func,
 };
 
-export default graphql(gql`
+// UPDATE an existing fundraiser
+const addCoinMutation = graphql(CreateCoinMutation, {
+	props: ({ mutate }) => ({
+		createCoin: ({variety, year, mint, mintage, keyDate, description}) => mutate({
+			variables: { variety, year, mint, mintage, keyDate, description },
+		}),
+	}),
+});
+
+export default compose(graphql(gql`
 	query {
 		coins {
 			id
@@ -154,6 +168,10 @@ export default graphql(gql`
 			description
 		}
 		varieties {...VarietySelectVariety}
+		mints {...MintSelectMint}
 	}
 	${VarietySelect.fragments.entry}
-`)(Coins);
+	${MintSelect.fragments.entry}
+`),
+	addCoinMutation,
+)(Coins);

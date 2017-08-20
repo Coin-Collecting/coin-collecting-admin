@@ -10,7 +10,7 @@ class DenominationSelect extends React.Component {
 			<aside className="denomination-select">
 				<select onChange={onChange} value={denomination}>
 					<option value="">Denomination</option>
-					{ denominations.map(den => {
+					{ denominations && denominations.map(den => {
 						return (
 							<option
 								value={den.id}

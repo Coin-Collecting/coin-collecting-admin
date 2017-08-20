@@ -10,7 +10,7 @@ class VarietySelect extends React.Component {
 			<aside className="variety-select">
 				<select onChange={onChange} value={variety}>
 					<option value="">Variety</option>
-					{ varieties.length > 0 ?
+					{ varieties && varieties.length > 0 ?
 						varieties.map(variety => {
 							return (
 								<option

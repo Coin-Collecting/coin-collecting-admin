@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import { graphql, compose, gql } from 'react-apollo';
 import DenominationSelect from '../../components/denomination-select';
-import { CreateIssueQuery } from '../../queries';
+import { CreateIssueMutation } from '../../mutations';
 
 import './style.scss';
 
@@ -102,17 +102,19 @@ class Issues extends React.Component {
 							</tr>
 						</thead>
 						<tbody>
-						{ issues.map(issue => {
-							return (
-								<tr key={'issue:' + issue.id}>
-									<td>{ issue.name }</td>
-									<td>{ issue.denomination.kind }</td>
-									<td>{ issue.startYear }</td>
-									<td>{ issue.endYear }</td>
-									<td>{ issue.description }</td>
-								</tr>
-							)
-						})}
+						{ issues && issues.length > 0 ?
+							issues.map(issue => {
+								return (
+									<tr key={'issue:' + issue.id}>
+										<td>{ issue.name }</td>
+										<td>{ issue.denomination.kind }</td>
+										<td>{ issue.startYear }</td>
+										<td>{ issue.endYear }</td>
+										<td>{ issue.description }</td>
+									</tr>
+								)
+							})
+						: null }
 						</tbody>
 					</table>
 				</article>
@@ -127,7 +129,7 @@ Issues.propTypes = {
 };
 
 // UPDATE an existing fundraiser
-const addIssueMutation = graphql(CreateIssueQuery, {
+const addIssueMutation = graphql(CreateIssueMutation, {
 	props: ({ mutate }) => ({
 		addIssue: ({name, description, denomination, startYear, endYear}) => mutate({
 			variables: {

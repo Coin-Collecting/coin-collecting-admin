@@ -10,7 +10,7 @@ class IssueSelect extends React.Component {
 			<aside className="issue-select">
 				<select onChange={onChange} value={issue}>
 					<option value="">Issue</option>
-					{ issues.map(issue => {
+					{ issues && issues.map(issue => {
 						return (
 							<option
 								value={issue.id}

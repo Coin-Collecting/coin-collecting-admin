@@ -16,4 +16,11 @@ CREATE TABLE `compositions` (
   PRIMARY KEY (`id`)
 );
 
+INSERT INTO `compositions` (`silver`,`copper`) VALUES (0.900 , 0.100);
 INSERT INTO `compositions` (`silver`,`copper`) VALUES (0.8924 , 0.1076);
+INSERT INTO `compositions` (`copper`) VALUES (1);
+INSERT INTO `compositions` (`copper`, `nickel`) VALUES (0.88, 0.12);
+INSERT INTO `compositions` (`copper`, `zinc`) VALUES (0.95, 0.5);
+INSERT INTO `compositions` (`steel`) VALUES (1);
+INSERT INTO `compositions` (`tin`) VALUES (1);
+INSERT INTO `compositions` (`copper`, `tin`) VALUES (0.95. 0.05);

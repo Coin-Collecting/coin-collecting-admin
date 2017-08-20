@@ -10,7 +10,7 @@ class EdgeSelect extends React.Component {
 			<aside className="edge-select">
 				<select onChange={onChange} value={edge}>
 					<option value="">Edge</option>
-					{ edges.map(edge => {
+					{ edges && edges.map(edge => {
 						return (
 							<option
 								value={edge.id}

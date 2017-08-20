@@ -7,7 +7,7 @@ CREATE TABLE `mints` (
   `mark` varchar(5) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                                                                                        PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 );
 
 INSERT INTO `mints` (`name`,`mark`) VALUES ('Denver', 'D');

@@ -11,7 +11,7 @@ class CompositionSelect extends React.Component {
 			<aside className="composition-select">
 				<select onChange={onChange} value={composition}>
 					<option value="">Composition</option>
-					{ compositions.map(composition => {
+					{ compositions && compositions.map(composition => {
 						return (
 							<option
 								value={composition.id}

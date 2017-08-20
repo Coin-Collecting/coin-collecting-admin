@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import { graphql, compose, gql } from 'react-apollo';
 import { getCompositionString } from '../../util';
-import { VarietiesQuery, IssuesQuery, CreateVarietyQuery } from '../../queries';
+import { CreateVarietyMutation } from '../../mutations';
 import IssueSelect from '../../components/issue-select';
 import EdgeSelect from '../../components/edge-select';
 import CompositionSelect from '../../components/composition-select';
@@ -138,21 +138,23 @@ class Varieties extends React.Component {
 							</tr>
 						</thead>
 						<tbody>
-						{ varieties.map(variety => {
-							return (
-								<tr key={'variety:' + variety.id}>
-									<td>{ variety.name }</td>
-									<td>{ variety.issue.name }</td>
-									<td>{ variety.description }</td>
-									<td>{ variety.mass }</td>
-									<td>{ variety.diameter }</td>
-									<td>{ variety.edge.type }</td>
-									<td>{ getCompositionString(variety.composition) }</td>
-									<td>{ variety.designer.name }</td>
-									<td>{ variety.images.obverse } <br/> { variety.images.reverse}</td>
-								</tr>
-							)
-						})}
+						{ varieties && varieties.length > 0 ?
+							varieties.map(variety => {
+								return (
+									<tr key={'variety:' + variety.id}>
+										<td>{ variety.name }</td>
+										<td>{ variety.issue.name }</td>
+										<td>{ variety.description }</td>
+										<td>{ variety.mass }</td>
+										<td>{ variety.diameter }</td>
+										<td>{ variety.edge.type }</td>
+										<td>{ getCompositionString(variety.composition) }</td>
+										<td>{ variety.designer.name }</td>
+										<td>{ variety.images.obverse } <br/> { variety.images.reverse}</td>
+									</tr>
+								)
+							})
+						: null }
 						</tbody>
 					</table>
 				</article>
@@ -167,7 +169,7 @@ Varieties.propTypes = {
 };
 
 // UPDATE an existing fundraiser
-const addVarietyMutation = graphql(CreateVarietyQuery, {
+const addVarietyMutation = graphql(CreateVarietyMutation, {
 	props: ({ mutate }) => ({
 		addVariety: ({
 			name, description, mass, diameter, issue, edge, composition, designer,

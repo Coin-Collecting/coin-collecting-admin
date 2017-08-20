@@ -10,7 +10,7 @@ class DesignerSelect extends React.Component {
 			<aside className="designer-select">
 				<select onChange={onChange} value={designer}>
 					<option value="">Designer</option>
-					{ designers.map(designer => {
+					{ designers && designers.map(designer => {
 						return (
 							<option
 								value={designer.id}
