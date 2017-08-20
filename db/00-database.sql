@@ -4,12 +4,16 @@ USE coins_db;
 
 DROP TABLE IF EXISTS `images`;
 CREATE TABLE `images` (
-  `id` int(10) NOT NULL UNIQUE,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `obverse` varchar(600) DEFAULT NULL,
   `reverse` varchar(600) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 );
+
+INSERT INTO `images` (`id`, `obverse`, `reverse`)
+VALUES ('1', 'http://www.image.com/obverse.jpg', 'http://www.image.com/reverse.jpg');
 
 DROP TABLE IF EXISTS `issues`;
 CREATE TABLE `issues` (
@@ -26,7 +30,7 @@ CREATE TABLE `issues` (
 
 DROP TABLE IF EXISTS `varieties`;
 CREATE TABLE `varieties` (
-  `id` int(10) NOT NULL UNIQUE,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `issue` varchar(10) DEFAULT NULL,
   `designer` varchar(10) DEFAULT NULL,
   `images` varchar(10) DEFAULT NULL,
@@ -37,7 +41,8 @@ CREATE TABLE `varieties` (
   `mass` float(10) DEFAULT NULL,
   `diameter` float(10) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 );
 
 DROP TABLE IF EXISTS `coins`;
