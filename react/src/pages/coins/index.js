@@ -111,6 +111,8 @@ class Coins extends React.Component {
 								<th>Mintage</th>
 								<th>KeyDate</th>
 								<th>Description</th>
+								<th>Add to Collection</th>
+								<th>Ebay</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -124,6 +126,15 @@ class Coins extends React.Component {
 										<td>{ coin.mintage }</td>
 										<td>{ coin.keyDate ? 'Y' : '' }</td>
 										<td>{ coin.description }</td>
+										<td><button>Add</button></td>
+										<td>
+											<a
+												target="_blank"
+												href={`https://www.ebay.com/sch/i.html?_nkw=${coin.year}+${coin.mint.mark}+${coin.variety.name.replace(/ /g, '+')}&LH_BIN=1&_sop=15`}
+											>
+												Buy
+											</a>
+										</td>
 									</tr>
 								)
 							})

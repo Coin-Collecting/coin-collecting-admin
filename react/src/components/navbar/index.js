@@ -11,7 +11,7 @@ class NavBar extends React.Component {
 						<Link to="/">Home</Link>
 					</li>
 					<li>
-						<Link to="/my-coins">My Coins</Link>
+						<Link to="/my-coins">Collection</Link>
 					</li>
 					<li>
 						<Link to="/coins">Coins</Link>
