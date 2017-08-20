@@ -2,21 +2,22 @@ USE coins_db;
 
 DROP TABLE IF EXISTS `edges`;
 CREATE TABLE `edges` (
-  `id` int(10) NOT NULL UNIQUE,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `type` varchar(50) DEFAULT NULL,
   `note` varchar(500) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 );
 
-INSERT INTO `edges` (`id`, `type`,`note`) VALUES ('1', 'plain', null);
-INSERT INTO `edges` (`id`, `type`,`note`) VALUES ('2', 'grooved', null);
-INSERT INTO `edges` (`id`, `type`,`note`) VALUES ('3', 'reeded', null);
-INSERT INTO `edges` (`id`, `type`,`note`) VALUES ('4', 'security', null);
-INSERT INTO `edges` (`id`, `type`,`note`) VALUES ('5', 'inscribed', null);
-INSERT INTO `edges` (`id`, `type`,`note`) VALUES ('6', 'decorated', null);
-INSERT INTO `edges` (`id`, `type`,`note`) VALUES ('7', 'interrupted reeded edge', null);
-INSERT INTO `edges` (`id`, `type`,`note`) VALUES ('8', 'indented edge', null);
-INSERT INTO `edges` (`id`, `type`,`note`) VALUES ('9', 'herringbone edge', null);
-INSERT INTO `edges` (`id`, `type`,`note`) VALUES ('10', 'serrated edge', null);
-INSERT INTO `edges` (`id`, `type`,`note`) VALUES ('11', 'polygons', null);
+INSERT INTO `edges` (`type`,`note`) VALUES ('plain', null);
+INSERT INTO `edges` (`type`,`note`) VALUES ('grooved', null);
+INSERT INTO `edges` (`type`,`note`) VALUES ('reeded', null);
+INSERT INTO `edges` (`type`,`note`) VALUES ('security', null);
+INSERT INTO `edges` (`type`,`note`) VALUES ('inscribed', null);
+INSERT INTO `edges` (`type`,`note`) VALUES ('decorated', null);
+INSERT INTO `edges` (`type`,`note`) VALUES ('interrupted reeded edge', null);
+INSERT INTO `edges` (`type`,`note`) VALUES ('indented edge', null);
+INSERT INTO `edges` (`type`,`note`) VALUES ('herringbone edge', null);
+INSERT INTO `edges` (`type`,`note`) VALUES ('serrated edge', null);
+INSERT INTO `edges` (`type`,`note`) VALUES ('polygons', null);

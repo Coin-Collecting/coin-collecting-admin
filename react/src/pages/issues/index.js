@@ -8,11 +8,11 @@ class Issues extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: 'test123',
-			denomination: '1',
-			startYear: '1234',
-			endYear: '4321',
-			description: 'test description',
+			name: undefined,
+			denomination: undefined,
+			startYear: undefined,
+			endYear: undefined,
+			description: undefined,
 		}
 	}
 
@@ -31,72 +31,92 @@ class Issues extends React.Component {
 		console.log({issues});
 
 		return (
-			<article className="issues-page">
-				<h1>Issues</h1>
-				<hr/>
-				<h3>Create New Issue</h3>
-				<p>Name:</p>
-				<input
-					type="text"
-					value={this.state.name}
-				  onChange={e => this.setState({
-						name: e.target.value,
-				  })}
-				/>
-				<p>Denomination ID:</p>
-				<DenominationSelect/>
-				<p>From Year:</p>
-				<input
-					type="text"
-					value={this.state.startYear}
-					onChange={e => this.setState({
-						startYear: e.target.value,
-					})}
-				/>
-				<p>To Year:</p>
-				<input
-					type="text"
-					value={this.state.endYear}
-					onChange={e => this.setState({
-						endYear: e.target.value,
-					})}
-				/>
-				<p>Description:</p>
-				<input
-					type="text"
-					value={this.state.description}
-					onChange={e => this.setState({
-						description: e.target.value,
-					})}
-				/>
-				<br/>
-				<button onClick={() => this.addIssue()}>Add Issue</button>
-				<hr/>
-				<table>
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Denomination</th>
-							<th>From</th>
-							<th>To</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-					{ issues.map(issue => {
-						return (
-							<tr key={'issue:' + issue.id}>
-								<td>{ issue.name }</td>
-								<td>{ issue.denomination.kind }</td>
-								<td>{ issue.startYear }</td>
-								<td>{ issue.endYear }</td>
-								<td>{ issue.description }</td>
+			<div className="issues-page">
+				<h1>Issue Page</h1>
+				<article>
+					<h3>Create New Issue</h3>
+					<ul className="input-list">
+						<li>
+							<input
+								type="text"
+								placeholder="Name"
+								value={this.state.name}
+								onChange={e => this.setState({
+									name: e.target.value,
+								})}
+							/>
+						</li>
+						<li>
+							<DenominationSelect
+								denomination={this.state.denomination}
+								onChange={e => this.setState({
+									denomination: e.target.value,
+								})}
+							/>
+						</li>
+						<li>
+							<input
+								placeholder="From Year"
+								type="text"
+								value={this.state.startYear}
+								onChange={e => this.setState({
+									startYear: e.target.value,
+								})}
+							/>
+						</li>
+						<li>
+							<input
+								placeholder="To Year"
+								type="text"
+								value={this.state.endYear}
+								onChange={e => this.setState({
+									endYear: e.target.value,
+								})}
+							/>
+						</li>
+						<li>
+							<input
+								type="text"
+								placeholder="Description"
+								value={this.state.description}
+								onChange={e => this.setState({
+									description: e.target.value,
+								})}
+							/>
+						</li>
+						<li>
+							<button onClick={() => this.addIssue()}>Add Issue</button>
+						</li>
+					</ul>
+				</article>
+				<article>
+					<h3>Issues</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Denomination</th>
+								<th>From</th>
+								<th>To</th>
+								<th>Description</th>
 							</tr>
-						)
-					})}
-					</tbody>
-				</table>
-			</article>
+						</thead>
+						<tbody>
+						{ issues.map(issue => {
+							return (
+								<tr key={'issue:' + issue.id}>
+									<td>{ issue.name }</td>
+									<td>{ issue.denomination.kind }</td>
+									<td>{ issue.startYear }</td>
+									<td>{ issue.endYear }</td>
+									<td>{ issue.description }</td>
+								</tr>
+							)
+						})}
+						</tbody>
+					</table>
+				</article>
+			</div>
 		);
 	}
 }

@@ -3,13 +3,13 @@ import { gql, graphql } from 'react-apollo';
 
 class DenominationSelect extends React.Component {
 	render() {
-		const { data } = this.props;
+		const { data, onChange, denomination } = this.props;
 		const { denominations } = data;
 		if (data.loading) return (<h3>Loading...</h3>);
 		console.log(denominations);
 		return (
 			<aside>
-				<select>
+				<select onChange={onChange} value={denomination}>
 					<option value="">Denomination</option>
 					{ denominations.map(den => {
 						return (
@@ -29,6 +29,8 @@ class DenominationSelect extends React.Component {
 
 DenominationSelect.propTypes = {
 	data: PropTypes.object,
+	denomination: PropTypes.string,
+	onChange: PropTypes.func,
 };
 
 export default graphql(gql`
