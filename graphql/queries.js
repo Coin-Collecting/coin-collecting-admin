@@ -1,9 +1,9 @@
 // SEQUELIZE
 const Sequelize = require('sequelize');
 
-const connection = new Sequelize("coins_db", "root", "", {
-  'host': '127.0.0.1',
-  'port': '3301',
+const connection = new Sequelize("coins_db", "root", "Dalekini21", {
+  'host': 'localhost',
+  'port': '3306',
 });
 
 export const Coin = connection.define("coin", {
