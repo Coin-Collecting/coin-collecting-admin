@@ -5,7 +5,7 @@ import './default-styles.scss';
 
 const client = new ApolloClient({
 	networkInterface: createNetworkInterface({
-		uri: 'http://localhost:5000/graphql',
+		uri: 'http://www.mycoin.store:5000/graphql',
 	}),
 });
 
