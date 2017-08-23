@@ -30,7 +30,7 @@ build/Release
 node_modules
 
 # Ignore build files
-public
+# public
 
 # Ignore yarn files
 yarn.lock
