@@ -1,0 +1,10 @@
+[Unit]
+Description = Main API for MyCoinStore
+After = network.target
+
+[Service]
+ExecStart = /usr/bin/npm run graphql
+WorkingDirectory = /home/coin-collecting
+
+[Install]
+WantedBy = multi-user.target
