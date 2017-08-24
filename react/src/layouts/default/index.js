@@ -10,6 +10,7 @@ class DefaultLayout extends React.Component {
 		return (
 			<div className="default-layout">
 				<Helmet>
+					<title>MyCoin Store</title>
 					<link rel="apple-touch-icon" sizes="57x57" href={require("./favicon/apple-icon-57x57.png")} />
 					<link rel="apple-touch-icon" sizes="60x60" href={require("./favicon/apple-icon-60x60.png")} />
 					<link rel="apple-touch-icon" sizes="72x72" href={require("./favicon/apple-icon-72x72.png")}/>
