@@ -5,6 +5,7 @@ class HomePage extends React.Component {
 		return (
 			<div>
 				<h1>MyCoin.Store Homepage!!!</h1>
+				<p>Built using script</p>
 			</div>
 		);
 	}
