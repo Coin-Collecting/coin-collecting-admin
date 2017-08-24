@@ -1,0 +1,16 @@
+@import 'palette';
+@import 'inputs';
+@import 'tables';
+@import 'typeography';
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+  background-color: $brandedWhite;
+  color: $black;
+}

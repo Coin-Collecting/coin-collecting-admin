@@ -2,10 +2,11 @@ import React, { PropTypes } from "react";
 import { graphql, compose, gql } from 'react-apollo';
 import { getCompositionString } from '../../util';
 import { CreateVarietyMutation } from '../../mutations';
-import IssueSelect from '../../components/issue-select';
-import EdgeSelect from '../../components/edge-select';
-import CompositionSelect from '../../components/composition-select';
-import DesignerSelect from '../../components/designer-select';
+import IssueSelect from '../../components/select-boxes/issue-select';
+import EdgeSelect from '../../components/select-boxes/edge-select';
+import CompositionSelect from '../../components/select-boxes/composition-select';
+import DesignerSelect from '../../components/select-boxes/designer-select';
+import Spinner from '../../components/spinner';
 
 import './style.scss';
 
@@ -31,99 +32,100 @@ class Varieties extends React.Component {
 
 	render() {
 		const { data } = this.props;
-		if (data.loading) return (<div>Loading...</div>);
 		const { varieties, issues, edges, compositions, designers } = data;
 
 		return (
 			<div className="varieties-page">
 				<h1>Variety Page</h1>
 				<article>
-				<h3>Create New Variety</h3>
-				<ul className="input-list">
-					<li>
-						<input
-							type="text"
-							placeholder="Name"
-							value={this.state.name}
-							onChange={e => this.setState({
-								name: e.target.value,
-							})}
-						/>
-					</li>
-					<li>
-						<IssueSelect
-							issue={this.state.issue}
-							issues={issues}
-							onChange={e => this.setState({
-								issue: e.target.value,
-							})}
-						/>
-					</li>
-					<li>
-						<EdgeSelect
-							edge={this.state.edge}
-							edges={edges}
-							onChange={e => this.setState({
-								edge: e.target.value,
-							})}
-						/>
-					</li>
-					<li>
-						<CompositionSelect
-							composition={this.state.composition}
-							compositions={compositions}
-							onChange={e => this.setState({
-								composition: e.target.value,
-							})}
-						/>
-					</li>
-					<li>
-						<DesignerSelect
-							designer={this.state.designer}
-							designers={designers}
-							onChange={e => this.setState({
-								designer: e.target.value,
-							})}
-						/>
-					</li>
-					<li>
-						<input
-							type="text"
-							placeholder="Description"
-							value={this.state.description}
-							onChange={e => this.setState({
-								description: e.target.value,
-							})}
-						/>
-					</li>
-					<li>
-						<input
-							type="text"
-							placeholder="Mass"
-							value={this.state.mass}
-							onChange={e => this.setState({
-								mass: e.target.value,
-							})}
-						/>
-					</li>
-					<li>
-						<input
-							type="text"
-							placeholder="Diameter"
-							value={this.state.diameter}
-							onChange={e => this.setState({
-								diameter: e.target.value,
-							})}
-						/>
-					</li>
-					<li>
-						<button onClick={() => this.addVariety()}>Add Variety</button>
-					</li>
-				</ul>
+					<h3>Create New Variety</h3>
+					{ !data.loading ?
+						<ul className="input-list">
+							<li>
+								<input
+									type="text"
+									placeholder="Name"
+									value={this.state.name}
+									onChange={e => this.setState({
+										name: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<IssueSelect
+									issue={this.state.issue}
+									issues={issues}
+									onChange={e => this.setState({
+										issue: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<EdgeSelect
+									edge={this.state.edge}
+									edges={edges}
+									onChange={e => this.setState({
+										edge: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<CompositionSelect
+									composition={this.state.composition}
+									compositions={compositions}
+									onChange={e => this.setState({
+										composition: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<DesignerSelect
+									designer={this.state.designer}
+									designers={designers}
+									onChange={e => this.setState({
+										designer: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<input
+									type="text"
+									placeholder="Description"
+									value={this.state.description}
+									onChange={e => this.setState({
+										description: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<input
+									type="text"
+									placeholder="Mass"
+									value={this.state.mass}
+									onChange={e => this.setState({
+										mass: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<input
+									type="text"
+									placeholder="Diameter"
+									value={this.state.diameter}
+									onChange={e => this.setState({
+										diameter: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<button onClick={() => this.addVariety()}>Add Variety</button>
+							</li>
+						</ul>
+					: null }
 				</article>
 				<article>
 					<h3>Varieties</h3>
-					<table>
+					<table className="branded-table">
 						<thead>
 							<tr>
 								<th>Name</th>
@@ -138,6 +140,9 @@ class Varieties extends React.Component {
 							</tr>
 						</thead>
 						<tbody>
+						{ data.loading ?
+							<tr className="loading-row"><td colSpan="9"><Spinner/></td></tr>
+						: null }
 						{ varieties && varieties.length > 0 ?
 							varieties.map(variety => {
 								return (
@@ -154,7 +159,11 @@ class Varieties extends React.Component {
 									</tr>
 								)
 							})
-						: null }
+							:
+							<tr className="empty-row">
+								<td colSpan="7">You haven't entered any varieties yet :(</td>
+							</tr>
+						}
 						</tbody>
 					</table>
 				</article>

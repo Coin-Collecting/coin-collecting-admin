@@ -1,7 +1,7 @@
 import React from 'react';
 import { routes } from './routes';
 import { ApolloProvider, ApolloClient, createNetworkInterface } from 'react-apollo';
-import './default-styles.scss';
+
 const client = new ApolloClient({
 	networkInterface: createNetworkInterface({
 		uri: process.env.API_URL,

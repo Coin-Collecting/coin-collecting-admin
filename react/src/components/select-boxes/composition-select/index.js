@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import { gql } from 'react-apollo';
 import './style.scss';
-import { getCompositionString } from '../../util';
+import { getCompositionString } from '../../../util';
 
 class CompositionSelect extends React.Component {
 	render() {

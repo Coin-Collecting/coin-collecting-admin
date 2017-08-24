@@ -1,9 +1,9 @@
 import React, { PropTypes } from "react";
 import { graphql, gql, compose } from 'react-apollo';
 import { CreateCoinMutation } from '../../mutations';
-
-import VarietySelect from '../../components/variety-select';
-import MintSelect from '../../components/mint-select';
+import VarietySelect from '../../components/select-boxes/variety-select';
+import MintSelect from '../../components/select-boxes/mint-select';
+import Spinner from '../../components/spinner';
 
 import './style.scss';
 
@@ -28,7 +28,6 @@ class Coins extends React.Component {
 
 	render() {
 		const { data } = this.props;
-		if (data.loading) return (<div>Loading...</div>);
 		const { coins, varieties, mints } = data;
 
 		return (
@@ -36,73 +35,75 @@ class Coins extends React.Component {
 				<h1>Coin Page</h1>
 				<article>
 					<h3>Create New Coin</h3>
-					<ul className="input-list">
-						<li>
-							<VarietySelect
-								variety={this.state.variety}
-								varieties={varieties}
-								onChange={e => this.setState({
-									variety: e.target.value,
-								})}
-							/>
-						</li>
-						<li>
-							<input
-								type="text"
-								placeholder="Year"
-								value={this.state.year}
-								onChange={e => this.setState({
-									year: e.target.value,
-								})}
-							/>
-						</li>
-						<li>
-							<MintSelect
-								mint={this.state.mint}
-								mints={mints}
-								onChange={e => this.setState({
-									mint: e.target.value,
-								})}
-							/>
-						</li>
-						<li>
-							<input
-								type="text"
-								placeholder="Mintage"
-								value={this.state.mintage}
-								onChange={e => this.setState({
-									mintage: e.target.value,
-								})}
-							/>
-						</li>
-						<li>
-							<input
-								type="text"
-								placeholder="Description"
-								value={this.state.description}
-								onChange={e => this.setState({
-									description: e.target.value,
-								})}
-							/>
-						</li>
-						<li>
-							<input
-								id="chkKeyDate"
-								type="checkbox"
-								value={this.state.keyDate}
-								onChange={e => this.setState({
-									keyDate: e.target.value,
-								})}
-							/> <label htmlFor="chkKeyDate">Key Date</label>
-						</li>
-						<li>
-							<button onClick={() => this.addCoin()}>Add Coin</button>
-						</li>
-					</ul>
+					{ !data.loading ?
+						<ul className="input-list">
+							<li>
+								<VarietySelect
+									variety={this.state.variety}
+									varieties={varieties}
+									onChange={e => this.setState({
+										variety: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<input
+									type="text"
+									placeholder="Year"
+									value={this.state.year}
+									onChange={e => this.setState({
+										year: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<MintSelect
+									mint={this.state.mint}
+									mints={mints}
+									onChange={e => this.setState({
+										mint: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<input
+									type="text"
+									placeholder="Mintage"
+									value={this.state.mintage}
+									onChange={e => this.setState({
+										mintage: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<input
+									type="text"
+									placeholder="Description"
+									value={this.state.description}
+									onChange={e => this.setState({
+										description: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<input
+									id="chkKeyDate"
+									type="checkbox"
+									value={this.state.keyDate}
+									onChange={e => this.setState({
+										keyDate: e.target.value,
+									})}
+								/> <label htmlFor="chkKeyDate">Key Date</label>
+							</li>
+							<li>
+								<button onClick={() => this.addCoin()}>Add Coin</button>
+							</li>
+						</ul>
+					: null }
 				</article>
 				<article>
 					<h3>Coins</h3>
-					<table>
+					<table className="branded-table">
 						<thead>
 							<tr>
 								<th>Variety</th>
@@ -116,6 +117,9 @@ class Coins extends React.Component {
 							</tr>
 						</thead>
 						<tbody>
+						{ data.loading ?
+							<tr className="loading-row"><td colSpan="9"><Spinner/></td></tr>
+						: null }
 						{ coins && coins.length > 0 ?
 							coins.map(coin => {
 								return (
@@ -138,7 +142,11 @@ class Coins extends React.Component {
 									</tr>
 								)
 							})
-						: null }
+						:
+							<tr className="empty-row">
+								<td colSpan="7">Why not enter a coin or two ;)</td>
+							</tr>
+						}
 						</tbody>
 					</table>
 				</article>

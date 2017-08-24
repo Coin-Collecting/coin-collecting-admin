@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react";
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './style.scss';
 
 class NavBar extends React.Component {
@@ -11,16 +11,16 @@ class NavBar extends React.Component {
 						<Link to="/">Home</Link>
 					</li>
 					<li>
-						<Link to="/my-coins">Collection</Link>
+						<NavLink to="/my-coins">Collection</NavLink>
 					</li>
 					<li>
-						<Link to="/coins">Coins</Link>
+						<NavLink to="/coins">Coins</NavLink>
 					</li>
 					<li>
-						<Link to="/varieties">Varieties</Link>
+						<NavLink to="/varieties">Varieties</NavLink>
 					</li>
 					<li>
-						<Link to="/issues">Issues</Link>
+						<NavLink to="/issues">Issues</NavLink>
 					</li>
 				</ul>
 			</nav>

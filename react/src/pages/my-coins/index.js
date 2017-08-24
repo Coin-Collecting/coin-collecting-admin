@@ -12,18 +12,23 @@ class MyCoins extends React.Component {
 				</article>
 				<article>
 					<h3>Coins</h3>
-					<table>
+					<table className="branded-table">
 						<thead>
-						<tr>
-							<th>Variety</th>
-							<th>Year</th>
-							<th>Mint</th>
-							<th>Quality</th>
-							<th>Quantity</th>
-							<th>Images</th>
-							<th>Note</th>
-						</tr>
+							<tr>
+								<th>Variety</th>
+								<th>Year</th>
+								<th>Mint</th>
+								<th>Quality</th>
+								<th>Quantity</th>
+								<th>Images</th>
+								<th>Note</th>
+							</tr>
 						</thead>
+						<tbody>
+							<tr className="empty-row">
+								<td colSpan="7">Looks like you have to start collecting!</td>
+							</tr>
+						</tbody>
 					</table>
 				</article>
 			</div>

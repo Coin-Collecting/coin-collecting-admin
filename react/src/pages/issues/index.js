@@ -1,7 +1,8 @@
 import React, { PropTypes } from "react";
 import { graphql, compose, gql } from 'react-apollo';
-import DenominationSelect from '../../components/denomination-select';
+import DenominationSelect from '../../components/select-boxes/denomination-select';
 import { CreateIssueMutation } from '../../mutations';
+import Spinner from '../../components/spinner';
 
 import './style.scss';
 
@@ -24,74 +25,75 @@ class Issues extends React.Component {
 
 	render() {
 		const { data } = this.props;
-		if (data.loading) return (<div>Loading...</div>);
 		const { issues, denominations } = data;
 
 		return (
-			<div className="issues-page">
+			<section className="issues-page">
 				<h1>Issue Page</h1>
 				<article>
 					<h3>Create New Issue</h3>
-					<ul className="input-list">
-						<li>
-							<input
-								type="text"
-								placeholder="Name"
-								value={this.state.name}
-								onChange={e => this.setState({
-									name: e.target.value,
-								})}
-							/>
-						</li>
-						<li>
-							<DenominationSelect
-								denomination={this.state.denomination}
-								denominations={denominations}
-								onChange={e => this.setState({
-									denomination: e.target.value,
-								})}
-							/>
-						</li>
-						<li>
-							<input
-								placeholder="From Year"
-								type="text"
-								maxLength={4}
-								value={this.state.startYear}
-								onChange={e => this.setState({
-									startYear: e.target.value,
-								})}
-							/>
-						</li>
-						<li>
-							<input
-								placeholder="To Year"
-								type="text"
-								maxLength={4}
-								value={this.state.endYear}
-								onChange={e => this.setState({
-									endYear: e.target.value,
-								})}
-							/>
-						</li>
-						<li>
-							<input
-								type="text"
-								placeholder="Description"
-								value={this.state.description}
-								onChange={e => this.setState({
-									description: e.target.value,
-								})}
-							/>
-						</li>
-						<li>
-							<button onClick={() => this.addIssue()}>Add Issue</button>
-						</li>
-					</ul>
+					{ !data.loading ?
+						<ul className="input-list">
+							<li>
+								<input
+									type="text"
+									placeholder="Name"
+									value={this.state.name}
+									onChange={e => this.setState({
+										name: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<DenominationSelect
+									denomination={this.state.denomination}
+									denominations={denominations}
+									onChange={e => this.setState({
+										denomination: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<input
+									placeholder="From Year"
+									type="text"
+									maxLength={4}
+									value={this.state.startYear}
+									onChange={e => this.setState({
+										startYear: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<input
+									placeholder="To Year"
+									type="text"
+									maxLength={4}
+									value={this.state.endYear}
+									onChange={e => this.setState({
+										endYear: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<input
+									type="text"
+									placeholder="Description"
+									value={this.state.description}
+									onChange={e => this.setState({
+										description: e.target.value,
+									})}
+								/>
+							</li>
+							<li>
+								<button onClick={() => this.addIssue()}>Add Issue</button>
+							</li>
+						</ul>
+					: null }
 				</article>
 				<article>
 					<h3>Issues</h3>
-					<table>
+					<table className="branded-table">
 						<thead>
 							<tr>
 								<th>Name</th>
@@ -102,6 +104,9 @@ class Issues extends React.Component {
 							</tr>
 						</thead>
 						<tbody>
+						{ data.loading ?
+							<tr className="loading-row"><td colSpan="9"><Spinner/></td></tr>
+						: null }
 						{ issues && issues.length > 0 ?
 							issues.map(issue => {
 								return (
@@ -114,11 +119,15 @@ class Issues extends React.Component {
 									</tr>
 								)
 							})
-						: null }
+							:
+							<tr className="empty-row">
+								<td colSpan="7">What, nobody issued any coins?</td>
+							</tr>
+						}
 						</tbody>
 					</table>
 				</article>
-			</div>
+			</section>
 		);
 	}
 }

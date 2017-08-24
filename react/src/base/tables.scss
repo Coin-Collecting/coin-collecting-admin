@@ -1,0 +1,35 @@
+.branded-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  thead {
+    background-color: $brandedAlt;
+    color: #fff;
+    font-weight: 400;
+    text-align: left;
+
+    th {
+      border: solid 1px darken($brandedAlt, 20);
+      padding: 10px;
+    }
+  }
+
+  td {
+    border: solid 1px $lightGray;
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  .loading-row {
+    text-align: center;
+  }
+
+  .empty-row {
+    text-align: center;
+
+    td,
+    th {
+      padding: 20px 10px;
+    }
+  }
+}

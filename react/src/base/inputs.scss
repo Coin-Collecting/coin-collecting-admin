@@ -1,0 +1,30 @@
+@import 'palette.scss';
+
+input[type=text],
+input[type=email],
+input[type=password],
+select {
+  box-sizing: border-box;
+  height: 30px;
+  font-size: 12px;
+  border: solid 1px #929292;
+  border-radius: 3px;
+  color: $black;
+  outline: none;
+  padding: 0 10px;
+}
+
+button {
+  box-sizing: border-box;
+  height: 30px;
+  border-top: solid 2px transparent;
+  border-right: solid 2px transparent;
+  border-bottom: solid 2px darken($lightGray, 20);
+  border-left: solid 2px transparent;
+  border-radius: 3px;
+  background-color: $lightGray;
+  color: #fff;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}

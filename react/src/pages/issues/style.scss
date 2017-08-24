@@ -1,3 +1,5 @@
+@import '../../base/palette';
+
 .issues-page {
   article {
     margin-bottom: 60px;
@@ -9,25 +11,7 @@
 
     li {
       display: inline-block;
-      margin-right: 10px;
-    }
-  }
-
-  table {
-    border-collapse: collapse;
-    width: 100%;
-
-    thead {
-      background-color: #5c5c5c;
-      color: #fff;
-      font-weight: 400;
-      text-align: left;
-    }
-
-    th,
-    td {
-      border: solid 1px #000;
-      padding: 10px;
+      margin: 5px;
     }
   }
 }

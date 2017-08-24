@@ -1,0 +1,26 @@
+@import 'palette';
+
+p {
+  color: $black;
+}
+
+a {
+  color: $primaryColor;
+  text-decoration: none;
+}
+
+h1 {
+  color: $black;
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: $primaryColor;
+  font-weight: 700;
+}
