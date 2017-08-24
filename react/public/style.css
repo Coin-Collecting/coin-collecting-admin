@@ -10,6 +10,7 @@ select {
   color: #2b2b2b;
   outline: none;
   padding: 0 10px;
+  background-color: #fff;
 }
 
 button {
