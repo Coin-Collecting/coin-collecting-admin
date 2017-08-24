@@ -1,3 +1,122 @@
+input[type=text],
+input[type=email],
+input[type=password],
+select {
+  box-sizing: border-box;
+  height: 30px;
+  font-size: 12px;
+  border: solid 1px #929292;
+  border-radius: 3px;
+  color: #2b2b2b;
+  outline: none;
+  padding: 0 10px;
+}
+
+button {
+  box-sizing: border-box;
+  height: 30px;
+  border-top: solid 2px transparent;
+  border-right: solid 2px transparent;
+  border-bottom: solid 2px #828282;
+  border-left: solid 2px transparent;
+  border-radius: 3px;
+  background-color: #b5b5b5;
+  color: #fff;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: #dfdfdf;
+  border-bottom: solid 2px transparent;
+  color: #b5b5b5;
+}
+
+.branded-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.branded-table thead {
+  background-color: #f7b733;
+  color: #fff;
+  font-weight: 400;
+  text-align: left;
+}
+
+.branded-table thead th {
+  border: solid 1px #bd8107;
+  padding: 10px;
+}
+
+.branded-table td {
+  border: solid 1px #b5b5b5;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.branded-table .loading-row {
+  text-align: center;
+}
+
+.branded-table .empty-row {
+  text-align: center;
+}
+
+.branded-table .empty-row td,
+.branded-table .empty-row th {
+  padding: 60px 10px;
+}
+
+p {
+  color: #2b2b2b;
+}
+
+a {
+  color: #4abdac;
+  text-decoration: none;
+}
+
+h1 {
+  color: #2b2b2b;
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #4abdac;
+  font-weight: 700;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+  background-color: #f7f7f7;
+  color: #2b2b2b;
+}
+.global-header {
+  display: block;
+  background-color: #fff;
+  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.2);
+  padding: 5px 10px;
+}
+
+.global-header .main-navbar {
+  display: inline-block;
+  vertical-align: middle;
+}
 .main-navbar ul {
   list-style: none;
   margin: 0;
@@ -12,19 +131,40 @@
 }
 
 .main-navbar .active {
-  font-weight: bold;
+  color: #4abdac;
+}
+
+.main-navbar a {
+  text-decoration: none;
+  color: #2b2b2b;
+  font-size: 14px;
+}
+.global-footer {
+  display: block;
+  text-align: center;
+  padding: 10px;
 }
 .default-layout .default-section {
   padding: 20px;
 }
-
-.default-layout header {
-  display: block;
-  background-color: #c6c6c6;
-  border-bottom: solid 1px #000;
-}
 .denomination-select select {
   text-transform: capitalize;
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.spinner img {
+  height: 30px;
+  -webkit-animation-name: rotate;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }
 .issues-page article {
   margin-bottom: 60px;
@@ -37,25 +177,7 @@
 
 .issues-page .input-list li {
   display: inline-block;
-  margin-right: 10px;
-}
-
-.issues-page table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.issues-page table thead {
-  background-color: #5c5c5c;
-  color: #fff;
-  font-weight: 400;
-  text-align: left;
-}
-
-.issues-page table th,
-.issues-page table td {
-  border: solid 1px #000;
-  padding: 10px;
+  margin: 5px;
 }
 .variety-select select {
   text-transform: capitalize;
@@ -74,25 +196,7 @@
 
 .coins-page .input-list li {
   display: inline-block;
-  margin-right: 10px;
-}
-
-.coins-page table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.coins-page table thead {
-  background-color: #5c5c5c;
-  color: #fff;
-  font-weight: 400;
-  text-align: left;
-}
-
-.coins-page table th,
-.coins-page table td {
-  border: solid 1px #000;
-  padding: 10px;
+  margin: 5px;
 }
 .issue-select select {
   text-transform: capitalize;
@@ -117,44 +221,5 @@
 
 .varieties-page .input-list li {
   display: inline-block;
-  margin-right: 10px;
-}
-
-.varieties-page table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.varieties-page table thead {
-  background-color: #5c5c5c;
-  color: #fff;
-  font-weight: 400;
-  text-align: left;
-}
-
-.varieties-page table th,
-.varieties-page table td {
-  border: solid 1px #000;
-  padding: 10px;
-}
-body,
-html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-h1 {
-  font-size: 28px;
-}
-
-h2 {
-  font-size: 22px;
-}
-
-h3 {
-  font-size: 18px;
-  text-transform: uppercase;
-  color: #626262;
-  font-weight: 700;
+  margin: 5px;
 }
