@@ -1,10 +1,14 @@
 // SEQUELIZE
 const Sequelize = require('sequelize');
+let env = process.env.NODE_ENV || 'development';
+let config = require('../config')[env];
 
-const connection = new Sequelize("coins_db", "root", "Dalekini21", {
-  'host': 'localhost',
-  'port': '3306',
-});
+const connection = new Sequelize(
+  "coins_db", config.db.user, config.db.pass, {
+    'host': config.db.host,
+    'port': config.db.port,
+  }
+);
 
 export const Coin = connection.define("coin", {
   variety: Sequelize.STRING,

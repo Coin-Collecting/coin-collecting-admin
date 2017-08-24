@@ -5,13 +5,13 @@ import './default-styles.scss';
 
 const client = new ApolloClient({
 	networkInterface: createNetworkInterface({
-		uri: 'http://www.mycoin.store:5000/graphql',
+		uri: process.env.API_URL,
 	}),
 });
 
 export default class App extends React.Component {
   render() {
-    return (
+		return (
     	<ApolloProvider client={client}>
 				{ routes }
 			</ApolloProvider>

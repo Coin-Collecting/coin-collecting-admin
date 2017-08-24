@@ -1,13 +1,15 @@
 "use strict";
-var webpack = require('webpack');
-var path = require('path');
-var loaders = require('./webpack.loaders');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var DashboardPlugin = require('webpack-dashboard/plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+let webpack = require('webpack');
+let path = require('path');
+let loaders = require('./webpack.loaders');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+let DashboardPlugin = require('webpack-dashboard/plugin');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || "8888";
+
+let config = require('../config')['development'];
 
 loaders.push({
   test: /\.scss$/,
@@ -60,5 +62,12 @@ module.exports = {
         js: [ "bundle.js"],
       }
     }),
+		new webpack.DefinePlugin({
+			'process.env': {
+				'NODE_ENV': JSON.stringify('development'),
+				'API_URL': JSON.stringify(config.api.url),
+				'DOMAIN': JSON.stringify(config.url),
+			}
+		})
   ]
 };

@@ -1,9 +1,11 @@
-var webpack = require('webpack');
-var path = require('path');
-var loaders = require('./webpack.loaders');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+let webpack = require('webpack');
+let path = require('path');
+let loaders = require('./webpack.loaders');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+let WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+let config = require('../config')['production'];
 
 loaders.push({
   test: /\.scss$/,
@@ -52,6 +54,13 @@ module.exports = {
         css: ['style.css'],
         js: ['bundle.js'],
       }
-    })
+    }),
+		new webpack.DefinePlugin({
+			'process.env': {
+				'NODE_ENV': JSON.stringify('development'),
+				'API_URL': JSON.stringify(config.api.url),
+				'DOMAIN': JSON.stringify(config.url),
+			}
+		})
   ]
 };
