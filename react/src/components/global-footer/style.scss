@@ -1,5 +1,10 @@
+@import '../../base/palette';
+
 .global-footer {
   display: block;
   text-align: center;
-  padding: 10px;
+  padding: 40px 10px;
+  background-color: #fff;
+  border-top: solid 1px $lightGray;
+  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.2);
 }
