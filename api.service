@@ -4,6 +4,7 @@ After = network.target
 
 [Service]
 ExecStart = /usr/bin/npm run graphql-prod
+ExecStartPost = /home/slack/deployapi.sh
 WorkingDirectory = /home/coin-collecting
 
 [Install]
