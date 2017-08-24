@@ -161,7 +161,7 @@ class Varieties extends React.Component {
 							})
 							:
 							<tr className="empty-row">
-								<td colSpan="7">You haven't entered any varieties yet :(</td>
+								<td colSpan="9">You haven't entered any varieties yet :(</td>
 							</tr>
 						}
 						</tbody>

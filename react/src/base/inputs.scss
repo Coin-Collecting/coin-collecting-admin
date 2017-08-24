@@ -27,4 +27,11 @@ button {
   font-weight: 600;
   outline: none;
   cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $disabled;
+    border-bottom: solid 2px transparent;
+    color: $lightGray;
+  }
 }

@@ -144,7 +144,7 @@ class Coins extends React.Component {
 							})
 						:
 							<tr className="empty-row">
-								<td colSpan="7">Why not enter a coin or two ;)</td>
+								<td colSpan="8">Why not enter a coin or two ;)</td>
 							</tr>
 						}
 						</tbody>
