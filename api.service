@@ -3,7 +3,6 @@ Description = Main API for MyCoinStore
 After = network.target
 
 ExecStart = /usr/bin/npm run graphql-prod
-ExecStartPost = /home/slack/deployapi.sh
 WorkingDirectory = /home/coin-collecting
 
 [Install]
