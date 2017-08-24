@@ -3,7 +3,7 @@ Description = Main API for MyCoinStore
 After = network.target
 
 [Service]
-ExecStart = /usr/bin/npm run graphql
+ExecStart = /usr/bin/npm run graphql-prod
 WorkingDirectory = /home/coin-collecting
 
 [Install]
