@@ -2,6 +2,9 @@ curl -X POST --data "payload={\"text\": \":slack: Starting Build - Web\"}" https
 
 cd /home/coin-collecting
 git pull origin master
+chmod +x build.sh
+
+rm -rf /var/www/html/*
 
 rsync -auv /home/coin-collecting/react/public/ /var/www/html/
 
