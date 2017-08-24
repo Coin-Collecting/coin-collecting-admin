@@ -103,7 +103,7 @@ html {
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: #fff;
   color: #2b2b2b;
 }
 .global-header {
@@ -142,10 +142,19 @@ body {
 .global-footer {
   display: block;
   text-align: center;
-  padding: 10px;
+  padding: 40px 10px;
+  background-color: #fff;
+  border-top: solid 1px #b5b5b5;
+  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.2);
 }
+.default-layout {
+  background-color: #f7f7f7;
+}
+
 .default-layout .default-section {
+  box-sizing: border-box;
   padding: 20px;
+  min-height: calc(100vh - 101px - 50px);
 }
 .denomination-select select {
   text-transform: capitalize;
