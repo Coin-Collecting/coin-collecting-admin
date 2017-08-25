@@ -1,7 +1,98 @@
 @import '../../base/palette';
 
 .issues-page {
+  padding: 20px 5px;
+
   article {
     margin-bottom: 60px;
+  }
+
+  .results-header {
+    font-size: 12px;
+    color: $lightGray;
+    span { float: right; }
+  }
+
+  .issues-list {
+    font-size: 14px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0;
+      padding: 15px 10px;
+    }
+
+    li:nth-child(even) {
+      background-color: #fff;
+    }
+
+    li:nth-child(odd) {
+      background-color: $lightestGray;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .name {
+      font-weight: 700;
+      text-transform: capitalize;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .start-year:after {
+      content: '-';
+      display: inline-block;
+    }
+
+    .denomination {
+      text-transform: capitalize;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .description {
+      display: block;
+      font-size: 12px;
+      width: calc(100% - 30px);
+    }
+
+    .fa-pencil {
+      cursor: pointer;
+      float: right;
+      font-size: 16px;
+      color: $primaryColor;
+    }
+  }
+
+  .filters {
+    display: block;
+
+    input {
+      display: inline-block;
+      width: calc(100% - 120px);
+      height: 35px;
+      border-radius: 0;
+      border-right: 0;
+    }
+
+    .sort-by {
+      display: inline-block;
+      font-size: 12px;
+
+      .select-wrapper {
+        display: inline-block;
+      }
+
+      select {
+        width: 120px;
+        height: 35px;
+        font-size: 12px;
+        border-radius: 0;
+      }
+    }
   }
 }

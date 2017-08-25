@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react";
-import GlobalHeader from '../../components/global-header';
+import NavBar from '../../components/navbar';
 import GlobalFooter from '../../components/global-footer';
 
 import './style.scss';
@@ -8,7 +8,7 @@ class DefaultLayout extends React.Component {
 	render() {
 		return (
 			<div className="default-layout">
-				<GlobalHeader/>
+				<NavBar/>
 				<div className="default-section">
 					{ this.props.children }
 				</div>

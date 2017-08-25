@@ -1,0 +1,58 @@
+@import '../../base/palette';
+
+.main-navbar {
+  display: block;
+  background-color: #fff;
+  padding: 5px 0;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.13);
+
+  .main-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+  }
+
+  li {
+    display: inline-block;
+    padding: 10px;
+    margin: 0;
+  }
+
+  .active {
+    color: $primaryColor;
+  }
+
+  a {
+    text-decoration: none;
+    color: $black;
+    font-size: 14px;
+  }
+
+  .fa-bars {
+    cursor: pointer;
+    display: none;
+    float: right;
+    line-height: 40px;
+    margin-right: 20px;
+    font-size: 26px;
+  }
+}
+
+.main-navbar.infinity,
+.main-navbar.large,
+.main-navbar.medium {
+  padding-left: 20px;
+}
+
+.main-navbar.small,
+.main-navbar.extraSmall {
+  .main-list {
+    display: none;
+  }
+
+  .fa-bars {
+    display: inline-block;
+  }
+}

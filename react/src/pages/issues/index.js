@@ -3,6 +3,7 @@ import { compose, graphql, gql } from 'react-apollo';
 import Spinner from '../../components/spinner';
 import AddIssue from '../../components/add-issue';
 import './style.scss';
+const FontAwesome = require('react-fontawesome');
 
 class Issues extends React.Component {
 	render() {
@@ -11,49 +12,55 @@ class Issues extends React.Component {
 
 		return (
 			<section className="issues-page">
-				<h1>Issue Page</h1>
+				{ issues ?
+					<article>
+						<div className="filters clearfix">
+							<input type="text" placeholder="Search"/>
+							<div className="sort-by">
+								<div className="select-wrapper">
+										<select>
+											<option value="oldest">Oldest First</option>
+											<option value="newest">Newest First</option>
+											<option value="alphabetical">Alphabetical</option>
+											<option value="denomination">Denomination</option>
+										</select>
+								</div>
+							</div>
+						</div>
+						<p className="results-header clearfix">
+							<span>Results ({issues.length} of {issues.length})</span>
+						</p>
+						<ul className="issues-list">
+							{ issues.length > 0 ?
+								issues.map(issue => {
+									return (
+										<li key={'issue:' + issue.id}>
+											<p>
+												<FontAwesome name="pencil"/>
+												<span className="name">{ issue.name }</span>
+												<span className="denomination">
+												{ issue.denomination.kind.replace('_', ' ').toLowerCase() }
+											</span>
+												<span className="year start-year">{ issue.startYear }</span>
+												<span className="year end-year">{ issue.endYear }</span>
+
+												<span className="description">{ issue.description }</span>
+											</p>
+										</li>
+									)
+								})
+								:
+								<p>What, nobody issued any coins?</p>
+							}
+						</ul>
+					</article>
+				: null }
 				<article>
-					<h3>Create New Issue</h3>
+					<h3>Create A New Issue</h3>
 					<AddIssue
 						denominations={denominations}
 						onSubmit={() => this.props.data.refetch()}
 					/>
-				</article>
-				<article>
-					<h3>Issues</h3>
-					<table className="branded-table">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Denomination</th>
-								<th>From</th>
-								<th>To</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-						{ data.loading ?
-							<tr className="loading-row"><td colSpan="9"><Spinner/></td></tr>
-						: null }
-						{ issues && issues.length > 0 ?
-							issues.map(issue => {
-								return (
-									<tr key={'issue:' + issue.id}>
-										<td>{ issue.name }</td>
-										<td>{ issue.denomination.kind }</td>
-										<td>{ issue.startYear }</td>
-										<td>{ issue.endYear }</td>
-										<td>{ issue.description }</td>
-									</tr>
-								)
-							})
-							:
-							<tr className="empty-row">
-								<td colSpan="7">What, nobody issued any coins?</td>
-							</tr>
-						}
-						</tbody>
-					</table>
 				</article>
 			</section>
 		);

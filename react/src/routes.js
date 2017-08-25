@@ -18,7 +18,7 @@ export const routes = (
 		<Switch>
 			<Base>
 				<DefaultLayout>
-					<Route exact path="/" component={HomePage}/>
+					<Route exact path="/" component={Issues}/>
 					<Route exact path="/issues" component={Issues}/>
 					<Route exact path="/coins" component={Coins}/>
 					<Route exact path="/varieties" component={Varieties}/>

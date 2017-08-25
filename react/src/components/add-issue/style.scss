@@ -22,7 +22,7 @@
       border-color: $lightestGray;
     }
 
-    .description {
+    .description input {
       border-right: 0;
     }
 
@@ -40,10 +40,130 @@
   }
 }
 
-.add-issue-component.medium,
-.add-issue-component.small,
-.add-issue-component.extraSmall {
-  .input-list li {
+.add-issue-component.large,
+.add-issue-component.infinity {
+  .input-list {
     display: block;
+  }
+
+  input,
+  select,
+  button {
+    width: 100%;
+  }
+
+  $nameWidth: 200px;
+  $denominationWidth: 200px;
+  $fromYearWidth: 110px;
+  $toYearWidth: 110px;
+  $buttonWidth: 100px;
+  $descriptionWidth:
+          calc(100% - (#{$nameWidth} + #{$denominationWidth} + #{$fromYearWidth} + #{$toYearWidth} + #{$buttonWidth}) );
+
+  .name {width: $nameWidth}
+  .denomination {width: $denominationWidth}
+  .from-year {width: $fromYearWidth}
+  .to-year {width: $toYearWidth}
+  .description {width: $descriptionWidth}
+  .button {width: $buttonWidth}
+}
+
+.add-issue-component.medium {
+  .input-list {
+    margin: 0 auto;
+    display: block;
+    border-radius: 5px;
+    padding: 0;
+
+    li {
+      display: block;
+      width: 100%;
+    }
+
+    input,
+    select  {
+      width: 100%;
+      border-bottom: solid 1px $lightestGray;
+    }
+
+    .from-year,
+    .to-year,
+    .denomination,
+    .name {
+      width: calc(100% / 4);
+      display: inline-block;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+}
+
+.add-issue-component.small {
+  .input-list {
+    margin: 0 auto;
+    display: block;
+    border-radius: 5px;
+    padding: 0;
+
+    li {
+      display: block;
+      width: 100%;
+    }
+
+    input,
+    select  {
+      width: 100%;
+      border-bottom: solid 1px $lightestGray;
+    }
+
+    .from-year,
+    .to-year,
+    .denomination,
+    .name {
+      width: calc(100% / 2);
+      display: inline-block;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+}
+
+.add-issue-component.extraSmall {
+  .input-list {
+    margin: 0 auto;
+    display: block;
+    border-radius: 5px;
+    padding: 0;
+
+    li {
+      display: block;
+      width: 100%;
+    }
+
+    input,
+    select  {
+      width: 100%;
+      border-bottom: solid 1px $lightestGray;
+    }
+
+    .from-year,
+    .to-year {
+      width: calc(100% / 2);
+      display: inline-block;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      border-radius: 0;
+    }
   }
 }

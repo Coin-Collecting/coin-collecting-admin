@@ -1,12 +1,18 @@
 import React, { PropTypes } from "react";
 import { NavLink, Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+import { compose } from 'react-apollo';
 import './style.scss';
+const FontAwesome = require('react-fontawesome');
 
 class NavBar extends React.Component {
 	render() {
+		const { browser } = this.props;
+		let classes = ['main-navbar clearfix', browser.mediaType];
+
 		return (
-			<nav className="main-navbar">
-				<ul>
+			<nav className={classes.join(' ')}>
+				<ul className="main-list">
 					<li>
 						<Link to="/">Home</Link>
 					</li>
@@ -23,6 +29,7 @@ class NavBar extends React.Component {
 						<NavLink to="/issues">Issues</NavLink>
 					</li>
 				</ul>
+				<FontAwesome name="bars"/>
 			</nav>
 		);
 	}
@@ -30,4 +37,12 @@ class NavBar extends React.Component {
 
 NavBar.propTypes = {};
 
-export default NavBar;
+function mapStateToProps(state){
+	return {
+		browser: state.browser
+	}
+}
+
+export default compose(
+	connect(mapStateToProps)
+)(NavBar);

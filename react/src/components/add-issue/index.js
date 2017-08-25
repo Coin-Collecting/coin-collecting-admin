@@ -47,12 +47,11 @@ class AddIssue extends React.Component {
 		let { data, browser } = this.props;
 		let { denominations } = data;
 		let classes = ['add-issue-component', browser.mediaType];
-		console.log(browser);
 
 		return (
 			<div className={classes.join(' ')}>
 				<ul className="input-list">
-					<li>
+					<li className="name">
 						<input
 							type="text"
 							placeholder="Name"
@@ -62,7 +61,7 @@ class AddIssue extends React.Component {
 							})}
 						/>
 					</li>
-					<li>
+					<li className="denomination">
 						<div className="select-wrapper">
 							<DenominationSelect
 								denomination={this.state.denomination}
@@ -73,7 +72,7 @@ class AddIssue extends React.Component {
 							/>
 						</div>
 					</li>
-					<li>
+					<li className="from-year">
 						<input
 							placeholder="From Year"
 							type="text"
@@ -84,7 +83,7 @@ class AddIssue extends React.Component {
 							})}
 						/>
 					</li>
-					<li>
+					<li className="to-year">
 						<input
 							placeholder="To Year"
 							type="text"
@@ -95,10 +94,9 @@ class AddIssue extends React.Component {
 							})}
 						/>
 					</li>
-					<li>
+					<li className="description">
 						<input
 							type="text"
-							className="description"
 							placeholder="Description"
 							value={this.state.description}
 							onChange={e => this.setState({
@@ -106,7 +104,7 @@ class AddIssue extends React.Component {
 							})}
 						/>
 					</li>
-					<li>
+					<li className="button">
 						<button
 							disabled={!this.isValid()}
 							onClick={() => this.addIssue()}
@@ -134,7 +132,6 @@ const addIssueMutation = graphql(CreateIssueMutation, {
 		}),
 	}),
 });
-
 
 function mapStateToProps(state){
 	return {
