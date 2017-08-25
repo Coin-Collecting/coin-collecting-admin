@@ -1,6 +1,16 @@
 import React from 'react';
 import { routes } from './routes';
 import { ApolloProvider, ApolloClient, createNetworkInterface } from 'react-apollo';
+import { createStore, combineReducers } from 'redux';
+import { responsiveStateReducer, responsiveStoreEnhancer } from 'redux-responsive'
+import { Provider } from 'react-redux'
+
+const store = createStore(
+	combineReducers({
+		browser: responsiveStateReducer,
+	}),
+	responsiveStoreEnhancer
+);
 
 const client = new ApolloClient({
 	networkInterface: createNetworkInterface({
@@ -11,9 +21,11 @@ const client = new ApolloClient({
 export default class App extends React.Component {
   render() {
 		return (
-    	<ApolloProvider client={client}>
-				{ routes }
-			</ApolloProvider>
+			<Provider store={store}>
+				<ApolloProvider client={client}>
+					{ routes }
+				</ApolloProvider>
+			</Provider>
     )
   }
 }

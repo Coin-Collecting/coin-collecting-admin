@@ -1,11 +1,12 @@
-@import 'palette.scss';
+@import 'palette';
+@import 'icons';
 
 input[type=text],
 input[type=email],
 input[type=password],
 select {
   box-sizing: border-box;
-  height: 30px;
+  height: 40px;
   font-size: 12px;
   border: solid 1px #929292;
   border-radius: 3px;
@@ -15,9 +16,42 @@ select {
   background-color: #fff;
 }
 
+select {
+  cursor: pointer;
+}
+
+.select-wrapper {
+  position: relative;
+  background-color: #fff;
+
+  select {
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    padding-right: 30px;
+    position: relative;
+    z-index: 400;
+  }
+
+  &:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 22px;
+    background-size: 13px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    z-index: 200;
+    background-image: $downArrow;
+  }
+}
+
 button {
   box-sizing: border-box;
-  height: 30px;
+  height: 40px;
   border-top: solid 2px transparent;
   border-right: solid 2px transparent;
   border-bottom: solid 2px darken($lightGray, 20);
@@ -36,4 +70,3 @@ button {
     color: $lightGray;
   }
 }
-

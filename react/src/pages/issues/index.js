@@ -1,28 +1,10 @@
 import React, { PropTypes } from "react";
-import { graphql, compose, gql } from 'react-apollo';
-import DenominationSelect from '../../components/select-boxes/denomination-select';
-import { CreateIssueMutation } from '../../mutations';
+import { compose, graphql, gql } from 'react-apollo';
 import Spinner from '../../components/spinner';
-
+import AddIssue from '../../components/add-issue';
 import './style.scss';
 
 class Issues extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			name: undefined,
-			denomination: undefined,
-			startYear: undefined,
-			endYear: undefined,
-			description: undefined,
-		}
-	}
-
-	addIssue() {
-		const { addIssue } = this.props;
-		addIssue(this.state).then(res => this.props.data.refetch());
-	}
-
 	render() {
 		const { data } = this.props;
 		const { issues, denominations } = data;
@@ -32,64 +14,10 @@ class Issues extends React.Component {
 				<h1>Issue Page</h1>
 				<article>
 					<h3>Create New Issue</h3>
-					{ !data.loading ?
-						<ul className="input-list">
-							<li>
-								<input
-									type="text"
-									placeholder="Name"
-									value={this.state.name}
-									onChange={e => this.setState({
-										name: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<DenominationSelect
-									denomination={this.state.denomination}
-									denominations={denominations}
-									onChange={e => this.setState({
-										denomination: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<input
-									placeholder="From Year"
-									type="text"
-									maxLength={4}
-									value={this.state.startYear}
-									onChange={e => this.setState({
-										startYear: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<input
-									placeholder="To Year"
-									type="text"
-									maxLength={4}
-									value={this.state.endYear}
-									onChange={e => this.setState({
-										endYear: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<input
-									type="text"
-									placeholder="Description"
-									value={this.state.description}
-									onChange={e => this.setState({
-										description: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<button onClick={() => this.addIssue()}>Add Issue</button>
-							</li>
-						</ul>
-					: null }
+					<AddIssue
+						denominations={denominations}
+						onSubmit={() => this.props.data.refetch()}
+					/>
 				</article>
 				<article>
 					<h3>Issues</h3>
@@ -137,17 +65,6 @@ Issues.propTypes = {
 	addIssue: PropTypes.func,
 };
 
-// UPDATE an existing fundraiser
-const addIssueMutation = graphql(CreateIssueMutation, {
-	props: ({ mutate }) => ({
-		addIssue: ({name, description, denomination, startYear, endYear}) => mutate({
-			variables: {
-				name, description, denomination, startYear, endYear,
-			},
-		}),
-	}),
-});
-
 export default compose(
 	graphql(gql`
 		query {
@@ -163,9 +80,6 @@ export default compose(
 					val
 				}
 			}
-			denominations {...DenominationSelectDenomination}
 		}
-		${DenominationSelect.fragments.entry}
 	`),
-	addIssueMutation,
 )(Issues);
