@@ -34,7 +34,7 @@ class Coins extends React.Component {
 		return (
 			<section className={classes.join(' ')}>
 				<article className="create-coin-article">
-					<h3>Create A New Issue</h3>
+					<h3>Create A New Coin</h3>
 					<AddCoin
 						sizeOverride={browser.greaterThan.medium ? 'small' : null}
 						onSubmit={() => this.props.data.refetch()}

@@ -17,7 +17,11 @@ class VarietySelect extends React.Component {
 									value={variety.id}
 									key={'variety:' + variety.id}
 								>
-									{ variety.name.replace(/_/g, ' ').toLowerCase() }
+									{
+										variety.issue.name.replace(/_/g, ' ').toLowerCase() + ' ' +
+										variety.name.replace(/_/g, ' ').toLowerCase() + ' - ' +
+										variety.issue.denomination.kind.replace(/_/g, ' ').toLowerCase()
+									}
 								</option>
 							)
 						})
@@ -39,6 +43,12 @@ VarietySelect.fragments = {
 		fragment VarietySelectVariety on Variety {
 			id
 			name
+			issue {
+				name
+				denomination {
+					kind
+				}
+			}
 		}
 	`,
 };
