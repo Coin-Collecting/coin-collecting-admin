@@ -15,8 +15,13 @@ class DefaultLayout extends React.Component {
 
 		return (
 			<div className={classes.join(' ')}>
-				<SlideMenu isOpen={slideMenu.open}/>
-				<NavBar location={location}/>
+				<SlideMenu
+					isOpen={slideMenu.open}
+					location={location}
+				/>
+				<NavBar
+					location={location}
+				/>
 				<div className="default-section">
 					{ this.props.children }
 				</div>

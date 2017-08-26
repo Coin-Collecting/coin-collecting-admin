@@ -4,9 +4,9 @@
   aside {
     position: fixed;
     top: 0;
-    right: -250px;
+    right: -150px;
     bottom: 0;
-    width: 250px;
+    width: 150px;
     background-color: $brandedAlt;
     border-left: solid 2px darken($brandedAlt, 20);
     z-index: 999;
@@ -32,6 +32,32 @@
     }
     .underlay {
       display: block;
+    }
+  }
+
+  .main-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li:first-child {
+      display: none;
+    }
+
+    a {
+      padding: 20px;
+      border-bottom: solid 2px lighten($brandedAlt, 10);
+      background-color: transparent;
+      display: block;
+      font-size: 18px;
+      color: $darkGray;
+      opacity: .8;
+    }
+
+    .active {
+      background-color: #fff;
+      font-weight: 700;
+      opacity: 1;
     }
   }
 }

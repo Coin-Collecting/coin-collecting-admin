@@ -18,22 +18,7 @@ class NavBar extends React.Component {
 
 		return (
 			<nav className={classes.join(' ')}>
-				<ul className="main-list">
-					<li>
-						<Link to="/">
-							<img src={require('./logo.png')}/>
-						</Link>
-					</li>
-					<li>
-						<NavLink to="/coins">Coins</NavLink>
-					</li>
-					<li>
-						<NavLink to="/varieties">Varieties</NavLink>
-					</li>
-					<li>
-						<NavLink to="/issues">Issues</NavLink>
-					</li>
-				</ul>
+				<NavList/>
 				<FontAwesome
 					name="bars"
 					onClick={this.toggleSlideMenu}
@@ -42,6 +27,25 @@ class NavBar extends React.Component {
 		);
 	}
 }
+
+export const NavList = () => (
+	<ul className="main-list">
+		<li>
+			<Link to="/">
+				<img src={require('./logo.png')}/>
+			</Link>
+		</li>
+		<li>
+			<NavLink to="/coins">Coins</NavLink>
+		</li>
+		<li>
+			<NavLink to="/varieties">Varieties</NavLink>
+		</li>
+		<li>
+			<NavLink to="/issues">Issues</NavLink>
+		</li>
+	</ul>
+);
 
 NavBar.propTypes = {
 	location: PropTypes.object,
