@@ -60,28 +60,28 @@
       margin-right: 10px;
     }
 
-    .start-year:after {
-      content: '-';
-      display: inline-block;
-    }
-
-    .denomination {
-      text-transform: capitalize;
-      display: inline-block;
-      margin-right: 10px;
-    }
-
     .description {
       display: block;
       font-size: 12px;
       width: calc(100% - 30px);
+      color: $lightGray;
+    }
+
+    span {
+      display: inline-block;
+      margin-right: 10px;
+      text-transform: capitalize;
     }
 
     .fa-pencil {
       cursor: pointer;
       float: right;
       font-size: 16px;
-      color: $primaryColor;
+      color: $darkGray;
+
+      &:hover {
+        color: $primaryColor;
+      }
     }
   }
 

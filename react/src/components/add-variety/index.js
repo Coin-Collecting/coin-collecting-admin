@@ -31,13 +31,17 @@ class AddVariety extends React.Component {
 			edge,
 			composition,
 			designer,
+			mass,
+			diameter,
 		} = this.state;
 
 		return !!name &&
 			!!issue &&
 			!!edge &&
 			!!composition &&
-			!!designer;
+			!!designer &&
+			!!mass &&
+			!!diameter;
 	}
 
 	addVariety() {

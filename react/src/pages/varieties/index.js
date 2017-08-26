@@ -5,6 +5,7 @@ import { getCompositionString } from '../../util';
 import { CreateVarietyMutation } from '../../mutations';
 import Spinner from '../../components/spinner';
 import AddVariety from '../../components/add-variety';
+const FontAwesome = require('react-fontawesome');
 
 import './style.scss';
 
@@ -69,15 +70,15 @@ class Varieties extends React.Component {
 								return (
 									<li key={'variety:' + variety.id}>
 										<p>
-											<span>{ variety.name }</span>
-											<span>{ variety.issue.name }</span>
-											<span>{ variety.description }</span>
-											<span>{ variety.mass }</span>
-											<span>{ variety.diameter }</span>
-											<span>{ variety.edge.type }</span>
+											<FontAwesome name="pencil"/>
+											<span className="name">
+												{ variety.name + ' ' + variety.issue.name }
+												</span>
+											<span>{ variety.edge.type + ' edge' }</span>
 											<span>{ getCompositionString(variety.composition) }</span>
 											<span>{ variety.designer.name }</span>
-											<span>{ variety.images.obverse } <br/> { variety.images.reverse}</span>
+											<span>{ variety.mass + 'g / ' + variety.diameter + 'mm' }</span>
+											<span className="description">{ variety.description }</span>
 										</p>
 									</li>
 								)

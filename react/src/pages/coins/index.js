@@ -1,9 +1,10 @@
 import React, { PropTypes } from "react";
 import { graphql, gql, compose } from 'react-apollo';
+import {connect} from 'react-redux';
 import { CreateCoinMutation } from '../../mutations';
-import VarietySelect from '../../components/select-boxes/variety-select';
-import MintSelect from '../../components/select-boxes/mint-select';
 import Spinner from '../../components/spinner';
+import AddCoin from '../../components/add-coin';
+const FontAwesome = require('react-fontawesome');
 
 import './style.scss';
 
@@ -27,130 +28,67 @@ class Coins extends React.Component {
 	}
 
 	render() {
-		const { data } = this.props;
-		const { coins, varieties, mints } = data;
+		const { data, browser } = this.props;
+		const { coins } = data;
+		let classes = ['coins-page', browser.mediaType];
 
 		return (
-			<div className="coins-page">
-				<h1>Coin Page</h1>
-				<article>
-					<h3>Create New Coin</h3>
-					{ !data.loading ?
-						<ul className="input-list">
-							<li>
-								<VarietySelect
-									variety={this.state.variety}
-									varieties={varieties}
-									onChange={e => this.setState({
-										variety: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<input
-									type="text"
-									placeholder="Year"
-									value={this.state.year}
-									onChange={e => this.setState({
-										year: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<MintSelect
-									mint={this.state.mint}
-									mints={mints}
-									onChange={e => this.setState({
-										mint: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<input
-									type="text"
-									placeholder="Mintage"
-									value={this.state.mintage}
-									onChange={e => this.setState({
-										mintage: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<input
-									type="text"
-									placeholder="Description"
-									value={this.state.description}
-									onChange={e => this.setState({
-										description: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<input
-									id="chkKeyDate"
-									type="checkbox"
-									value={this.state.keyDate}
-									onChange={e => this.setState({
-										keyDate: e.target.value,
-									})}
-								/> <label htmlFor="chkKeyDate">Key Date</label>
-							</li>
-							<li>
-								<button onClick={() => this.addCoin()}>Add Coin</button>
-							</li>
-						</ul>
-					: null }
+			<section className={classes.join(' ')}>
+				<article className="create-coin-article">
+					<h3>Create A New Issue</h3>
+					<AddCoin
+						sizeOverride={browser.greaterThan.medium ? 'small' : null}
+						onSubmit={() => this.props.data.refetch()}
+					/>
 				</article>
-				<article>
-					<h3>Coins</h3>
-					<table className="branded-table">
-						<thead>
-							<tr>
-								<th>Variety</th>
-								<th>Year</th>
-								<th>Mint</th>
-								<th>Mintage</th>
-								<th>KeyDate</th>
-								<th>Description</th>
-								<th>Add to Collection</th>
-								<th>Ebay</th>
-							</tr>
-						</thead>
-						<tbody>
-						{ data.loading ?
-							<tr className="loading-row"><td colSpan="9"><Spinner/></td></tr>
-						: null }
+				<article className="main-article">
+					<h3>Find an Coin</h3>
+					<div className="filters clearfix">
+						<input type="text" placeholder="Search"/>
+						<div className="sort-by">
+							<div className="select-wrapper">
+								<select>
+									<option value="oldest">Oldest First</option>
+									<option value="newest">Newest First</option>
+									<option value="alphabetical">Alphabetical</option>
+									<option value="denomination">Denomination</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<p className="results-header clearfix">
+						<span>Results ({coins ? coins.length : 0} of {coins ? coins.length : 0})</span>
+					</p>
+					<ul className="coins-list">
 						{ coins && coins.length > 0 ?
 							coins.map(coin => {
 								return (
-									<tr key={'issue:' + coin.id}>
-										<td>{ coin.variety.name }</td>
-										<td>{ coin.year }</td>
-										<td>{ coin.mint.mark }</td>
-										<td>{ coin.mintage }</td>
-										<td>{ coin.keyDate ? 'Y' : '' }</td>
-										<td>{ coin.description }</td>
-										<td><button>Add</button></td>
-										<td>
+									<li key={'coin:' + coin.id}>
+										<p>
+											<FontAwesome name="pencil"/>
 											<a
+												className="ebay"
 												target="_blank"
 												href={`https://www.ebay.com/sch/i.html?_nkw=${coin.year}+${coin.mint.mark}+${coin.variety.name.replace(/ /g, '+')}&LH_BIN=1&_sop=15`}
 											>
-												Buy
+												<FontAwesome name="legal"/>
 											</a>
-										</td>
-									</tr>
+											<span className="year">
+												{ coin.year + '-' + coin.mint.mark }
+											</span>
+											<span className="name">{ coin.variety.issue.name + ' ' + coin.variety.name }</span>
+											<span className="mintage">Minted: {coin.mintage}</span>
+											<span className="description">{coin.description}</span>
+										</p>
+									</li>
 								)
 							})
-						:
-							<tr className="empty-row">
-								<td colSpan="8">Why not enter a coin or two ;)</td>
-							</tr>
+							:
+							<p className="empty">Make a coin or two, there are none!</p>
 						}
-						</tbody>
-					</table>
+					</ul>
 				</article>
-			</div>
+			</section>
 		);
 	}
 }
@@ -159,6 +97,12 @@ Coins.propTypes = {
 	data: PropTypes.object,
 	createCoin: PropTypes.func,
 };
+
+function mapStateToProps(state){
+	return {
+		browser: state.browser
+	}
+}
 
 // UPDATE an existing fundraiser
 const addCoinMutation = graphql(CreateCoinMutation, {
@@ -169,13 +113,21 @@ const addCoinMutation = graphql(CreateCoinMutation, {
 	}),
 });
 
-export default compose(graphql(gql`
+export default compose(
+	connect(mapStateToProps),
+	graphql(gql`
 	query {
 		coins {
 			id
 			variety {
 				id
 				name
+				issue {
+					name
+					denomination {
+						kind
+					}
+				}
 			}
 			year
 			mint {
@@ -186,11 +138,7 @@ export default compose(graphql(gql`
 			keyDate
 			description
 		}
-		varieties {...VarietySelectVariety}
-		mints {...MintSelectMint}
 	}
-	${VarietySelect.fragments.entry}
-	${MintSelect.fragments.entry}
 `),
 	addCoinMutation,
 )(Coins);

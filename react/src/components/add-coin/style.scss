@@ -1,0 +1,179 @@
+@import '../../base/palette';
+
+.add-coin-component {
+  .input-list {
+    display: inline-block;
+    margin: 0;
+    padding: 0 0 0 15px;
+    background-color: #fff;
+    border-radius: 50px;
+    border: solid 1px $lightestGray;
+
+    li {
+      display: inline-block;
+    }
+
+    input,
+    select {
+      border-top: 0;
+      border-bottom: 0;
+      border-left: 0;
+      border-radius: 0;
+      border-color: $lightestGray;
+    }
+
+    button {
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+      border: 0;
+      padding: 0 25px 0 20px;
+      background-color: $primaryColor;
+
+      &:disabled {
+        background-color: $disabled;
+      }
+    }
+  }
+}
+
+.add-coin-component.large,
+.add-coin-component.infinity {
+  .input-list {
+    display: inline-block;
+  }
+
+  input,
+  select,
+  button {
+    width: 100%;
+  }
+
+  .variety,
+  .year,
+  .key-date,
+  .mint,
+  .mintage,
+  .description {
+    display: inline-block;
+  }
+
+  .key-date {
+    border-right: solid 1px $lightestGray;
+  }
+}
+
+.add-coin-component.medium {
+  .input-list {
+    margin: 0 auto;
+    display: block;
+    border-radius: 5px;
+    padding: 0;
+
+    li {
+      display: block;
+      width: 100%;
+    }
+
+    input,
+    select,
+    .check-wrapper {
+      width: 100%;
+      border-bottom: solid 1px $lightestGray;
+    }
+
+    .key-date {
+      box-sizing: border-box;
+      border-right: solid 1px $lightestGray;
+    }
+
+    .variety,
+    .year,
+    .key-date,
+    .mint,
+    .mintage,
+    .description {
+      display: inline-block;
+      width: calc(100% / 3);
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+}
+
+.add-coin-component.small {
+  .input-list {
+    margin: 0 auto;
+    display: block;
+    border-radius: 5px;
+    padding: 0;
+
+    li {
+      display: block;
+      width: 100%;
+    }
+
+    input,
+    select,
+    .check-wrapper {
+      width: 100%;
+      border-bottom: solid 1px $lightestGray;
+    }
+
+    .variety,
+    .year,
+    .key-date,
+    .mint,
+    .mintage,
+    .description {
+      display: inline-block;
+      width: calc(100% / 2);
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+}
+
+.add-coin-component.extraSmall {
+  .input-list {
+    margin: 0 auto;
+    display: block;
+    border-radius: 5px;
+    padding: 0;
+
+    li {
+      display: block;
+      width: 100%;
+    }
+
+    input,
+    select,
+    .check-wrapper {
+      width: 100%;
+      border-bottom: solid 1px $lightestGray;
+    }
+
+    .variety,
+    .year,
+    .key-date,
+    .mint,
+    .mintage,
+    .description {
+      display: inline-block;
+      width: calc(100% / 2);
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+}

@@ -49,6 +49,63 @@ select {
   }
 }
 
+.check-wrapper {
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  input[type=checkbox] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    opacity: 0;
+    /* For mobile, it's typically better to position checkbox on top of clickable
+       area and turn opacity to 0 instead. */
+  }
+
+  .note,
+  label {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  label {
+    background: $lightGray;
+    width: 45px;
+    height: 25px;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+
+    span {
+      background: #fff;
+      width: 20px;
+      height: 19px;
+      display: inline-block;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      border-radius: 50px;
+      transition: ease all .2s;
+    }
+  }
+
+  .note {
+    margin-right: 20px;
+    font-size: 14px;
+    line-height: 39px;
+  }
+
+  /* Toggled State */
+  input[type=checkbox]:checked ~ label {
+    background: $primaryColor;
+
+    span {
+      left: 22px;
+      background: #fff;
+    }
+  }
+}
+
 button {
   box-sizing: border-box;
   height: 40px;
