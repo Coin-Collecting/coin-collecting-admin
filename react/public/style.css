@@ -290,9 +290,9 @@ body {
 .slide-menu aside {
   position: fixed;
   top: 0;
-  right: -250px;
+  right: -150px;
   bottom: 0;
-  width: 250px;
+  width: 150px;
   background-color: #f7b733;
   border-left: solid 2px #bd8107;
   z-index: 999;
@@ -319,6 +319,32 @@ body {
 .slide-menu.open .underlay {
   display: block;
 }
+
+.slide-menu .main-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slide-menu .main-list li:first-child {
+  display: none;
+}
+
+.slide-menu .main-list a {
+  padding: 20px;
+  border-bottom: solid 2px #f9c864;
+  background-color: transparent;
+  display: block;
+  font-size: 18px;
+  color: #696969;
+  opacity: .8;
+}
+
+.slide-menu .main-list .active {
+  background-color: #fff;
+  font-weight: 700;
+  opacity: 1;
+}
 .default-layout {
   background-color: #f7f7f7;
   position: relative;
@@ -333,7 +359,7 @@ body {
 
 .default-layout.slid-left {
   position: relative;
-  right: 250px;
+  right: 150px;
 }
 .homepage-section {
   text-align: center;
