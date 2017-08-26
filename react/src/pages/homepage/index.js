@@ -1,14 +1,16 @@
 import React, { PropTypes } from "react";
 
+import './style.scss';
+
 class HomePage extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<section className="homepage-section">
 				<h1>MyCoin.Store</h1>
-				<h3>Work in progress</h3>
+				<h3>ADMIN PORTAL</h3>
 				<p>Links will end up going here to things and other cool stuff</p>
-			</div>
+			</section>
 		);
 	}
 }
