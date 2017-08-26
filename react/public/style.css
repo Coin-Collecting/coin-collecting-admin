@@ -148,7 +148,7 @@ body {
 .main-navbar {
   display: block;
   background-color: #fff;
-  padding: 5px 0;
+  padding: 0;
   box-shadow: 0 1px 7px rgba(0, 0, 0, 0.13);
 }
 
@@ -160,14 +160,35 @@ body {
   display: inline-block;
 }
 
+.main-navbar img {
+  height: 40px;
+  vertical-align: center;
+  margin-right: 20px;
+}
+
 .main-navbar li {
   display: inline-block;
   padding: 10px;
   margin: 0;
+  vertical-align: middle;
 }
 
 .main-navbar .active {
-  color: #4abdac;
+  color: #fe491a;
+  font-weight: 700;
+  position: relative;
+  cursor: default;
+}
+
+.main-navbar .active:after {
+  content: ' ';
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: -22px;
+  width: 100%;
+  height: 3px;
+  background-color: #fe491a;
 }
 
 .main-navbar a {
@@ -410,83 +431,168 @@ body {
 .denomination-select select {
   text-transform: capitalize;
 }
-.issues-page {
+.issues-page.infinity,
+.issues-page.large,
+.issues-page.medium,
+.issues-page.small,
+.issues-page.extraSmall {
   padding: 20px 5px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.issues-page article {
+.issues-page.infinity .create-issue-article,
+.issues-page.large .create-issue-article,
+.issues-page.medium .create-issue-article,
+.issues-page.small .create-issue-article,
+.issues-page.extraSmall .create-issue-article {
   margin-bottom: 60px;
 }
 
-.issues-page .results-header {
+.issues-page.infinity .results-header,
+.issues-page.large .results-header,
+.issues-page.medium .results-header,
+.issues-page.small .results-header,
+.issues-page.extraSmall .results-header {
   font-size: 12px;
   color: #b5b5b5;
 }
 
-.issues-page .results-header span {
+.issues-page.infinity .results-header span,
+.issues-page.large .results-header span,
+.issues-page.medium .results-header span,
+.issues-page.small .results-header span,
+.issues-page.extraSmall .results-header span {
   float: right;
 }
 
-.issues-page .issues-list {
+.issues-page.infinity .empty,
+.issues-page.large .empty,
+.issues-page.medium .empty,
+.issues-page.small .empty,
+.issues-page.extraSmall .empty {
+  text-align: center;
+  font-size: 18px;
+  color: #b5b5b5;
+}
+
+.issues-page.infinity .issues-list,
+.issues-page.large .issues-list,
+.issues-page.medium .issues-list,
+.issues-page.small .issues-list,
+.issues-page.extraSmall .issues-list {
   font-size: 14px;
   list-style: none;
-  margin: 0;
+  margin: 30px 0 0;
   padding: 0;
 }
 
-.issues-page .issues-list li {
+.issues-page.infinity .issues-list li,
+.issues-page.large .issues-list li,
+.issues-page.medium .issues-list li,
+.issues-page.small .issues-list li,
+.issues-page.extraSmall .issues-list li {
   margin: 0;
   padding: 15px 10px;
+  transition: ease all .2s;
 }
 
-.issues-page .issues-list li:nth-child(even) {
+.issues-page.infinity .issues-list li:hover,
+.issues-page.large .issues-list li:hover,
+.issues-page.medium .issues-list li:hover,
+.issues-page.small .issues-list li:hover,
+.issues-page.extraSmall .issues-list li:hover {
+  transform: scale(1.008);
+}
+
+.issues-page.infinity .issues-list li:nth-child(even),
+.issues-page.large .issues-list li:nth-child(even),
+.issues-page.medium .issues-list li:nth-child(even),
+.issues-page.small .issues-list li:nth-child(even),
+.issues-page.extraSmall .issues-list li:nth-child(even) {
   background-color: #fff;
 }
 
-.issues-page .issues-list li:nth-child(odd) {
+.issues-page.infinity .issues-list li:nth-child(odd),
+.issues-page.large .issues-list li:nth-child(odd),
+.issues-page.medium .issues-list li:nth-child(odd),
+.issues-page.small .issues-list li:nth-child(odd),
+.issues-page.extraSmall .issues-list li:nth-child(odd) {
   background-color: #e8e8e8;
 }
 
-.issues-page .issues-list p {
+.issues-page.infinity .issues-list p,
+.issues-page.large .issues-list p,
+.issues-page.medium .issues-list p,
+.issues-page.small .issues-list p,
+.issues-page.extraSmall .issues-list p {
   margin: 0;
 }
 
-.issues-page .issues-list .name {
+.issues-page.infinity .issues-list .name,
+.issues-page.large .issues-list .name,
+.issues-page.medium .issues-list .name,
+.issues-page.small .issues-list .name,
+.issues-page.extraSmall .issues-list .name {
   font-weight: 700;
   text-transform: capitalize;
   display: inline-block;
   margin-right: 10px;
 }
 
-.issues-page .issues-list .start-year:after {
+.issues-page.infinity .issues-list .start-year:after,
+.issues-page.large .issues-list .start-year:after,
+.issues-page.medium .issues-list .start-year:after,
+.issues-page.small .issues-list .start-year:after,
+.issues-page.extraSmall .issues-list .start-year:after {
   content: '-';
   display: inline-block;
 }
 
-.issues-page .issues-list .denomination {
+.issues-page.infinity .issues-list .denomination,
+.issues-page.large .issues-list .denomination,
+.issues-page.medium .issues-list .denomination,
+.issues-page.small .issues-list .denomination,
+.issues-page.extraSmall .issues-list .denomination {
   text-transform: capitalize;
   display: inline-block;
   margin-right: 10px;
 }
 
-.issues-page .issues-list .description {
+.issues-page.infinity .issues-list .description,
+.issues-page.large .issues-list .description,
+.issues-page.medium .issues-list .description,
+.issues-page.small .issues-list .description,
+.issues-page.extraSmall .issues-list .description {
   display: block;
   font-size: 12px;
   width: calc(100% - 30px);
 }
 
-.issues-page .issues-list .fa-pencil {
+.issues-page.infinity .issues-list .fa-pencil,
+.issues-page.large .issues-list .fa-pencil,
+.issues-page.medium .issues-list .fa-pencil,
+.issues-page.small .issues-list .fa-pencil,
+.issues-page.extraSmall .issues-list .fa-pencil {
   cursor: pointer;
   float: right;
   font-size: 16px;
   color: #4abdac;
 }
 
-.issues-page .filters {
+.issues-page.infinity .filters,
+.issues-page.large .filters,
+.issues-page.medium .filters,
+.issues-page.small .filters,
+.issues-page.extraSmall .filters {
   display: block;
 }
 
-.issues-page .filters input {
+.issues-page.infinity .filters input,
+.issues-page.large .filters input,
+.issues-page.medium .filters input,
+.issues-page.small .filters input,
+.issues-page.extraSmall .filters input {
   display: inline-block;
   width: calc(100% - 120px);
   height: 35px;
@@ -494,20 +600,52 @@ body {
   border-right: 0;
 }
 
-.issues-page .filters .sort-by {
+.issues-page.infinity .filters .sort-by,
+.issues-page.large .filters .sort-by,
+.issues-page.medium .filters .sort-by,
+.issues-page.small .filters .sort-by,
+.issues-page.extraSmall .filters .sort-by {
   display: inline-block;
   font-size: 12px;
 }
 
-.issues-page .filters .sort-by .select-wrapper {
+.issues-page.infinity .filters .sort-by .select-wrapper,
+.issues-page.large .filters .sort-by .select-wrapper,
+.issues-page.medium .filters .sort-by .select-wrapper,
+.issues-page.small .filters .sort-by .select-wrapper,
+.issues-page.extraSmall .filters .sort-by .select-wrapper {
   display: inline-block;
 }
 
-.issues-page .filters .sort-by select {
+.issues-page.infinity .filters .sort-by select,
+.issues-page.large .filters .sort-by select,
+.issues-page.medium .filters .sort-by select,
+.issues-page.small .filters .sort-by select,
+.issues-page.extraSmall .filters .sort-by select {
   width: 120px;
   height: 35px;
   font-size: 12px;
   border-radius: 0;
+}
+
+.issues-page.infinity .main-article,
+.issues-page.large .main-article {
+  width: calc(100% - 300px);
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 20px 20px 60px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.issues-page.infinity .create-issue-article,
+.issues-page.large .create-issue-article {
+  box-sizing: border-box;
+  width: 300px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 0 0 20px;
+  margin: 0;
 }
 .variety-select select {
   text-transform: capitalize;
@@ -528,6 +666,140 @@ body {
   display: inline-block;
   margin: 5px;
 }
+.add-variety-component .input-list {
+  display: inline-block;
+  margin: 0;
+  padding: 0 0 0 15px;
+  background-color: #fff;
+  border-radius: 50px;
+  border: solid 1px #e8e8e8;
+}
+
+.add-variety-component .input-list li {
+  display: inline-block;
+}
+
+.add-variety-component .input-list input,
+.add-variety-component .input-list select {
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-radius: 0;
+  border-color: #e8e8e8;
+}
+
+.add-variety-component .input-list .description input {
+  border-right: 0;
+}
+
+.add-variety-component .input-list button {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border: 0;
+  padding: 0 25px 0 20px;
+  background-color: #4abdac;
+}
+
+.add-variety-component .input-list button:disabled {
+  background-color: #dfdfdf;
+}
+
+.add-variety-component.large .input-list,
+.add-variety-component.infinity .input-list {
+  display: block;
+}
+
+.add-variety-component.large input,
+.add-variety-component.large select,
+.add-variety-component.large button,
+.add-variety-component.infinity input,
+.add-variety-component.infinity select,
+.add-variety-component.infinity button {
+  width: 100%;
+}
+
+.add-variety-component.large li,
+.add-variety-component.infinity li {
+  display: inline-block;
+  width: calc(100% / 9);
+}
+
+.add-variety-component.medium .input-list {
+  margin: 0 auto;
+  display: block;
+  border-radius: 5px;
+  padding: 0;
+}
+
+.add-variety-component.medium .input-list li {
+  display: block;
+  width: 100%;
+}
+
+.add-variety-component.medium .input-list input,
+.add-variety-component.medium .input-list select {
+  width: 100%;
+  border-bottom: solid 1px #e8e8e8;
+}
+
+.add-variety-component.medium .input-list .name,
+.add-variety-component.medium .input-list .issue,
+.add-variety-component.medium .input-list .edge,
+.add-variety-component.medium .input-list .composition,
+.add-variety-component.medium .input-list .designer,
+.add-variety-component.medium .input-list .description,
+.add-variety-component.medium .input-list .mass,
+.add-variety-component.medium .input-list .diameter {
+  width: 50%;
+  display: inline-block;
+}
+
+.add-variety-component.medium .input-list button {
+  display: block;
+  width: 100%;
+  border-radius: 0;
+}
+
+.add-variety-component.small .input-list,
+.add-variety-component.extraSmall .input-list {
+  margin: 0 auto;
+  display: block;
+  border-radius: 5px;
+  padding: 0;
+}
+
+.add-variety-component.small .input-list li,
+.add-variety-component.extraSmall .input-list li {
+  display: block;
+  width: 100%;
+}
+
+.add-variety-component.small .input-list input,
+.add-variety-component.small .input-list select,
+.add-variety-component.extraSmall .input-list input,
+.add-variety-component.extraSmall .input-list select {
+  width: 100%;
+  border-bottom: solid 1px #e8e8e8;
+}
+
+.add-variety-component.small .input-list .mass,
+.add-variety-component.small .input-list .diameter,
+.add-variety-component.small .input-list .issue,
+.add-variety-component.small .input-list .edge,
+.add-variety-component.extraSmall .input-list .mass,
+.add-variety-component.extraSmall .input-list .diameter,
+.add-variety-component.extraSmall .input-list .issue,
+.add-variety-component.extraSmall .input-list .edge {
+  width: calc(100% / 2);
+  display: inline-block;
+}
+
+.add-variety-component.small .input-list button,
+.add-variety-component.extraSmall .input-list button {
+  display: block;
+  width: 100%;
+  border-radius: 0;
+}
 .issue-select select {
   text-transform: capitalize;
 }
@@ -540,16 +812,219 @@ body {
 .edge-select select {
   text-transform: capitalize;
 }
-.varieties-page article {
+.varieties-page.infinity,
+.varieties-page.large,
+.varieties-page.medium,
+.varieties-page.small,
+.varieties-page.extraSmall {
+  padding: 20px 5px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.varieties-page.infinity .create-variety-article,
+.varieties-page.large .create-variety-article,
+.varieties-page.medium .create-variety-article,
+.varieties-page.small .create-variety-article,
+.varieties-page.extraSmall .create-variety-article {
   margin-bottom: 60px;
 }
 
-.varieties-page .input-list {
-  margin: 0;
+.varieties-page.infinity .results-header,
+.varieties-page.large .results-header,
+.varieties-page.medium .results-header,
+.varieties-page.small .results-header,
+.varieties-page.extraSmall .results-header {
+  font-size: 12px;
+  color: #b5b5b5;
+}
+
+.varieties-page.infinity .results-header span,
+.varieties-page.large .results-header span,
+.varieties-page.medium .results-header span,
+.varieties-page.small .results-header span,
+.varieties-page.extraSmall .results-header span {
+  float: right;
+}
+
+.varieties-page.infinity .empty,
+.varieties-page.large .empty,
+.varieties-page.medium .empty,
+.varieties-page.small .empty,
+.varieties-page.extraSmall .empty {
+  text-align: center;
+  font-size: 18px;
+  color: #b5b5b5;
+}
+
+.varieties-page.infinity .varieties-list,
+.varieties-page.large .varieties-list,
+.varieties-page.medium .varieties-list,
+.varieties-page.small .varieties-list,
+.varieties-page.extraSmall .varieties-list {
+  font-size: 14px;
+  list-style: none;
+  margin: 30px 0 0;
   padding: 0;
 }
 
-.varieties-page .input-list li {
+.varieties-page.infinity .varieties-list li,
+.varieties-page.large .varieties-list li,
+.varieties-page.medium .varieties-list li,
+.varieties-page.small .varieties-list li,
+.varieties-page.extraSmall .varieties-list li {
+  margin: 0;
+  padding: 15px 10px;
+  transition: ease all .2s;
+}
+
+.varieties-page.infinity .varieties-list li:hover,
+.varieties-page.large .varieties-list li:hover,
+.varieties-page.medium .varieties-list li:hover,
+.varieties-page.small .varieties-list li:hover,
+.varieties-page.extraSmall .varieties-list li:hover {
+  transform: scale(1.008);
+}
+
+.varieties-page.infinity .varieties-list li:nth-child(even),
+.varieties-page.large .varieties-list li:nth-child(even),
+.varieties-page.medium .varieties-list li:nth-child(even),
+.varieties-page.small .varieties-list li:nth-child(even),
+.varieties-page.extraSmall .varieties-list li:nth-child(even) {
+  background-color: #fff;
+}
+
+.varieties-page.infinity .varieties-list li:nth-child(odd),
+.varieties-page.large .varieties-list li:nth-child(odd),
+.varieties-page.medium .varieties-list li:nth-child(odd),
+.varieties-page.small .varieties-list li:nth-child(odd),
+.varieties-page.extraSmall .varieties-list li:nth-child(odd) {
+  background-color: #e8e8e8;
+}
+
+.varieties-page.infinity .varieties-list p,
+.varieties-page.large .varieties-list p,
+.varieties-page.medium .varieties-list p,
+.varieties-page.small .varieties-list p,
+.varieties-page.extraSmall .varieties-list p {
+  margin: 0;
+}
+
+.varieties-page.infinity .varieties-list .name,
+.varieties-page.large .varieties-list .name,
+.varieties-page.medium .varieties-list .name,
+.varieties-page.small .varieties-list .name,
+.varieties-page.extraSmall .varieties-list .name {
+  font-weight: 700;
+  text-transform: capitalize;
   display: inline-block;
-  margin: 5px;
+  margin-right: 10px;
+}
+
+.varieties-page.infinity .varieties-list .start-year:after,
+.varieties-page.large .varieties-list .start-year:after,
+.varieties-page.medium .varieties-list .start-year:after,
+.varieties-page.small .varieties-list .start-year:after,
+.varieties-page.extraSmall .varieties-list .start-year:after {
+  content: '-';
+  display: inline-block;
+}
+
+.varieties-page.infinity .varieties-list .denomination,
+.varieties-page.large .varieties-list .denomination,
+.varieties-page.medium .varieties-list .denomination,
+.varieties-page.small .varieties-list .denomination,
+.varieties-page.extraSmall .varieties-list .denomination {
+  text-transform: capitalize;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.varieties-page.infinity .varieties-list .description,
+.varieties-page.large .varieties-list .description,
+.varieties-page.medium .varieties-list .description,
+.varieties-page.small .varieties-list .description,
+.varieties-page.extraSmall .varieties-list .description {
+  display: block;
+  font-size: 12px;
+  width: calc(100% - 30px);
+}
+
+.varieties-page.infinity .varieties-list .fa-pencil,
+.varieties-page.large .varieties-list .fa-pencil,
+.varieties-page.medium .varieties-list .fa-pencil,
+.varieties-page.small .varieties-list .fa-pencil,
+.varieties-page.extraSmall .varieties-list .fa-pencil {
+  cursor: pointer;
+  float: right;
+  font-size: 16px;
+  color: #4abdac;
+}
+
+.varieties-page.infinity .filters,
+.varieties-page.large .filters,
+.varieties-page.medium .filters,
+.varieties-page.small .filters,
+.varieties-page.extraSmall .filters {
+  display: block;
+}
+
+.varieties-page.infinity .filters input,
+.varieties-page.large .filters input,
+.varieties-page.medium .filters input,
+.varieties-page.small .filters input,
+.varieties-page.extraSmall .filters input {
+  display: inline-block;
+  width: calc(100% - 120px);
+  height: 35px;
+  border-radius: 0;
+  border-right: 0;
+}
+
+.varieties-page.infinity .filters .sort-by,
+.varieties-page.large .filters .sort-by,
+.varieties-page.medium .filters .sort-by,
+.varieties-page.small .filters .sort-by,
+.varieties-page.extraSmall .filters .sort-by {
+  display: inline-block;
+  font-size: 12px;
+}
+
+.varieties-page.infinity .filters .sort-by .select-wrapper,
+.varieties-page.large .filters .sort-by .select-wrapper,
+.varieties-page.medium .filters .sort-by .select-wrapper,
+.varieties-page.small .filters .sort-by .select-wrapper,
+.varieties-page.extraSmall .filters .sort-by .select-wrapper {
+  display: inline-block;
+}
+
+.varieties-page.infinity .filters .sort-by select,
+.varieties-page.large .filters .sort-by select,
+.varieties-page.medium .filters .sort-by select,
+.varieties-page.small .filters .sort-by select,
+.varieties-page.extraSmall .filters .sort-by select {
+  width: 120px;
+  height: 35px;
+  font-size: 12px;
+  border-radius: 0;
+}
+
+.varieties-page.infinity .main-article,
+.varieties-page.large .main-article {
+  width: calc(100% - 300px);
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 20px 20px 60px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.varieties-page.infinity .create-variety-article,
+.varieties-page.large .create-variety-article {
+  box-sizing: border-box;
+  width: 300px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 0 0 20px;
+  margin: 0;
 }
