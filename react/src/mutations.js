@@ -68,3 +68,30 @@ export const CreateVarietyMutation = gql`
 		}
 	}
 `;
+
+//gold, silver, copper, nickel, brass, zinc, steel, tin,
+export const CreateCompositionMutation = gql`
+	mutation (
+	$gold: Float,
+	$silver: Float,
+	$copper: Float,
+	$nickel: Float,
+	$brass: Float,
+	$zinc: Float,
+	$steel: Float,
+	$tin: Float,
+	) {
+		createComposition (
+			gold: $gold,
+			silver: $silver,
+			copper: $copper,
+			nickel: $nickel,
+			brass: $brass,
+			zinc: $zinc,
+			steel: $steel,
+			tin: $tin,
+		) {
+			id
+		}
+	}
+`;

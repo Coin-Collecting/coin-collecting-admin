@@ -72,7 +72,6 @@ class Issues extends React.Component {
 
 Issues.propTypes = {
 	data: PropTypes.object,
-	addIssue: PropTypes.func,
 };
 
 function mapStateToProps(state){

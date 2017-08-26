@@ -49,8 +49,9 @@ class Coins extends React.Component {
 								<select>
 									<option value="oldest">Oldest First</option>
 									<option value="newest">Newest First</option>
-									<option value="alphabetical">Alphabetical</option>
-									<option value="denomination">Denomination</option>
+									<option value="variety">Variety</option>
+									<option value="mint">Mint</option>
+									<option value="mintage">Mintage</option>
 								</select>
 							</div>
 						</div>

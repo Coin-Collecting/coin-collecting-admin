@@ -225,7 +225,33 @@ const MutationType = new GraphQLObjectType({
           images,
         });
       }
-    }
+    },
+    createComposition: {
+      type: CompositionType,
+      description: 'Create a new composition',
+      args: {
+        gold: { type: GraphQLFloat },
+        silver: { type: GraphQLFloat },
+        copper: { type: GraphQLFloat },
+        nickel: { type: GraphQLFloat },
+        brass: { type: GraphQLFloat },
+        zinc: { type: GraphQLFloat },
+        steel: { type: GraphQLFloat },
+        tin: { type: GraphQLFloat },
+      },
+      resolve: (value, args) => {
+        Composition.create({
+          gold: args.gold,
+          silver: args.silver,
+          copper: args.copper,
+          nickel: args.nickel,
+          brass: args.brass,
+          zinc: args.zinc,
+          steel: args.steel,
+          tin: args.tin,
+        });
+      }
+    },
   }),
 });
 

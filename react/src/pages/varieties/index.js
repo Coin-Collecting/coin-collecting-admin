@@ -53,10 +53,12 @@ class Varieties extends React.Component {
 						<div className="sort-by">
 							<div className="select-wrapper">
 								<select>
-									<option value="oldest">Oldest First</option>
-									<option value="newest">Newest First</option>
 									<option value="alphabetical">Alphabetical</option>
-									<option value="denomination">Denomination</option>
+									<option value="issue">Issue</option>
+									<option value="designer">Designer</option>
+									<option value="mass">Mass</option>
+									<option value="diameter">Diameter</option>
+									<option value="edge">Edge</option>
 								</select>
 							</div>
 						</div>

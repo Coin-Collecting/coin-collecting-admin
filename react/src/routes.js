@@ -11,6 +11,7 @@ import HomePage from './pages/homepage';
 import Issues from './pages/issues';
 import Coins from './pages/coins';
 import Varieties from './pages/varieties';
+import Compositions from './pages/compositions';
 
 export const routes = (
 	<Router>
@@ -22,6 +23,7 @@ export const routes = (
 						<Route exact path="/issues" component={Issues}/>
 						<Route exact path="/coins" component={Coins}/>
 						<Route exact path="/varieties" component={Varieties}/>
+						<Route exact path="/compositions" component={Compositions}/>
 					</DefaultLayout>
 				</Base>
 			</Switch>

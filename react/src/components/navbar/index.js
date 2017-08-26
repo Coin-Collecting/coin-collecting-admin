@@ -44,6 +44,9 @@ export const NavList = () => (
 		<li>
 			<NavLink to="/issues">Issues</NavLink>
 		</li>
+		<li>
+			<NavLink to="/compositions">Compositions</NavLink>
+		</li>
 	</ul>
 );
 
