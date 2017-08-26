@@ -23,7 +23,6 @@ class Coins extends React.Component {
 
 	addCoin() {
 		const { createCoin } = this.props;
-		console.log(this.state);
 		createCoin(this.state).then(res => this.props.data.refetch());
 	}
 

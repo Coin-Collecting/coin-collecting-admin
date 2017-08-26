@@ -4,10 +4,19 @@ import GlobalFooter from '../../components/global-footer';
 import { compose } from 'react-apollo';
 import {connect} from 'react-redux';
 import SlideMenu from '../../components/slide-menu';
+import { store } from '../../app';
+import { closeSlideMenu } from '../../actions/slide-menu';
 
 import './style.scss';
 
 class DefaultLayout extends React.Component {
+	componentWillReceiveProps(nextProps) {
+		let { location: { pathname }} = nextProps;
+		if (this.props.location.pathname !== pathname) {
+			store.dispatch(closeSlideMenu());
+		}
+	}
+
 	render() {
 		const { location, slideMenu } = this.props;
 		let classes = ["default-layout"];

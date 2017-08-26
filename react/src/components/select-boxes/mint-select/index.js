@@ -6,7 +6,6 @@ import './style.scss';
 class MintSelect extends React.Component {
 	render() {
 		const { onChange, mint, mints } = this.props;
-		console.log({mints});
 		return (
 			<aside className="mint-select">
 				<select onChange={onChange} value={mint}>

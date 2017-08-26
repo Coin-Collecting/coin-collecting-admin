@@ -46,19 +46,18 @@ class AddVariety extends React.Component {
 
 	addVariety() {
 		const { addVariety, onSubmit } = this.props;
-		console.log(this.state);
 		if (this.isValid()) {
 			addVariety(this.state).then(() => {
-				// this.setState({
-				// 	name: '',
-				// 	issue: null,
-				// 	edge: null,
-				// 	composition: null,
-				// 	designer: null,
-				// 	description: null,
-				// 	mass: '',
-				// 	diameter: '',
-				// });
+				this.setState({
+					name: '',
+					issue: null,
+					edge: null,
+					composition: null,
+					designer: null,
+					description: null,
+					mass: '',
+					diameter: '',
+				});
 				onSubmit();
 			});
 		}
