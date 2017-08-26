@@ -1,14 +1,21 @@
 import React, { PropTypes } from "react";
 import NavBar from '../../components/navbar';
 import GlobalFooter from '../../components/global-footer';
+import { compose } from 'react-apollo';
+import {connect} from 'react-redux';
+import SlideMenu from '../../components/slide-menu';
 
 import './style.scss';
 
 class DefaultLayout extends React.Component {
 	render() {
-		const { location } = this.props;
+		const { location, slideMenu } = this.props;
+		let classes = ["default-layout"];
+		if (slideMenu.open) classes.push('slid-left');
+
 		return (
-			<div className="default-layout">
+			<div className={classes.join(' ')}>
+				<SlideMenu isOpen={slideMenu.open}/>
 				<NavBar location={location}/>
 				<div className="default-section">
 					{ this.props.children }
@@ -21,6 +28,15 @@ class DefaultLayout extends React.Component {
 
 DefaultLayout.propTypes = {
 	location: PropTypes.object,
+	slideMenu: PropTypes.object,
 };
 
-export default DefaultLayout;
+function mapStateToProps(state){
+	return {
+		slideMenu: state.reducers.slideMenu
+	}
+}
+
+export default compose(
+	connect(mapStateToProps),
+)(DefaultLayout);

@@ -4,10 +4,12 @@ import { ApolloProvider, ApolloClient, createNetworkInterface } from 'react-apol
 import { createStore, combineReducers } from 'redux';
 import { responsiveStateReducer, responsiveStoreEnhancer } from 'redux-responsive'
 import { Provider } from 'react-redux'
+import reducers  from './reducers';
 
-const store = createStore(
+export const store = createStore(
 	combineReducers({
 		browser: responsiveStateReducer,
+		reducers,
 	}),
 	responsiveStoreEnhancer
 );
