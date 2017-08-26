@@ -15,16 +15,18 @@ import Varieties from './pages/varieties';
 
 export const routes = (
 	<Router>
-		<Switch>
-			<Base>
-				<DefaultLayout>
-					<Route exact path="/" component={Issues}/>
-					<Route exact path="/issues" component={Issues}/>
-					<Route exact path="/coins" component={Coins}/>
-					<Route exact path="/varieties" component={Varieties}/>
-					<Route exact path="/my-coins" component={MyCoins}/>
-				</DefaultLayout>
-			</Base>
-		</Switch>
+		<Route>
+			<Switch>
+				<Base>
+					<DefaultLayout>
+						<Route exact path="/" component={Issues}/>
+						<Route exact path="/issues" component={Issues}/>
+						<Route exact path="/coins" component={Coins}/>
+						<Route exact path="/varieties" component={Varieties}/>
+						<Route exact path="/my-coins" component={MyCoins}/>
+					</DefaultLayout>
+				</Base>
+			</Switch>
+		</Route>
 	</Router>
 );

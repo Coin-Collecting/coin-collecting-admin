@@ -1,12 +1,10 @@
 import React, { PropTypes } from "react";
+import {connect} from 'react-redux';
 import { graphql, compose, gql } from 'react-apollo';
 import { getCompositionString } from '../../util';
 import { CreateVarietyMutation } from '../../mutations';
-import IssueSelect from '../../components/select-boxes/issue-select';
-import EdgeSelect from '../../components/select-boxes/edge-select';
-import CompositionSelect from '../../components/select-boxes/composition-select';
-import DesignerSelect from '../../components/select-boxes/designer-select';
 import Spinner from '../../components/spinner';
+import AddVariety from '../../components/add-variety';
 
 import './style.scss';
 
@@ -31,141 +29,63 @@ class Varieties extends React.Component {
 	}
 
 	render() {
-		const { data } = this.props;
-		const { varieties, issues, edges, compositions, designers } = data;
+		const { data, browser } = this.props;
+		const { varieties } = data;
+		let classes = [
+			"varieties-page",
+			browser.mediaType,
+		];
 
 		return (
-			<div className="varieties-page">
-				<h1>Variety Page</h1>
-				<article>
+			<div className={classes.join(' ')}>
+				<article className="create-variety-article">
 					<h3>Create New Variety</h3>
-					{ !data.loading ?
-						<ul className="input-list">
-							<li>
-								<input
-									type="text"
-									placeholder="Name"
-									value={this.state.name}
-									onChange={e => this.setState({
-										name: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<IssueSelect
-									issue={this.state.issue}
-									issues={issues}
-									onChange={e => this.setState({
-										issue: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<EdgeSelect
-									edge={this.state.edge}
-									edges={edges}
-									onChange={e => this.setState({
-										edge: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<CompositionSelect
-									composition={this.state.composition}
-									compositions={compositions}
-									onChange={e => this.setState({
-										composition: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<DesignerSelect
-									designer={this.state.designer}
-									designers={designers}
-									onChange={e => this.setState({
-										designer: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<input
-									type="text"
-									placeholder="Description"
-									value={this.state.description}
-									onChange={e => this.setState({
-										description: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<input
-									type="text"
-									placeholder="Mass"
-									value={this.state.mass}
-									onChange={e => this.setState({
-										mass: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<input
-									type="text"
-									placeholder="Diameter"
-									value={this.state.diameter}
-									onChange={e => this.setState({
-										diameter: e.target.value,
-									})}
-								/>
-							</li>
-							<li>
-								<button onClick={() => this.addVariety()}>Add Variety</button>
-							</li>
-						</ul>
-					: null }
+					<AddVariety
+						sizeOverride={browser.greaterThan.medium ? 'small' : null}
+						onSubmit={() => this.props.data.refetch()}
+					/>
 				</article>
-				<article>
-					<h3>Varieties</h3>
-					<table className="branded-table">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Issue</th>
-								<th>Description</th>
-								<th>Mass</th>
-								<th>Diameter</th>
-								<th>Edge</th>
-								<th>Composition</th>
-								<th>Designer</th>
-								<th>Images</th>
-							</tr>
-						</thead>
-						<tbody>
-						{ data.loading ?
-							<tr className="loading-row"><td colSpan="9"><Spinner/></td></tr>
-						: null }
+				<article className="main-article">
+					<h3>Find an Variety</h3>
+					<div className="filters clearfix">
+						<input type="text" placeholder="Search"/>
+						<div className="sort-by">
+							<div className="select-wrapper">
+								<select>
+									<option value="oldest">Oldest First</option>
+									<option value="newest">Newest First</option>
+									<option value="alphabetical">Alphabetical</option>
+									<option value="denomination">Denomination</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<p className="results-header clearfix">
+						<span>Results ({varieties? varieties.length : 0} of {varieties ? varieties.length : 0})</span>
+					</p>
+					<ul className="varieties-list">
 						{ varieties && varieties.length > 0 ?
 							varieties.map(variety => {
 								return (
-									<tr key={'variety:' + variety.id}>
-										<td>{ variety.name }</td>
-										<td>{ variety.issue.name }</td>
-										<td>{ variety.description }</td>
-										<td>{ variety.mass }</td>
-										<td>{ variety.diameter }</td>
-										<td>{ variety.edge.type }</td>
-										<td>{ getCompositionString(variety.composition) }</td>
-										<td>{ variety.designer.name }</td>
-										<td>{ variety.images.obverse } <br/> { variety.images.reverse}</td>
-									</tr>
+									<li key={'variety:' + variety.id}>
+										<p>
+											<span>{ variety.name }</span>
+											<span>{ variety.issue.name }</span>
+											<span>{ variety.description }</span>
+											<span>{ variety.mass }</span>
+											<span>{ variety.diameter }</span>
+											<span>{ variety.edge.type }</span>
+											<span>{ getCompositionString(variety.composition) }</span>
+											<span>{ variety.designer.name }</span>
+											<span>{ variety.images.obverse } <br/> { variety.images.reverse}</span>
+										</p>
+									</li>
 								)
 							})
 							:
-							<tr className="empty-row">
-								<td colSpan="9">You haven't entered any varieties yet :(</td>
-							</tr>
+							<p className="empty">You need more variety in your life...</p>
 						}
-						</tbody>
-					</table>
+					</ul>
 				</article>
 			</div>
 		);
@@ -176,6 +96,12 @@ Varieties.propTypes = {
 	data: PropTypes.object,
 	addVariety: PropTypes.func,
 };
+
+function mapStateToProps(state){
+	return {
+		browser: state.browser
+	}
+}
 
 // UPDATE an existing fundraiser
 const addVarietyMutation = graphql(CreateVarietyMutation, {
@@ -191,6 +117,7 @@ const addVarietyMutation = graphql(CreateVarietyMutation, {
 });
 
 export default compose(
+	connect(mapStateToProps),
 	graphql(gql`
 		query {
 			varieties {
@@ -236,15 +163,7 @@ export default compose(
 					reverse
 				}
 			}
-			issues {...IssueSelectIssue}
-			edges {...EdgeSelectEdge}
-			compositions {...CompositionSelectComposition}
-			designers {...DesignerSelectDesigner}
 		}
-		${IssueSelect.fragments.entry}
-		${EdgeSelect.fragments.entry}
-		${CompositionSelect.fragments.entry}
-		${DesignerSelect.fragments.entry}
 	`),
 	addVarietyMutation,
 )(Varieties);

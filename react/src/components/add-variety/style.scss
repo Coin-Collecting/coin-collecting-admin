@@ -1,0 +1,132 @@
+@import '../../base/palette';
+
+.add-variety-component {
+  .input-list {
+    display: inline-block;
+    margin: 0;
+    padding: 0 0 0 15px;
+    background-color: #fff;
+    border-radius: 50px;
+    border: solid 1px $lightestGray;
+
+    li {
+      display: inline-block;
+    }
+
+    input,
+    select {
+      border-top: 0;
+      border-bottom: 0;
+      border-left: 0;
+      border-radius: 0;
+      border-color: $lightestGray;
+    }
+
+    .description input {
+      border-right: 0;
+    }
+
+    button {
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+      border: 0;
+      padding: 0 25px 0 20px;
+      background-color: $primaryColor;
+
+      &:disabled {
+        background-color: $disabled;
+      }
+    }
+  }
+}
+
+.add-variety-component.large,
+.add-variety-component.infinity {
+  .input-list {
+    display: block;
+  }
+
+  input,
+  select,
+  button {
+    width: 100%;
+  }
+
+  li {
+    display: inline-block;
+    width: calc(100% / 9);
+  }
+}
+
+.add-variety-component.medium {
+  .input-list {
+    margin: 0 auto;
+    display: block;
+    border-radius: 5px;
+    padding: 0;
+
+    li {
+      display: block;
+      width: 100%;
+    }
+
+    input,
+    select  {
+      width: 100%;
+      border-bottom: solid 1px $lightestGray;
+    }
+
+    .name,
+    .issue,
+    .edge,
+    .composition,
+    .designer,
+    .description,
+    .mass,
+    .diameter {
+      width: 50%;
+      display: inline-block;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+}
+
+.add-variety-component.small,
+.add-variety-component.extraSmall {
+  .input-list {
+    margin: 0 auto;
+    display: block;
+    border-radius: 5px;
+    padding: 0;
+
+    li {
+      display: block;
+      width: 100%;
+    }
+
+    input,
+    select  {
+      width: 100%;
+      border-bottom: solid 1px $lightestGray;
+    }
+
+    .mass,
+    .diameter,
+    .issue,
+    .edge {
+      width: calc(100% / 2);
+      display: inline-block;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+}

@@ -1,9 +1,15 @@
-import React from "react";
+import React, { PropTypes } from "react";
 import { Helmet } from "react-helmet";
 import './style.scss';
 
 class Base extends React.Component {
 	render() {
+		const { location } = this.props;
+
+		const childrenWithProps = React.Children.map(this.props.children,
+			(child) => React.cloneElement(child, {location})
+		);
+
 		return (
 			<div>
 				<Helmet>
@@ -22,10 +28,14 @@ class Base extends React.Component {
 					<link rel="icon" type="image/png" sizes="96x96" href={require("./favicon/favicon-96x96.png")}/>
 					<link rel="icon" type="image/png" sizes="16x16" href={require("./favicon/favicon-16x16.png")}/>
 				</Helmet>
-				{ this.props.children }
+				{ childrenWithProps }
 			</div>
 		);
 	}
 }
+
+Base.propTypes = {
+	location: PropTypes.object,
+};
 
 export default Base;

@@ -6,9 +6,10 @@ import './style.scss';
 
 class DefaultLayout extends React.Component {
 	render() {
+		const { location } = this.props;
 		return (
 			<div className="default-layout">
-				<NavBar/>
+				<NavBar location={location}/>
 				<div className="default-section">
 					{ this.props.children }
 				</div>
@@ -18,6 +19,8 @@ class DefaultLayout extends React.Component {
 	}
 }
 
-DefaultLayout.propTypes = {};
+DefaultLayout.propTypes = {
+	location: PropTypes.object,
+};
 
 export default DefaultLayout;

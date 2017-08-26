@@ -1,5 +1,6 @@
 import React, { PropTypes } from "react";
 import { compose, graphql, gql } from 'react-apollo';
+import {connect} from 'react-redux';
 import Spinner from '../../components/spinner';
 import AddIssue from '../../components/add-issue';
 import './style.scss';
@@ -7,13 +8,22 @@ const FontAwesome = require('react-fontawesome');
 
 class Issues extends React.Component {
 	render() {
-		const { data } = this.props;
-		const { issues, denominations } = data;
+		const { data, browser } = this.props;
+		const { issues } = data;
+		let classes = ['issues-page', browser.mediaType];
 
 		return (
-			<section className="issues-page">
+			<section className={classes.join(' ')}>
+				<article className="create-issue-article">
+					<h3>Create A New Issue</h3>
+					<AddIssue
+						sizeOverride={browser.greaterThan.medium ? 'small' : null}
+						onSubmit={() => this.props.data.refetch()}
+					/>
+				</article>
 				{ issues ?
-					<article>
+					<article className="main-article">
+						<h3>Find an Issue</h3>
 						<div className="filters clearfix">
 							<input type="text" placeholder="Search"/>
 							<div className="sort-by">
@@ -50,18 +60,11 @@ class Issues extends React.Component {
 									)
 								})
 								:
-								<p>What, nobody issued any coins?</p>
+								<p className="empty">Man, it's hard to find someone without issues...</p>
 							}
 						</ul>
 					</article>
 				: null }
-				<article>
-					<h3>Create A New Issue</h3>
-					<AddIssue
-						denominations={denominations}
-						onSubmit={() => this.props.data.refetch()}
-					/>
-				</article>
 			</section>
 		);
 	}
@@ -72,7 +75,14 @@ Issues.propTypes = {
 	addIssue: PropTypes.func,
 };
 
+function mapStateToProps(state){
+	return {
+		browser: state.browser
+	}
+}
+
 export default compose(
+	connect(mapStateToProps),
 	graphql(gql`
 		query {
 			issues {

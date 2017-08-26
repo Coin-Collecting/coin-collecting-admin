@@ -14,7 +14,9 @@ class NavBar extends React.Component {
 			<nav className={classes.join(' ')}>
 				<ul className="main-list">
 					<li>
-						<Link to="/">Home</Link>
+						<Link to="/">
+							<img src={require('./logo.png')}/>
+						</Link>
 					</li>
 					<li>
 						<NavLink to="/my-coins">Collection</NavLink>
@@ -35,7 +37,9 @@ class NavBar extends React.Component {
 	}
 }
 
-NavBar.propTypes = {};
+NavBar.propTypes = {
+	location: PropTypes.object,
+};
 
 function mapStateToProps(state){
 	return {

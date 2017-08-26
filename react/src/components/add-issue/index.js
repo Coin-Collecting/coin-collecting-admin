@@ -44,9 +44,9 @@ class AddIssue extends React.Component {
 	}
 
 	render() {
-		let { data, browser } = this.props;
+		let { data, browser, sizeOverride } = this.props;
 		let { denominations } = data;
-		let classes = ['add-issue-component', browser.mediaType];
+		let classes = ['add-issue-component', sizeOverride ? sizeOverride : browser.mediaType];
 
 		return (
 			<div className={classes.join(' ')}>
@@ -119,6 +119,7 @@ class AddIssue extends React.Component {
 AddIssue.propTypes = {
 	onSubmit: PropTypes.func.isRequired,
 	breakpoint: PropTypes.object,
+	sizeOverride: PropTypes.string,
 };
 
 
@@ -143,18 +144,6 @@ export default compose(
 	connect(mapStateToProps),
 	graphql(gql`
 		query {
-			issues {
-				id
-				name
-				startYear
-				endYear
-				description
-				denomination {
-					id
-					kind
-					val
-				}
-			}
 			denominations {...DenominationSelectDenomination}
 		}
 		${DenominationSelect.fragments.entry}
