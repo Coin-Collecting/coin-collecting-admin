@@ -621,15 +621,6 @@ body {
 .issues-page.extraSmall .issues-list li {
   margin: 0;
   padding: 15px 10px;
-  transition: ease all .2s;
-}
-
-.issues-page.infinity .issues-list li:hover,
-.issues-page.large .issues-list li:hover,
-.issues-page.medium .issues-list li:hover,
-.issues-page.small .issues-list li:hover,
-.issues-page.extraSmall .issues-list li:hover {
-  transform: scale(1.008);
 }
 
 .issues-page.infinity .issues-list li:nth-child(even),
@@ -1029,15 +1020,6 @@ body {
 .coins-page.extraSmall .coins-list li {
   margin: 0;
   padding: 15px 10px;
-  transition: ease all .2s;
-}
-
-.coins-page.infinity .coins-list li:hover,
-.coins-page.large .coins-list li:hover,
-.coins-page.medium .coins-list li:hover,
-.coins-page.small .coins-list li:hover,
-.coins-page.extraSmall .coins-list li:hover {
-  transform: scale(1.008);
 }
 
 .coins-page.infinity .coins-list li:nth-child(even),
@@ -1399,15 +1381,6 @@ body {
 .varieties-page.extraSmall .varieties-list li {
   margin: 0;
   padding: 15px 10px;
-  transition: ease all .2s;
-}
-
-.varieties-page.infinity .varieties-list li:hover,
-.varieties-page.large .varieties-list li:hover,
-.varieties-page.medium .varieties-list li:hover,
-.varieties-page.small .varieties-list li:hover,
-.varieties-page.extraSmall .varieties-list li:hover {
-  transform: scale(1.008);
 }
 
 .varieties-page.infinity .varieties-list li:nth-child(even),
@@ -1620,15 +1593,6 @@ body {
 .compositions-page.extraSmall .compositions-list .composition-list-item {
   margin: 0;
   padding: 15px 10px;
-  transition: ease all .2s;
-}
-
-.compositions-page.infinity .compositions-list .composition-list-item:hover,
-.compositions-page.large .compositions-list .composition-list-item:hover,
-.compositions-page.medium .compositions-list .composition-list-item:hover,
-.compositions-page.small .compositions-list .composition-list-item:hover,
-.compositions-page.extraSmall .compositions-list .composition-list-item:hover {
-  transform: scale(1.008);
 }
 
 .compositions-page.infinity .compositions-list .composition-list-item:nth-child(even),
@@ -1794,6 +1758,15 @@ body {
   border: 0;
 }
 
+.add-composition-component .error-item {
+  display: block !important;
+  width: 100% !important;
+}
+
+.add-composition-component .error-item .error-msg {
+  margin: 10px 0 !important;
+}
+
 .add-composition-component.large .input-list,
 .add-composition-component.infinity .input-list {
   display: block;
@@ -1874,7 +1847,7 @@ body {
   width: calc(100% / 4);
 }
 
-.add-composition-component.extraSmall .input-list li:last-child {
+.add-composition-component.extraSmall .input-list .button {
   width: 100%;
 }
 
