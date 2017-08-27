@@ -614,28 +614,52 @@ body {
   padding: 0;
 }
 
-.issues-page.infinity .issues-list li,
-.issues-page.large .issues-list li,
-.issues-page.medium .issues-list li,
-.issues-page.small .issues-list li,
-.issues-page.extraSmall .issues-list li {
+.issues-page.infinity .issues-list .add-issue-component,
+.issues-page.large .issues-list .add-issue-component,
+.issues-page.medium .issues-list .add-issue-component,
+.issues-page.small .issues-list .add-issue-component,
+.issues-page.extraSmall .issues-list .add-issue-component {
+  margin-top: 20px;
+}
+
+.issues-page.infinity .issues-list .issue-list-item,
+.issues-page.large .issues-list .issue-list-item,
+.issues-page.medium .issues-list .issue-list-item,
+.issues-page.small .issues-list .issue-list-item,
+.issues-page.extraSmall .issues-list .issue-list-item {
   margin: 0;
   padding: 15px 10px;
 }
 
-.issues-page.infinity .issues-list li:nth-child(even),
-.issues-page.large .issues-list li:nth-child(even),
-.issues-page.medium .issues-list li:nth-child(even),
-.issues-page.small .issues-list li:nth-child(even),
-.issues-page.extraSmall .issues-list li:nth-child(even) {
+.issues-page.infinity .issues-list .issue-list-item li,
+.issues-page.large .issues-list .issue-list-item li,
+.issues-page.medium .issues-list .issue-list-item li,
+.issues-page.small .issues-list .issue-list-item li,
+.issues-page.extraSmall .issues-list .issue-list-item li {
+  margin: 0;
+}
+
+.issues-page.infinity .issues-list .issue-list-item .description,
+.issues-page.large .issues-list .issue-list-item .description,
+.issues-page.medium .issues-list .issue-list-item .description,
+.issues-page.small .issues-list .issue-list-item .description,
+.issues-page.extraSmall .issues-list .issue-list-item .description {
+  width: 100%;
+}
+
+.issues-page.infinity .issues-list .issue-list-item:nth-child(even),
+.issues-page.large .issues-list .issue-list-item:nth-child(even),
+.issues-page.medium .issues-list .issue-list-item:nth-child(even),
+.issues-page.small .issues-list .issue-list-item:nth-child(even),
+.issues-page.extraSmall .issues-list .issue-list-item:nth-child(even) {
   background-color: #fff;
 }
 
-.issues-page.infinity .issues-list li:nth-child(odd),
-.issues-page.large .issues-list li:nth-child(odd),
-.issues-page.medium .issues-list li:nth-child(odd),
-.issues-page.small .issues-list li:nth-child(odd),
-.issues-page.extraSmall .issues-list li:nth-child(odd) {
+.issues-page.infinity .issues-list .issue-list-item:nth-child(odd),
+.issues-page.large .issues-list .issue-list-item:nth-child(odd),
+.issues-page.medium .issues-list .issue-list-item:nth-child(odd),
+.issues-page.small .issues-list .issue-list-item:nth-child(odd),
+.issues-page.extraSmall .issues-list .issue-list-item:nth-child(odd) {
   background-color: #e8e8e8;
 }
 
