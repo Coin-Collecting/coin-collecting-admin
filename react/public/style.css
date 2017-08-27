@@ -619,6 +619,7 @@ body {
 .issues-page.medium .issues-list .add-issue-component,
 .issues-page.small .issues-list .add-issue-component,
 .issues-page.extraSmall .issues-list .add-issue-component {
+  border: solid 1px #b5b5b5;
   margin-top: 20px;
 }
 
@@ -1398,29 +1399,57 @@ body {
   padding: 0;
 }
 
-.varieties-page.infinity .varieties-list li,
-.varieties-page.large .varieties-list li,
-.varieties-page.medium .varieties-list li,
-.varieties-page.small .varieties-list li,
-.varieties-page.extraSmall .varieties-list li {
+.varieties-page.infinity .varieties-list .varieties-list-item,
+.varieties-page.large .varieties-list .varieties-list-item,
+.varieties-page.medium .varieties-list .varieties-list-item,
+.varieties-page.small .varieties-list .varieties-list-item,
+.varieties-page.extraSmall .varieties-list .varieties-list-item {
   margin: 0;
   padding: 15px 10px;
 }
 
-.varieties-page.infinity .varieties-list li:nth-child(even),
-.varieties-page.large .varieties-list li:nth-child(even),
-.varieties-page.medium .varieties-list li:nth-child(even),
-.varieties-page.small .varieties-list li:nth-child(even),
-.varieties-page.extraSmall .varieties-list li:nth-child(even) {
+.varieties-page.infinity .varieties-list .varieties-list-item:nth-child(even),
+.varieties-page.large .varieties-list .varieties-list-item:nth-child(even),
+.varieties-page.medium .varieties-list .varieties-list-item:nth-child(even),
+.varieties-page.small .varieties-list .varieties-list-item:nth-child(even),
+.varieties-page.extraSmall .varieties-list .varieties-list-item:nth-child(even) {
   background-color: #fff;
 }
 
-.varieties-page.infinity .varieties-list li:nth-child(odd),
-.varieties-page.large .varieties-list li:nth-child(odd),
-.varieties-page.medium .varieties-list li:nth-child(odd),
-.varieties-page.small .varieties-list li:nth-child(odd),
-.varieties-page.extraSmall .varieties-list li:nth-child(odd) {
+.varieties-page.infinity .varieties-list .varieties-list-item:nth-child(odd),
+.varieties-page.large .varieties-list .varieties-list-item:nth-child(odd),
+.varieties-page.medium .varieties-list .varieties-list-item:nth-child(odd),
+.varieties-page.small .varieties-list .varieties-list-item:nth-child(odd),
+.varieties-page.extraSmall .varieties-list .varieties-list-item:nth-child(odd) {
   background-color: #e8e8e8;
+}
+
+.varieties-page.infinity .varieties-list .add-variety-component,
+.varieties-page.large .varieties-list .add-variety-component,
+.varieties-page.medium .varieties-list .add-variety-component,
+.varieties-page.small .varieties-list .add-variety-component,
+.varieties-page.extraSmall .varieties-list .add-variety-component {
+  margin-top: 20px;
+}
+
+.varieties-page.infinity .varieties-list .add-variety-component .description,
+.varieties-page.large .varieties-list .add-variety-component .description,
+.varieties-page.medium .varieties-list .add-variety-component .description,
+.varieties-page.small .varieties-list .add-variety-component .description,
+.varieties-page.extraSmall .varieties-list .add-variety-component .description {
+  box-sizing: border-box;
+  margin: 0;
+  display: block;
+  width: 100%;
+  border-right: solid 1px #e8e8e8;
+}
+
+.varieties-page.infinity .varieties-list .add-variety-component input,
+.varieties-page.large .varieties-list .add-variety-component input,
+.varieties-page.medium .varieties-list .add-variety-component input,
+.varieties-page.small .varieties-list .add-variety-component input,
+.varieties-page.extraSmall .varieties-list .add-variety-component input {
+  box-sizing: border-box;
 }
 
 .varieties-page.infinity .varieties-list p,
