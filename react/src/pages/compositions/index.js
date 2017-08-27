@@ -43,7 +43,7 @@ class Compositions extends React.Component {
 													name="pencil"
 													onClick={() => {
 														this.setState({
-															editIndex: index,
+															editIndex: this.state.editIndex === index ? null : index,
 														})
 													}}
 												/>
@@ -51,7 +51,7 @@ class Compositions extends React.Component {
 											</p>
 											{ this.state.editIndex === index ?
 												<AddComposition
-													sizeOverride={'extraSmall'}
+													sizeOverride={browser.greaterThan.small ? 'medium' : 'extraSmall'}
 													onSubmit={() => {
 														data.refetch();
 														this.setState({

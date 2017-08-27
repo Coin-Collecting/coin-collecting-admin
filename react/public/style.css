@@ -1608,37 +1608,37 @@ body {
   padding: 0;
 }
 
-.compositions-page.infinity .compositions-list li,
-.compositions-page.large .compositions-list li,
-.compositions-page.medium .compositions-list li,
-.compositions-page.small .compositions-list li,
-.compositions-page.extraSmall .compositions-list li {
+.compositions-page.infinity .compositions-list .composition-list-item,
+.compositions-page.large .compositions-list .composition-list-item,
+.compositions-page.medium .compositions-list .composition-list-item,
+.compositions-page.small .compositions-list .composition-list-item,
+.compositions-page.extraSmall .compositions-list .composition-list-item {
   margin: 0;
   padding: 15px 10px;
   transition: ease all .2s;
 }
 
-.compositions-page.infinity .compositions-list li:hover,
-.compositions-page.large .compositions-list li:hover,
-.compositions-page.medium .compositions-list li:hover,
-.compositions-page.small .compositions-list li:hover,
-.compositions-page.extraSmall .compositions-list li:hover {
+.compositions-page.infinity .compositions-list .composition-list-item:hover,
+.compositions-page.large .compositions-list .composition-list-item:hover,
+.compositions-page.medium .compositions-list .composition-list-item:hover,
+.compositions-page.small .compositions-list .composition-list-item:hover,
+.compositions-page.extraSmall .compositions-list .composition-list-item:hover {
   transform: scale(1.008);
 }
 
-.compositions-page.infinity .compositions-list li:nth-child(even),
-.compositions-page.large .compositions-list li:nth-child(even),
-.compositions-page.medium .compositions-list li:nth-child(even),
-.compositions-page.small .compositions-list li:nth-child(even),
-.compositions-page.extraSmall .compositions-list li:nth-child(even) {
+.compositions-page.infinity .compositions-list .composition-list-item:nth-child(even),
+.compositions-page.large .compositions-list .composition-list-item:nth-child(even),
+.compositions-page.medium .compositions-list .composition-list-item:nth-child(even),
+.compositions-page.small .compositions-list .composition-list-item:nth-child(even),
+.compositions-page.extraSmall .compositions-list .composition-list-item:nth-child(even) {
   background-color: #fff;
 }
 
-.compositions-page.infinity .compositions-list li:nth-child(odd),
-.compositions-page.large .compositions-list li:nth-child(odd),
-.compositions-page.medium .compositions-list li:nth-child(odd),
-.compositions-page.small .compositions-list li:nth-child(odd),
-.compositions-page.extraSmall .compositions-list li:nth-child(odd) {
+.compositions-page.infinity .compositions-list .composition-list-item:nth-child(odd),
+.compositions-page.large .compositions-list .composition-list-item:nth-child(odd),
+.compositions-page.medium .compositions-list .composition-list-item:nth-child(odd),
+.compositions-page.small .compositions-list .composition-list-item:nth-child(odd),
+.compositions-page.extraSmall .compositions-list .composition-list-item:nth-child(odd) {
   background-color: #e8e8e8;
 }
 

@@ -12,9 +12,7 @@ class AddComposition extends React.Component {
 		super(props);
 		if (props.composition) {
 			let {
-				gold, silver, copper,
-				nickel, brass, zinc,
-				steel, tin, id,
+				gold, silver, copper, nickel, brass, zinc, steel, tin, id,
 			} = props.composition;
 			this.state = {
 				gold: gold > 0 ? gold : '',
@@ -30,15 +28,9 @@ class AddComposition extends React.Component {
 			}
 		} else {
 			this.state = {
-				gold: '',
-				silver: '',
-				copper: '',
-				nickel: '',
-				brass: '',
-				zinc: '',
-				steel: '',
-				tin: '',
-				error: [],
+				gold: '', silver: '', copper: '',
+				nickel: '', brass: '', zinc: '',
+				steel: '', tin: '', error: [],
 			}
 		}
 	}
@@ -48,14 +40,9 @@ class AddComposition extends React.Component {
 		addComposition(this.state)
 			.then(() => {
 				this.setState({
-					gold: '',
-					silver: '',
-					copper: '',
-					nickel: '',
-					brass: '',
-					zinc: '',
-					steel: '',
-					tin: '',
+					gold: '', silver: '', copper: '',
+					nickel: '', brass: '', zinc: '',
+					steel: '', tin: '',
 					error: [],
 				});
 				onSubmit();

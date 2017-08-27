@@ -1,5 +1,14 @@
 @import '../../base/palette';
 
+.compositions-page {
+  .compositions-list {
+    .add-composition-component {
+      border: solid 1px $lightGray;
+      margin-top: 20px;
+    }
+  }
+}
+
 .compositions-page.infinity,
 .compositions-page.large,
 .compositions-page.medium,
