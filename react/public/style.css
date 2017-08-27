@@ -1552,6 +1552,11 @@ body {
   padding: 0 0 0 20px;
   margin: 0;
 }
+.compositions-page .compositions-list .add-composition-component {
+  border: solid 1px #b5b5b5;
+  margin-top: 20px;
+}
+
 .compositions-page.infinity,
 .compositions-page.large,
 .compositions-page.medium,
