@@ -71,13 +71,14 @@ class AddVariety extends React.Component {
 			addVariety(this.state).then(() => {
 				this.setState({
 					name: '',
-					issue: null,
-					edge: null,
-					composition: null,
-					designer: null,
-					description: null,
+					issue: '',
+					edge: '',
+					composition: '',
+					designer: '',
+					description: '',
 					mass: '',
 					diameter: '',
+					error: [],
 				});
 				onSubmit();
 			});
