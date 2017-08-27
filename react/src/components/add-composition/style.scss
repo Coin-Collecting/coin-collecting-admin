@@ -12,6 +12,15 @@
     background-color: $primaryColor;
     border: 0;
   }
+
+  .error-item {
+    display: block !important;
+    width: 100% !important;
+
+    .error-msg {
+      margin: 10px 0 !important;
+    }
+  }
 }
 
 .add-composition-component.large,
@@ -98,7 +107,7 @@
       width: calc(100% / 4);
     }
 
-    li:last-child {
+    .button {
       width: 100%;
     }
 

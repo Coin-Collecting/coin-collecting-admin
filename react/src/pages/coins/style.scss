@@ -34,11 +34,6 @@
     li {
       margin: 0;
       padding: 15px 10px;
-      transition: ease all .2s;
-
-      &:hover {
-        transform: scale(1.008);
-      }
     }
 
     li:nth-child(even) {

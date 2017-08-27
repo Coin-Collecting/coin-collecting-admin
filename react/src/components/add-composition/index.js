@@ -165,8 +165,12 @@ class AddComposition extends React.Component {
 								Add
 							</button>
 						}
-						{ error.length > 0 ? <p className="error-msg">{error[0].message}</p> : null }
 					</li>
+					{ error.length > 0 ?
+						<li className="error-item">
+							<p className="error-msg">{error[0].message}</p>
+						</li>
+					: null }
 				</ul>
 			</div>
 		);
