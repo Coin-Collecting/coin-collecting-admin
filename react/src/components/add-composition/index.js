@@ -2,21 +2,44 @@ import React, { PropTypes } from "react";
 import {connect} from 'react-redux';
 import { graphql, compose } from 'react-apollo';
 import './style.scss';
-import { CreateCompositionMutation } from '../../mutations';
+import {
+	CreateCompositionMutation,
+	UpdateCompositionMutation,
+} from '../../mutations';
 
 class AddComposition extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			gold: '',
-			silver: '',
-			copper: '',
-			nickel: '',
-			brass: '',
-			zinc: '',
-			steel: '',
-			tin: '',
-			error: [],
+		if (props.composition) {
+			let {
+				gold, silver, copper,
+				nickel, brass, zinc,
+				steel, tin, id,
+			} = props.composition;
+			this.state = {
+				gold: gold > 0 ? gold : '',
+				silver: silver > 0 ? silver : '',
+				copper: copper > 0 ? copper : '',
+				nickel: nickel > 0 ? nickel : '',
+				brass: brass > 0 ? brass : '',
+				zinc: zinc > 0 ? zinc : '',
+				steel: steel > 0 ? steel : '',
+				tin: tin > 0 ? tin : '',
+				id,
+				error: [],
+			}
+		} else {
+			this.state = {
+				gold: '',
+				silver: '',
+				copper: '',
+				nickel: '',
+				brass: '',
+				zinc: '',
+				steel: '',
+				tin: '',
+				error: [],
+			}
 		}
 	}
 
@@ -43,8 +66,18 @@ class AddComposition extends React.Component {
 			});
 	}
 
+	updateComposition() {
+		const { updateComposition, onSubmit } = this.props;
+		updateComposition(this.state)
+			.then(onSubmit)
+			.catch(e => {
+				let { graphQLErrors } = e;
+				this.setState({error: graphQLErrors});
+			});
+	}
+
 	render() {
-		let { data, browser, sizeOverride } = this.props;
+		let { data, browser, sizeOverride, composition } = this.props;
 		let { error } = this.state;
 		let classes = [
 			'add-composition-component',
@@ -136,9 +169,15 @@ class AddComposition extends React.Component {
 						/>
 					</li>
 					<li className="button">
-						<button onClick={() => this.addComposition()}>
-							Add
-						</button>
+						{ composition ?
+							<button onClick={() => this.updateComposition()}>
+								Edit
+							</button>
+						:
+							<button onClick={() => this.addComposition()}>
+								Add
+							</button>
+						}
 						{ error.length > 0 ? <p className="error-msg">{error[0].message}</p> : null }
 					</li>
 				</ul>
@@ -151,6 +190,9 @@ AddComposition.propTypes = {
 	onSubmit: PropTypes.func.isRequired,
 	breakpoint: PropTypes.object,
 	sizeOverride: PropTypes.string,
+	composition: PropTypes.object,
+	addComposition: PropTypes.func,
+	updateComposition: PropTypes.func,
 };
 
 
@@ -159,6 +201,25 @@ const addCompositionMutation = graphql(CreateCompositionMutation, {
 	props: ({ mutate }) => ({
 		addComposition: ({gold, silver, copper, nickel, brass, zinc, steel, tin}) => mutate({
 			variables: {
+				gold: parseFloat(gold),
+				silver: parseFloat(silver),
+				copper: parseFloat(copper),
+				nickel: parseFloat(nickel),
+				brass: parseFloat(brass),
+				zinc: parseFloat(zinc),
+				steel: parseFloat(steel),
+				tin: parseFloat(tin),
+			},
+		}),
+	}),
+});
+
+// UPDATE an existing fundraiser
+const updateCompositionMutation = graphql(UpdateCompositionMutation, {
+	props: ({ mutate }) => ({
+		updateComposition: ({id, gold, silver, copper, nickel, brass, zinc, steel, tin}) => mutate({
+			variables: {
+				id,
 				gold: parseFloat(gold),
 				silver: parseFloat(silver),
 				copper: parseFloat(copper),
@@ -181,4 +242,5 @@ function mapStateToProps(state){
 export default compose(
 	connect(mapStateToProps),
 	addCompositionMutation,
+	updateCompositionMutation,
 )(AddComposition);

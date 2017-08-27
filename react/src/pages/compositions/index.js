@@ -8,6 +8,13 @@ import AddComposition from '../../components/add-composition';
 import { getCompositionString } from '../../util';
 
 class Compositions extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			editIndex: null,
+		};
+	}
+
 	render() {
 		const { data, browser } = this.props;
 		const { compositions } = data;
@@ -28,13 +35,32 @@ class Compositions extends React.Component {
 						</p>
 						<ul className="compositions-list">
 							{ compositions && compositions.length > 0 ?
-								compositions.map(composition => {
+								compositions.map((composition, index) => {
 									return (
-										<li key={'composition:' + composition.id}>
+										<li key={'composition:' + composition.id} className="composition-list-item">
 											<p>
-												<FontAwesome name="pencil"/>
+												<FontAwesome
+													name="pencil"
+													onClick={() => {
+														this.setState({
+															editIndex: index,
+														})
+													}}
+												/>
 												<span className="name">{getCompositionString(composition)}</span>
 											</p>
+											{ this.state.editIndex === index ?
+												<AddComposition
+													sizeOverride={'extraSmall'}
+													onSubmit={() => {
+														data.refetch();
+														this.setState({
+															editIndex: null,
+														})
+													}}
+													composition={composition}
+												/>
+											: null }
 										</li>
 									)
 								})

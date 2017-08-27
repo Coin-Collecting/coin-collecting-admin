@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import { GraphQLFloat } from 'graphql';
+import { GraphQLFloat, GraphQLString } from 'graphql';
 const { UserError } = require('graphql-errors')
 import { CompositionType } from '../types';
 import { Composition } from '../sequelize';
@@ -43,6 +43,45 @@ export const createComposition = {
       zinc: args.zinc,
       steel: args.steel,
       tin: args.tin,
+    });
+  }
+};
+
+export const updateComposition = {
+  type: CompositionType,
+  description: 'Updates a composition',
+  args: {
+    id: { type: GraphQLString },
+    gold: { type: GraphQLFloat },
+    silver: { type: GraphQLFloat },
+    copper: { type: GraphQLFloat },
+    nickel: { type: GraphQLFloat },
+    brass: { type: GraphQLFloat },
+    zinc: { type: GraphQLFloat },
+    steel: { type: GraphQLFloat },
+    tin: { type: GraphQLFloat },
+  },
+  resolve: (value, args) => {
+    if (!args.id) {
+      throw new UserError('Must Provide an ID');
+    }
+    if (!totalEqualOne(args)) {
+      throw new UserError('The total composition must equal 1.00');
+    }
+
+    Composition.update({
+      gold: args.gold || 0,
+      silver: args.silver || 0,
+      copper: args.copper || 0,
+      nickel: args.nickel || 0,
+      brass: args.brass || 0,
+      zinc: args.zinc || 0,
+      steel: args.steel || 0,
+      tin: args.tin || 0,
+    }, {
+      where: { id: args.id },
+      returning: true,
+      plain: true,
     });
   }
 };
