@@ -10,7 +10,7 @@ import {
 import { VarietyType, MintType } from './index.js';
 
 // QUERIES
-import { Mint, Variety } from "../queries.js";
+import { Mint, Variety } from "../sequelize.js";
 
 // COIN TYPE
 export const CoinType = new GraphQLObjectType({

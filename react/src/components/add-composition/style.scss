@@ -8,12 +8,9 @@
     text-transform: capitalize;
   }
 
-  &.error {
-    .error-msg {
-      display: block;
-      color: $secondaryColor;
-      font-size: 12px;
-    }
+  button {
+    background-color: $primaryColor;
+    border: 0;
   }
 }
 

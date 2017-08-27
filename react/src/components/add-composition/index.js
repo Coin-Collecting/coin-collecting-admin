@@ -16,38 +16,14 @@ class AddComposition extends React.Component {
 			zinc: '',
 			steel: '',
 			tin: '',
+			error: [],
 		}
-	}
-
-	// TODO: Move validation to server
-	isValid() {
-		let { gold, silver, copper, nickel, brass, zinc, steel, tin } = this.state;
-
-		let equalOne =
-			parseFloat(gold || 0) +
-			parseFloat(silver || 0) +
-			parseFloat(copper || 0) +
-			parseFloat(nickel || 0) +
-			parseFloat(brass || 0) +
-			parseFloat(zinc || 0) +
-			parseFloat(steel || 0) +
-			parseFloat(tin || 0) === 1;
-
-		if (!equalOne) {
-			this.setState({
-				error: 'Total must equal 1',
-			});
-		}
-
-		let atLeastOne = gold || silver || copper || nickel || brass || zinc || steel || tin;
-		return equalOne && atLeastOne;
 	}
 
 	addComposition() {
 		const { addComposition, onSubmit } = this.props;
-		if (this.isValid()) {
-			this.setState({error: null});
-			addComposition(this.state).then(() => {
+		addComposition(this.state)
+			.then(() => {
 				this.setState({
 					gold: '',
 					silver: '',
@@ -57,11 +33,14 @@ class AddComposition extends React.Component {
 					zinc: '',
 					steel: '',
 					tin: '',
+					error: [],
 				});
 				onSubmit();
+			})
+			.catch(e => {
+				let { graphQLErrors } = e;
+				this.setState({error: graphQLErrors});
 			});
-		}
-
 	}
 
 	render() {
@@ -157,9 +136,10 @@ class AddComposition extends React.Component {
 						/>
 					</li>
 					<li className="button">
-						{ error ? <p className="error-msg">{error}</p> : null }
-						<button onClick={() => this.addComposition()}
-						>Add</button>
+						<button onClick={() => this.addComposition()}>
+							Add
+						</button>
+						{ error.length > 0 ? <p className="error-msg">{error[0].message}</p> : null }
 					</li>
 				</ul>
 			</div>

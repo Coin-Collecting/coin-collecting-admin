@@ -8,7 +8,7 @@ import {
 import { DenominationType } from "./index.js";
 
 // QUERIES
-import { Denomination } from "../queries.js";
+import { Denomination } from "../sequelize.js";
 
 // ISSUE TYPE
 export const IssueType = new GraphQLObjectType({

@@ -5,9 +5,7 @@
     display: inline-block;
     margin: 0;
     padding: 0 0 0 15px;
-    background-color: #fff;
     border-radius: 50px;
-    border: solid 1px $lightestGray;
 
     li {
       display: inline-block;
@@ -22,20 +20,12 @@
       border-color: $lightestGray;
     }
 
-    .description input {
-      border-right: 0;
-    }
-
     button {
       border-top-right-radius: 50px;
       border-bottom-right-radius: 50px;
       border: 0;
       padding: 0 25px 0 20px;
       background-color: $primaryColor;
-
-      &:disabled {
-        background-color: $disabled;
-      }
     }
   }
 }

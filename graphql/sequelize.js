@@ -3,11 +3,9 @@ const Sequelize = require('sequelize');
 let env = process.env.NODE_ENV || 'development';
 let config = require('../config')[env];
 
+let { db: { user, pass, host, port }} = config;
 const connection = new Sequelize(
-  "coins_db", config.db.user, config.db.pass, {
-    'host': config.db.host,
-    'port': config.db.port,
-  }
+  "coins_db", user, pass, {host, port }
 );
 
 export const Coin = connection.define("coin", {

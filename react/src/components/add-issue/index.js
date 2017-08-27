@@ -14,39 +14,39 @@ class AddIssue extends React.Component {
 			startYear: '',
 			endYear: '',
 			description: '',
+			error: [],
 		}
-	}
-
-	// TODO: Move validation to server
-	isValid() {
-		let { name, denomination, startYear, endYear } = this.state;
-		return !!name &&
-					 !!denomination &&
-					 !!startYear &&
-					 !!endYear;
 	}
 
 	addIssue() {
 		const { addIssue, onSubmit } = this.props;
-		if (this.isValid()) {
-			addIssue(this.state).then(() => {
+		addIssue(this.state)
+			.then(() => {
 				this.setState({
 					name: '',
 					denomination: '',
 					startYear: '',
 					endYear: '',
 					description: '',
+					error: [],
 				});
 				onSubmit();
+			})
+			.catch(e => {
+				let { graphQLErrors } = e;
+				this.setState({error: graphQLErrors});
 			});
-		}
-
 	}
 
 	render() {
 		let { data, browser, sizeOverride } = this.props;
+		let { error } = this.state;
 		let { denominations } = data;
-		let classes = ['add-issue-component', sizeOverride ? sizeOverride : browser.mediaType];
+		let classes = [
+			'add-issue-component',
+			sizeOverride ? sizeOverride : browser.mediaType,
+			error ? 'error' : null,
+		];
 
 		return (
 			<div className={classes.join(' ')}>
@@ -106,9 +106,10 @@ class AddIssue extends React.Component {
 					</li>
 					<li className="button">
 						<button
-							disabled={!this.isValid()}
-							onClick={() => this.addIssue()}
-						>Add</button>
+							onClick={() => this.addIssue()}>
+							Add
+						</button>
+						{ error.length > 0 ? <p className="error-msg">{error[0].message}</p> : null }
 					</li>
 				</ul>
 			</div>
