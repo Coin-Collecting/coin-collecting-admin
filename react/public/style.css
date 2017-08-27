@@ -125,6 +125,15 @@ button:disabled {
   color: #b5b5b5;
 }
 
+.error-msg {
+  color: #fe491a;
+  font-size: 12px;
+  text-align: center;
+  margin: 10px 0 0 0;
+  font-weight: 700;
+  box-sizing: border-box;
+}
+
 .branded-table {
   border-collapse: collapse;
   width: 100%;
@@ -385,9 +394,7 @@ body {
   display: inline-block;
   margin: 0;
   padding: 0 0 0 15px;
-  background-color: #fff;
   border-radius: 50px;
-  border: solid 1px #e8e8e8;
 }
 
 .add-issue-component .input-list li {
@@ -403,20 +410,12 @@ body {
   border-color: #e8e8e8;
 }
 
-.add-issue-component .input-list .description input {
-  border-right: 0;
-}
-
 .add-issue-component .input-list button {
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   border: 0;
   padding: 0 25px 0 20px;
   background-color: #4abdac;
-}
-
-.add-issue-component .input-list button:disabled {
-  background-color: #dfdfdf;
 }
 
 .add-issue-component.large .input-list,
@@ -1785,10 +1784,9 @@ body {
   text-transform: capitalize;
 }
 
-.add-composition-component.error .error-msg {
-  display: block;
-  color: #fe491a;
-  font-size: 12px;
+.add-composition-component button {
+  background-color: #4abdac;
+  border: 0;
 }
 
 .add-composition-component.large .input-list,
