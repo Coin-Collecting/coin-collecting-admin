@@ -9,7 +9,6 @@ class AddIssue extends React.Component {
 	constructor(props) {
 		super(props);
 		if (props.issue) {
-			console.log(props.issue);
 			let {
 				name, denomination, startYear, endYear, description, id,
 			} = props.issue;

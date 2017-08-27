@@ -24,11 +24,11 @@ export const CreateCoinMutation = gql`
 
 export const CreateIssueMutation = gql`
 	mutation (
-	$name: String!,
-	$description: String,
-	$denomination: String!,
-	$startYear: String!,
-	$endYear: String!,
+		$name: String!,
+		$description: String,
+		$denomination: String!,
+		$startYear: String!,
+		$endYear: String!,
 	) {
 		createIssue(
 			name: $name,
@@ -44,12 +44,12 @@ export const CreateIssueMutation = gql`
 
 export const UpdateIssueMutation = gql`
 	mutation (
-	$id: String!,
-	$name: String!,
-	$description: String,
-	$denomination: String!,
-	$startYear: String!,
-	$endYear: String!,
+		$id: String!,
+		$name: String!,
+		$description: String,
+		$denomination: String!,
+		$startYear: String!,
+		$endYear: String!,
 	) {
 		updateIssue(
 			id: $id,
@@ -76,6 +76,35 @@ export const CreateVarietyMutation = gql`
 		$designer: String!,
 	) {
 		createVariety(
+			name: $name,
+			description: $description
+			mass: $mass,
+			diameter: $diameter,
+			issue: $issue
+			edge: $edge
+			composition: $composition
+			designer: $designer
+			images: "1",
+		) {
+			id
+		}
+	}
+`;
+
+export const UpdateVarietyMutation = gql`
+	mutation (
+		$id: String!,
+		$name: String!,
+		$description: String,
+		$mass: String!,
+		$diameter: String!,
+		$issue: String!,
+		$edge: String!,
+		$composition: String!,
+		$designer: String!,
+	) {
+		updateVariety(
+			id: $id,
 			name: $name,
 			description: $description
 			mass: $mass,

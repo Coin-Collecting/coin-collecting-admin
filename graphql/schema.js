@@ -31,6 +31,7 @@ import {
   createIssue,
   updateIssue,
   createVariety,
+  updateVariety,
   createCoin,
   deleteCoin,
 } from './mutations';
@@ -69,6 +70,7 @@ const MutationType = new GraphQLObjectType({
     deleteCoin,
     createCoin,
     createVariety,
+    updateVariety,
     updateComposition,
     createComposition,
     createIssue,

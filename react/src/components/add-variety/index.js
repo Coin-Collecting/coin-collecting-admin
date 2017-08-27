@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 import {connect} from 'react-redux';
 import { graphql, compose, gql } from 'react-apollo';
 import './style.scss';
-import { CreateVarietyMutation } from '../../mutations';
+import { CreateVarietyMutation, UpdateVarietyMutation } from '../../mutations';
 import IssueSelect from '../select-boxes/issue-select';
 import EdgeSelect from '../select-boxes/edge-select';
 import CompositionSelect from '../select-boxes/composition-select';
@@ -11,15 +11,36 @@ import DesignerSelect from '../select-boxes/designer-select';
 class AddVariety extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			name: '',
-			issue: '',
-			edge: '',
-			composition: '',
-			designer: '',
-			description: '',
-			mass: '',
-			diameter: '',
+		if (props.variety) {
+			let {
+				name, issue, edge,
+				composition, designer, description,
+				mass, diameter, id,
+			} = props.variety;
+			this.state = {
+				name: name ? name : '',
+				issue: issue ? issue.id : '',
+				edge: edge ? edge.id : '',
+				composition: composition ? composition.id : '',
+				designer: designer ? designer.id : '',
+				description: description ? description : '',
+				mass: mass ? mass : '',
+				diameter: diameter ? diameter : '',
+				id,
+				error: [],
+			}
+		} else {
+			this.state = {
+				name: '',
+				issue: '',
+				edge: '',
+				composition: '',
+				designer: '',
+				description: '',
+				mass: '',
+				diameter: '',
+				error: [],
+			}
 		}
 	}
 
@@ -63,8 +84,19 @@ class AddVariety extends React.Component {
 		}
 	}
 
+	updateVariety() {
+		const { updateVariety, onSubmit } = this.props;
+		updateVariety(this.state)
+			.then(() => onSubmit())
+			.catch(e => {
+				let { graphQLErrors } = e;
+				this.setState({error: graphQLErrors});
+			});
+	}
+
 	render() {
-		let { data, browser, sizeOverride } = this.props;
+		let { data, browser, sizeOverride, variety } = this.props;
+		let { error } = this.state;
 		let { issues, edges, compositions, designers } = data;
 		let classes = [
 			'add-variety-component',
@@ -159,11 +191,21 @@ class AddVariety extends React.Component {
 						/>
 					</li>
 					<li className="button">
-						<button
-							disabled={!this.isValid()}
-							onClick={() => this.addVariety()}
-						>Add</button>
+						{ variety ?
+							<button onClick={() => this.updateVariety()}>
+								Edit
+							</button>
+							:
+							<button onClick={() => this.addVariety()}>
+								Add
+							</button>
+						}
 					</li>
+					{ error.length > 0 ?
+						<li className="error-item">
+							<p className="error-msg">{error[0].message}</p>
+						</li>
+						: null }
 				</ul>
 			</div>
 		);
@@ -174,29 +216,39 @@ AddVariety.propTypes = {
 	onSubmit: PropTypes.func.isRequired,
 	breakpoint: PropTypes.object,
 	sizeOverride: PropTypes.string,
+	variety: PropTypes.object,
+	addVariety: PropTypes.func,
+	updateVariety: PropTypes.func,
 };
 
 // UPDATE an existing fundraiser
 const addVarietyMutation = graphql(CreateVarietyMutation, {
 	props: ({ mutate }) => ({
-		addVariety: ({ name,
-								 issue,
-								 edge,
-								 composition,
-								 designer,
-								 description,
-								 mass,
-								 diameter,
+		addVariety: ({ name, issue, edge,
+								 composition, designer, description,
+								 mass, diameter,
 							 }) => mutate({
 			variables: {
-				name,
-				issue,
-				edge,
-				composition,
-				designer,
-				description,
+				name, issue, edge,
+				composition, designer, description,
 				mass: parseFloat(mass),
 				diameter: parseFloat(diameter),
+			},
+		}),
+	}),
+});
+
+// UPDATE an existing fundraiser
+const updateVarietyMutation = graphql(UpdateVarietyMutation, {
+	props: ({ mutate }) => ({
+		updateVariety: ({ name, issue, edge,
+									 composition, designer, description,
+									 mass, diameter, id,
+								 }) => mutate({
+			variables: {
+				name, issue, edge,
+				composition, designer, description,
+				mass: parseFloat(mass), diameter: parseFloat(diameter), id,
 			},
 		}),
 	}),
@@ -223,4 +275,5 @@ export default compose(
 		${DesignerSelect.fragments.entry}
 	`),
 	addVarietyMutation,
+	updateVarietyMutation,
 )(AddVariety);

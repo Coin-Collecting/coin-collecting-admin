@@ -31,17 +31,33 @@
     margin: 30px 0 0;
     padding: 0;
 
-    li {
+    .varieties-list-item {
       margin: 0;
       padding: 15px 10px;
     }
 
-    li:nth-child(even) {
+    .varieties-list-item:nth-child(even) {
       background-color: #fff;
     }
 
-    li:nth-child(odd) {
+    .varieties-list-item:nth-child(odd) {
       background-color: $lightestGray;
+    }
+
+    .add-variety-component {
+      margin-top: 20px;
+
+      .description {
+        box-sizing: border-box;
+        margin: 0;
+        display: block;
+        width: 100%;
+        border-right: solid 1px $lightestGray;
+      }
+
+      input {
+        box-sizing: border-box;
+      }
     }
 
     p {

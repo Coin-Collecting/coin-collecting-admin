@@ -1,7 +1,7 @@
 
 import { createComposition, updateComposition } from './compositions';
 import { createIssue, updateIssue } from './issues';
-import { createVariety } from './variety';
+import { createVariety, updateVariety } from './variety';
 import { createCoin, deleteCoin } from './coin';
 
 export {
@@ -10,6 +10,7 @@ export {
   createIssue,
   updateIssue,
   createVariety,
+  updateVariety,
   createCoin,
   deleteCoin,
 };

@@ -68,11 +68,18 @@ class Varieties extends React.Component {
 					</p>
 					<ul className="varieties-list">
 						{ varieties && varieties.length > 0 ?
-							varieties.map(variety => {
+							varieties.map((variety, index) => {
 								return (
-									<li key={'variety:' + variety.id}>
+									<li key={'variety:' + variety.id} className="varieties-list-item">
 										<p>
-											<FontAwesome name="pencil"/>
+											<FontAwesome
+												name="pencil"
+												onClick={() => {
+													this.setState({
+														editIndex: this.state.editIndex === index ? null : index,
+													})
+												}}
+											/>
 											<span className="name">
 												{ variety.name + ' ' + variety.issue.name }
 												</span>
@@ -82,6 +89,18 @@ class Varieties extends React.Component {
 											<span>{ variety.mass + 'g / ' + variety.diameter + 'mm' }</span>
 											<span className="description">{ variety.description }</span>
 										</p>
+										{ this.state.editIndex === index ?
+											<AddVariety
+												sizeOverride={browser.greaterThan.small ? 'small' : 'extraSmall'}
+												onSubmit={() => {
+													data.refetch();
+													this.setState({
+														editIndex: null,
+													})
+												}}
+												variety={variety}
+											/>
+											: null }
 									</li>
 								)
 							})
