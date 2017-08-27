@@ -7,6 +7,13 @@ import './style.scss';
 const FontAwesome = require('react-fontawesome');
 
 class Issues extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			editIndex: null,
+		};
+	}
+
 	render() {
 		const { data, browser } = this.props;
 		const { issues } = data;
@@ -42,11 +49,18 @@ class Issues extends React.Component {
 						</p>
 						<ul className="issues-list">
 							{ issues.length > 0 ?
-								issues.map(issue => {
+								issues.map((issue, index) => {
 									return (
-										<li key={'issue:' + issue.id}>
+										<li key={'issue:' + issue.id} className="issue-list-item">
 											<p>
-												<FontAwesome name="pencil"/>
+												<FontAwesome
+													name="pencil"
+													onClick={() => {
+														this.setState({
+															editIndex: this.state.editIndex === index ? null : index,
+														})
+													}}
+												/>
 												<span className="name">{ issue.name }</span>
 												<span className="denomination">
 												{ issue.denomination.kind.replace('_', ' ').toLowerCase() }
@@ -56,6 +70,18 @@ class Issues extends React.Component {
 
 												<span className="description">{ issue.description }</span>
 											</p>
+											{ this.state.editIndex === index ?
+												<AddIssue
+													sizeOverride={browser.greaterThan.small ? 'small' : 'extraSmall'}
+													onSubmit={() => {
+														data.refetch();
+														this.setState({
+															editIndex: null,
+														})
+													}}
+													issue={issue}
+												/>
+												: null }
 										</li>
 									)
 								})

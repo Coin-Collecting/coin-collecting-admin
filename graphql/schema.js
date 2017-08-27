@@ -29,6 +29,7 @@ import {
   createComposition,
   updateComposition,
   createIssue,
+  updateIssue,
   createVariety,
   createCoin,
   deleteCoin,
@@ -71,6 +72,7 @@ const MutationType = new GraphQLObjectType({
     updateComposition,
     createComposition,
     createIssue,
+    updateIssue,
   }),
 });
 

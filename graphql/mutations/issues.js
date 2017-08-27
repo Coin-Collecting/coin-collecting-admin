@@ -37,3 +37,40 @@ export const createIssue = {
     });
   }
 };
+
+export const updateIssue = {
+  type: IssueType,
+  description: 'Update an issue by ID',
+  args: {
+    id: { type: new GraphQLNonNull(GraphQLString) },
+    name: { type: new GraphQLNonNull(GraphQLString) },
+    description: { type: GraphQLString },
+    denomination: { type: new GraphQLNonNull(GraphQLString) },
+    startYear: { type: new GraphQLNonNull(GraphQLString) },
+    endYear: { type: new GraphQLNonNull(GraphQLString) },
+  },
+  resolve: (value, args) => {
+    const {
+      id,
+      name,
+      description,
+      denomination,
+      startYear,
+      endYear,
+    } = args;
+
+    if (!id) throw new UserError('Must provide ID');
+
+    return Issue.update({
+      name,
+      description,
+      denomination,
+      startYear,
+      endYear,
+    }, {
+      where: { id: args.id },
+      returning: true,
+      plain: true,
+    });
+  }
+};

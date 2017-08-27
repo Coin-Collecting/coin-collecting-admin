@@ -24,13 +24,35 @@ export const CreateCoinMutation = gql`
 
 export const CreateIssueMutation = gql`
 	mutation (
-		$name: String!,
-		$description: String,
-		$denomination: String!,
-		$startYear: String!,
-		$endYear: String!,
+	$name: String!,
+	$description: String,
+	$denomination: String!,
+	$startYear: String!,
+	$endYear: String!,
 	) {
 		createIssue(
+			name: $name,
+			description: $description,
+			denomination: $denomination,
+			startYear: $startYear,
+			endYear: $endYear
+		) {
+			id
+		}
+	}
+`;
+
+export const UpdateIssueMutation = gql`
+	mutation (
+	$id: String!,
+	$name: String!,
+	$description: String,
+	$denomination: String!,
+	$startYear: String!,
+	$endYear: String!,
+	) {
+		updateIssue(
+			id: $id,
 			name: $name,
 			description: $description,
 			denomination: $denomination,
@@ -98,15 +120,15 @@ export const CreateCompositionMutation = gql`
 
 export const UpdateCompositionMutation = gql`
 	mutation (
-	$id: String!,
-	$gold: Float,
-	$silver: Float,
-	$copper: Float,
-	$nickel: Float,
-	$brass: Float,
-	$zinc: Float,
-	$steel: Float,
-	$tin: Float,
+		$id: String!,
+		$gold: Float,
+		$silver: Float,
+		$copper: Float,
+		$nickel: Float,
+		$brass: Float,
+		$zinc: Float,
+		$steel: Float,
+		$tin: Float,
 	) {
 		updateComposition (
 			id: $id,

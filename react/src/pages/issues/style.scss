@@ -31,16 +31,28 @@
     margin: 30px 0 0;
     padding: 0;
 
-    li {
-      margin: 0;
-      padding: 15px 10px;
+    .add-issue-component {
+      margin-top: 20px;
     }
 
-    li:nth-child(even) {
+    .issue-list-item {
+      margin: 0;
+      padding: 15px 10px;
+
+      li {
+        margin: 0;
+      }
+
+      .description {
+        width: 100%;
+      }
+    }
+
+    .issue-list-item:nth-child(even) {
       background-color: #fff;
     }
 
-    li:nth-child(odd) {
+    .issue-list-item:nth-child(odd) {
       background-color: $lightestGray;
     }
 
