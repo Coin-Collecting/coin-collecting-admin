@@ -57,7 +57,7 @@ DROP TABLE IF EXISTS `compositions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `compositions` (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `gold` float DEFAULT '0',
   `silver` float DEFAULT '0',
   `copper` float DEFAULT '0',
