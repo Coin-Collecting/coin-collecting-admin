@@ -59,6 +59,7 @@ class Coins extends React.Component {
 					<p className="results-header clearfix">
 						<span>Results ({coins ? coins.length : 0} of {coins ? coins.length : 0})</span>
 					</p>
+					{ data.loading ? <Spinner/> : null }
 					<ul className="coins-list">
 						{ coins && coins.length > 0 ?
 							coins.map(coin => {

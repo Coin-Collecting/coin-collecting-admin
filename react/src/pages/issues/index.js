@@ -28,69 +28,68 @@ class Issues extends React.Component {
 						onSubmit={() => this.props.data.refetch()}
 					/>
 				</article>
-				{ issues ?
-					<article className="main-article">
-						<h3>Find an Issue</h3>
-						<div className="filters clearfix">
-							<input type="text" placeholder="Search"/>
-							<div className="sort-by">
-								<div className="select-wrapper">
-										<select>
-											<option value="oldest">Oldest First</option>
-											<option value="newest">Newest First</option>
-											<option value="alphabetical">Alphabetical</option>
-											<option value="denomination">Denomination</option>
-										</select>
-								</div>
+				<article className="main-article">
+					<h3>Find an Issue</h3>
+					<div className="filters clearfix">
+						<input type="text" placeholder="Search"/>
+						<div className="sort-by">
+							<div className="select-wrapper">
+									<select>
+										<option value="oldest">Oldest First</option>
+										<option value="newest">Newest First</option>
+										<option value="alphabetical">Alphabetical</option>
+										<option value="denomination">Denomination</option>
+									</select>
 							</div>
 						</div>
-						<p className="results-header clearfix">
-							<span>Results ({issues.length} of {issues.length})</span>
-						</p>
-						<ul className="issues-list">
-							{ issues.length > 0 ?
-								issues.map((issue, index) => {
-									return (
-										<li key={'issue:' + issue.id} className="issue-list-item">
-											<p>
-												<FontAwesome
-													name="pencil"
-													onClick={() => {
-														this.setState({
-															editIndex: this.state.editIndex === index ? null : index,
-														})
-													}}
-												/>
-												<span className="name">{ issue.name }</span>
-												<span className="denomination">
-												{ issue.denomination.kind.replace('_', ' ').toLowerCase() }
-											</span>
-												<span className="year start-year">{ issue.startYear }</span>
-												<span className="year end-year">{ issue.endYear }</span>
+					</div>
+					<p className="results-header clearfix">
+						<span>Results ({issues ? issues.length : 0} of {issues ? issues.length : 0})</span>
+					</p>
+					{ data.loading ? <Spinner/> : null }
+					<ul className="issues-list">
+						{ issues && issues.length > 0 ?
+							issues.map((issue, index) => {
+								return (
+									<li key={'issue:' + issue.id} className="issue-list-item">
+										<p>
+											<FontAwesome
+												name="pencil"
+												onClick={() => {
+													this.setState({
+														editIndex: this.state.editIndex === index ? null : index,
+													})
+												}}
+											/>
+											<span className="name">{ issue.name }</span>
+											<span className="denomination">
+											{ issue.denomination.kind.replace('_', ' ').toLowerCase() }
+										</span>
+											<span className="year start-year">{ issue.startYear }</span>
+											<span className="year end-year">{ issue.endYear }</span>
 
-												<span className="description">{ issue.description }</span>
-											</p>
-											{ this.state.editIndex === index ?
-												<AddIssue
-													sizeOverride={browser.greaterThan.small ? 'small' : 'extraSmall'}
-													onSubmit={() => {
-														data.refetch();
-														this.setState({
-															editIndex: null,
-														})
-													}}
-													issue={issue}
-												/>
-												: null }
-										</li>
-									)
-								})
-								:
-								<p className="empty">Man, it's hard to find someone without issues...</p>
-							}
-						</ul>
-					</article>
-				: null }
+											<span className="description">{ issue.description }</span>
+										</p>
+										{ this.state.editIndex === index ?
+											<AddIssue
+												sizeOverride={browser.greaterThan.small ? 'small' : 'extraSmall'}
+												onSubmit={() => {
+													data.refetch();
+													this.setState({
+														editIndex: null,
+													})
+												}}
+												issue={issue}
+											/>
+											: null }
+									</li>
+								)
+							})
+							:
+							<p className="empty">Man, it's hard to find someone without issues...</p>
+						}
+					</ul>
+				</article>
 			</section>
 		);
 	}

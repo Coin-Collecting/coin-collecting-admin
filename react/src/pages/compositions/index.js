@@ -33,6 +33,7 @@ class Compositions extends React.Component {
 						<p className="results-header clearfix">
 							<span>Results ({compositions ? compositions.length : 0} of {compositions ? compositions.length : 0})</span>
 						</p>
+						{ data.loading ? <Spinner/> : null }
 						<ul className="compositions-list">
 							{ compositions && compositions.length > 0 ?
 								compositions.map((composition, index) => {

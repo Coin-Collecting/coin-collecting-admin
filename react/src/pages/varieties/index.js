@@ -66,6 +66,7 @@ class Varieties extends React.Component {
 					<p className="results-header clearfix">
 						<span>Results ({varieties? varieties.length : 0} of {varieties ? varieties.length : 0})</span>
 					</p>
+					{ data.loading ? <Spinner/> : null }
 					<ul className="varieties-list">
 						{ varieties && varieties.length > 0 ?
 							varieties.map((variety, index) => {
