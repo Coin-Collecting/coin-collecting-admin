@@ -61,7 +61,7 @@ class Coins extends React.Component {
 					</p>
 					{ data.loading ? <Spinner/> : null }
 					<ul className="coins-list">
-						{ coins && coins.length > 0 ?
+						{ coins && coins.length && !data.loading > 0 ?
 							coins.map(coin => {
 								return (
 									<li key={'coin:' + coin.id}>

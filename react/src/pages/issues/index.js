@@ -48,7 +48,7 @@ class Issues extends React.Component {
 					</p>
 					{ data.loading ? <Spinner/> : null }
 					<ul className="issues-list">
-						{ issues && issues.length > 0 ?
+						{ issues && issues.length && !data.loading > 0 ?
 							issues.map((issue, index) => {
 								return (
 									<li key={'issue:' + issue.id} className="issue-list-item">

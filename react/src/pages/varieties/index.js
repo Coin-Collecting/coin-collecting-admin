@@ -68,7 +68,7 @@ class Varieties extends React.Component {
 					</p>
 					{ data.loading ? <Spinner/> : null }
 					<ul className="varieties-list">
-						{ varieties && varieties.length > 0 ?
+						{ varieties && varieties.length && !data.loading > 0 ?
 							varieties.map((variety, index) => {
 								return (
 									<li key={'variety:' + variety.id} className="varieties-list-item">

@@ -35,7 +35,7 @@ class Compositions extends React.Component {
 						</p>
 						{ data.loading ? <Spinner/> : null }
 						<ul className="compositions-list">
-							{ compositions && compositions.length > 0 ?
+							{ compositions && compositions.length && !data.loading > 0 ?
 								compositions.map((composition, index) => {
 									return (
 										<li key={'composition:' + composition.id} className="composition-list-item">
