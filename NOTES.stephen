@@ -11,8 +11,24 @@
 ## APACHE2
 - /etc/apache2/sites-enabled
 - sudo service apache2 restart
-- docker exec -it 0cc831 bash
-- docker cp <containerId>:/file/path/within/container /host/path/target
+
+#### Apache Conf
+```
+<VirtualHost *:80>
+	ServerName api.mycoin.store
+ 	ServerAlias api.mycoin.store
+	ProxyRequests off
+
+	<Proxy *>
+		Order deny,allow
+		Allow from all
+	</Proxy>
+        <Location />
+		ProxyPass http://localhost:5000/
+		ProxyPassReverse http://localhost:5000/
+	</Location>
+</VirtualHost>
+```
 
 ## BUILDING A NEW IMAGE
 (yes to all - passwords are all Dalekini21)
