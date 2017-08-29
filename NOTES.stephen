@@ -1,0 +1,39 @@
+# NOTES
+
+## SERVICES
+- https://www.digitalocean.com/community/tutorials/the-upstart-event-system-what-it-is-and-how-to-use-it
+- services: /etc/init/
+- service --status-all
+- sudo service api start
+- sudo service api stop
+- logs: /var/log/upstart
+
+## APACHE2
+- /etc/apache2/sites-enabled
+- sudo service apache2 restart
+- docker exec -it 0cc831 bash
+- docker cp <containerId>:/file/path/within/container /host/path/target
+
+## BUILDING A NEW IMAGE
+(yes to all - passwords are all Dalekini21)
+```
+apt-get update
+apt-get upgrade
+sudo apt-get install nginx
+apt-get install git
+apt install nodejs-legacy
+apt install npm
+```
+
+## MYSQL
+```
+sudo apt-get install mysql-server
+sudo mysql_secure_installation
+cd /home/coin-collecting/db
+```
+
+### Import DB
+```mysql -u root -p < 00-database.sql```
+
+### Dump DB
+```mysqldump -u [uname] -p[pass] db_name > db_backup.sql```
