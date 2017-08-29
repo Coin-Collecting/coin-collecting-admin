@@ -44,8 +44,10 @@ VarietySelect.fragments = {
 			id
 			name
 			issue {
+				id
 				name
 				denomination {
+					id
 					kind
 				}
 			}
