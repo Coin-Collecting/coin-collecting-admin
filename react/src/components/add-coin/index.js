@@ -30,9 +30,7 @@ class AddCoin extends React.Component {
 		if (this.isValid()) {
 			addCoin(this.state).then(() => {
 				this.setState({
-					variety: '',
 					year: '',
-					mint: '',
 					mintage: '',
 					description: '',
 					keyDate: false,
