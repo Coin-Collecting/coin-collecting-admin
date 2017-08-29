@@ -18,7 +18,8 @@ class IssueSelect extends React.Component {
 							>
 								{
 									issue.name.replace(/_/g, ' ').toLowerCase() + ' - ' +
-									issue.denomination.kind.replace(/_/g, ' ').toLowerCase()
+									issue.denomination.kind.replace(/_/g, ' ').toLowerCase() + ' ' +
+									issue.startYear + '-' + issue.endYear
 								}
 							</option>
 						)

@@ -82,9 +82,12 @@ class Varieties extends React.Component {
 												}}
 											/>
 											<span className="name">
-												{ variety.name + ' ' + variety.issue.name }
+												{ variety.name !== variety.issue.name ?
+													variety.issue.name + ', ' + variety.name : variety.name }
 												</span>
-											<span>{ variety.edge.type + ' edge' }</span>
+											<span>{ variety.issue.denomination.kind.toLowerCase().replace(/_/g, ' ') }</span>
+											<span>{ variety.issue.startYear + '-' + variety.issue.endYear}</span>
+											<span>{ variety.edge.type.toLowerCase() + ' edge' }</span>
 											<span>{ getCompositionString(variety.composition) }</span>
 											<span>{ variety.designer.name }</span>
 											<span>{ variety.mass + 'g / ' + variety.diameter + 'mm' }</span>

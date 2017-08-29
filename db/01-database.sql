@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.19, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.18, for Linux (x86_64)
 --
 -- Host: localhost    Database: coins_db
 -- ------------------------------------------------------
--- Server version	5.7.19-0ubuntu0.16.04.1
+-- Server version	5.7.18-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -54,7 +54,7 @@ DROP TABLE IF EXISTS `compositions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `compositions` (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `gold` float DEFAULT '0',
   `silver` float DEFAULT '0',
   `copper` float DEFAULT '0',
@@ -66,7 +66,7 @@ CREATE TABLE `compositions` (
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,7 @@ CREATE TABLE `compositions` (
 
 LOCK TABLES `compositions` WRITE;
 /*!40000 ALTER TABLE `compositions` DISABLE KEYS */;
-INSERT INTO `compositions` VALUES (1,0,0,0.75,0.25,0,0,0,0,'2017-08-27 16:43:57','2017-08-27 16:43:57');
+INSERT INTO `compositions` VALUES (1,0,0,0.75,0.25,0,0,0,0,'2017-08-27 16:43:57','2017-08-27 16:43:57'),(2,0,0,1,0,0,0,0,0,'2017-08-29 00:59:40','2017-08-29 00:59:40');
 /*!40000 ALTER TABLE `compositions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +203,7 @@ CREATE TABLE `issues` (
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +212,7 @@ CREATE TABLE `issues` (
 
 LOCK TABLES `issues` WRITE;
 /*!40000 ALTER TABLE `issues` DISABLE KEYS */;
-INSERT INTO `issues` VALUES (1,'Liberty Head','','7','1883','1913','2017-08-29 00:14:05','2017-08-29 00:14:05');
+INSERT INTO `issues` VALUES (1,'Liberty Head','','7','1883','1913','2017-08-29 00:14:05','2017-08-29 00:14:05'),(2,'Liberty Cap','','1','1793','1793','2017-08-29 01:00:47','2017-08-29 01:00:47'),(3,'Liberty Cap','','1','1794','1797','2017-08-29 01:00:59','2017-08-29 01:00:59'),(4,'Draped Bust','','1','1800','1808','2017-08-29 01:01:16','2017-08-29 01:01:16'),(5,'Classic Head','','1','1809','1836','2017-08-29 01:01:31','2017-08-29 01:01:31'),(6,'Braided Hair','','1','1840','1857','2017-08-29 01:01:52','2017-08-29 01:01:52'),(7,'Flowing Hair','','2','1793','1793','2017-08-29 01:24:06','2017-08-29 01:24:06'),(8,'Liberty Cap','','2','1793','1796','2017-08-29 01:24:28','2017-08-29 01:24:28'),(9,'Draped Bust','','2','1796','1807','2017-08-29 01:24:40','2017-08-29 01:24:40'),(10,'Classic Head','','2','1808','1814','2017-08-29 01:24:54','2017-08-29 01:24:54'),(11,'Liberty Head','','2','1816','1857','2017-08-29 01:25:09','2017-08-29 01:25:09');
 /*!40000 ALTER TABLE `issues` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +264,7 @@ CREATE TABLE `varieties` (
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,7 +273,7 @@ CREATE TABLE `varieties` (
 
 LOCK TABLES `varieties` WRITE;
 /*!40000 ALTER TABLE `varieties` DISABLE KEYS */;
-INSERT INTO `varieties` VALUES (1,'1','9','1','1','1','V Nickel','',5,21.2,'2017-08-29 00:14:37','2017-08-29 00:14:37');
+INSERT INTO `varieties` VALUES (1,'1','9','1','1','1','Liberty Head','',5,21.2,'2017-08-29 01:20:47','2017-08-29 01:20:47'),(2,'2','5','1','16','2','Head Facing Left','',6.74,22,'2017-08-29 01:04:17','2017-08-29 01:04:17'),(3,'3','2','1','1','2','Head Facing Right','Some 1797 edges are lettered or gripped',5.44,23.5,'2017-08-29 01:15:22','2017-08-29 01:15:22'),(4,'4','2','1','1','2','Draped Bust','',5.44,23.5,'2017-08-29 01:15:53','2017-08-29 01:15:53'),(5,'5','3','1','1','2','Classic Head','',5.44,23.5,'2017-08-29 01:16:49','2017-08-29 01:16:49'),(6,'6','4','1','1','2','Braided Hair','',5.44,23,'2017-08-29 01:17:25','2017-08-29 01:17:25'),(7,'7','5','1','12','2','Chain Reverse','',13.48,27,'2017-08-29 01:26:20','2017-08-29 01:26:20'),(8,'7','5','1','13','2','Wreath Reverse','',13.48,28,'2017-08-29 01:27:31','2017-08-29 01:27:31'),(9,'7','5','1','14','2','Wreath Reverse','',13.48,28,'2017-08-29 01:28:04','2017-08-29 01:28:04'),(10,'7','5','1','15','2','Wreath Reverse','',13.48,28,'2017-08-29 01:28:27','2017-08-29 01:28:27'),(11,'8','1','1','14','2','Liberty Cap','',13.48,28,'2017-08-29 01:29:08','2017-08-29 01:29:08'),(12,'9','2','1','1','2','Draped Bust','',10.89,29,'2017-08-29 01:29:38','2017-08-29 01:29:38'),(13,'10','3','1','1','2','Classic Head','',10.89,29,'2017-08-29 01:30:17','2017-08-29 01:30:17'),(14,'11','2','1','1','2','Matron Head','',10.89,29,'2017-08-29 01:30:54','2017-08-29 01:30:54'),(15,'11','4','1','1','2','Matron Head Modified (Young Head)','',10.89,27.5,'2017-08-29 01:31:46','2017-08-29 01:31:46'),(16,'11','4','1','1','2','Braided Hair','',10.89,27.5,'2017-08-29 01:32:41','2017-08-29 01:32:41');
 /*!40000 ALTER TABLE `varieties` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -286,4 +286,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-29  0:35:01
+-- Dump completed on 2017-08-29  1:41:57
