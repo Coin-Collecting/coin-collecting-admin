@@ -18,6 +18,9 @@
 --
 -- Table structure for table `coins`
 --
+CREATE DATABASE coins_db;
+
+USE coins_db;
 
 DROP TABLE IF EXISTS `coins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
