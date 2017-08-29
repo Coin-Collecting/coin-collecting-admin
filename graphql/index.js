@@ -3,10 +3,7 @@ import GraphQLHTTP from "express-graphql";
 import schema from "./schema";
 const { maskErrors } = require('graphql-errors');
 
-let env = process.env.NODE_ENV || 'development';
-let config = require('../config')[env];
-
-const port = config.api.port;
+const port = 5000;
 const app = express();
 
 const Chalk = require('chalk');

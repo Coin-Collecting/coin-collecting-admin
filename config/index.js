@@ -9,7 +9,6 @@ let config = {
     },
     api: {
       url: 'http://localhost:5000/graphql',
-      port: 5000,
     }
   },
   production: {
@@ -21,8 +20,7 @@ let config = {
       pass:     'Dalekini21'
     },
     api: {
-      url: 'http://www.mycoin.store:5000/graphql',
-      port: 5000,
+      url: 'http://api.mycoin.store/graphql',
     }
   }
 };
