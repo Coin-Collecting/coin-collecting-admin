@@ -19,7 +19,6 @@
 -- Table structure for table `coins`
 --
 
-USE coins_db;
 DROP TABLE IF EXISTS `coins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -31,7 +30,7 @@ CREATE TABLE `coins` (
   `mintage` float DEFAULT NULL,
   `keyDate` tinyint(1) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `createdAt` timestamp NOT NULL DEFAULT 0,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
@@ -64,7 +63,7 @@ CREATE TABLE `compositions` (
   `zinc` float DEFAULT '0',
   `steel` float DEFAULT '0',
   `tin` float DEFAULT '0',
-  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `createdAt` timestamp NOT NULL DEFAULT 0,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
@@ -91,7 +90,7 @@ CREATE TABLE `denominations` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `kind` varchar(201) DEFAULT NULL,
   `val` float DEFAULT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `createdAt` timestamp NOT NULL DEFAULT 0,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
@@ -117,7 +116,7 @@ DROP TABLE IF EXISTS `designers`;
 CREATE TABLE `designers` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) DEFAULT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `createdAt` timestamp NOT NULL DEFAULT 0,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
@@ -144,7 +143,7 @@ CREATE TABLE `edges` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `type` varchar(50) DEFAULT NULL,
   `note` varchar(500) DEFAULT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `createdAt` timestamp NOT NULL DEFAULT 0,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
@@ -171,7 +170,7 @@ CREATE TABLE `images` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `obverse` varchar(600) DEFAULT NULL,
   `reverse` varchar(600) DEFAULT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `createdAt` timestamp NOT NULL DEFAULT 0,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -201,7 +200,7 @@ CREATE TABLE `issues` (
   `denomination` varchar(10) DEFAULT NULL,
   `startYear` varchar(4) DEFAULT NULL,
   `endYear` varchar(4) DEFAULT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `createdAt` timestamp NOT NULL DEFAULT 0,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
@@ -228,7 +227,7 @@ CREATE TABLE `mints` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(201) DEFAULT NULL,
   `mark` varchar(5) DEFAULT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `createdAt` timestamp NOT NULL DEFAULT 0,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
@@ -262,7 +261,7 @@ CREATE TABLE `varieties` (
   `description` varchar(500) DEFAULT NULL,
   `mass` float DEFAULT NULL,
   `diameter` float DEFAULT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `createdAt` timestamp NOT NULL DEFAULT 0,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
