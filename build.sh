@@ -4,6 +4,8 @@ cd /coin-collecting
 git pull origin master
 chmod +x build.sh
 
+yarn build
+
 rm -rf /var/www/html/*
 
 rsync -auv /coin-collecting/public/ /var/www/html/
