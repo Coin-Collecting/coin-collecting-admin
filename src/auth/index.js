@@ -23,6 +23,8 @@ class Auth extends React.Component {
   render() {
     const { me, children } = this.props;
     const { userChanged } = this.state;
+
+    // TODO: Change this to "me" from GraphQl and look at "admin" property
     if (userChanged && !me.loggedIn) {
       return (<Redirect to="/login"/>)
     } else if (!me.loggedIn) {
