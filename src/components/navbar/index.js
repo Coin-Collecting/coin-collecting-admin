@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import { compose } from 'react-apollo';
 import { store } from '../../app';
 import { toggleSlideMenu } from '../../actions/slide-menu';
+import { logout } from '../../actions/me';
 import './style.scss';
 const FontAwesome = require('react-fontawesome');
 
@@ -15,10 +16,13 @@ class NavBar extends React.Component {
 	render() {
 		const { browser } = this.props;
 		let classes = ['main-navbar clearfix', browser.mediaType];
-
 		return (
 			<nav className={classes.join(' ')}>
-				<NavList/>
+				<NavList onLogout={() => {
+          	store.dispatch(logout());
+        	}
+				}
+					/>
 				<FontAwesome
 					name="bars"
 					onClick={this.toggleSlideMenu}
@@ -28,7 +32,7 @@ class NavBar extends React.Component {
 	}
 }
 
-export const NavList = () => (
+export const NavList = ({onLogout}) => (
 	<ul className="main-list">
 		<li>
 			<Link to="/">
@@ -47,11 +51,15 @@ export const NavList = () => (
 		<li>
 			<NavLink to="/compositions">Compositions</NavLink>
 		</li>
+		<li>
+			<span className="logout-link" onClick={onLogout}>Logout</span>
+		</li>
 	</ul>
 );
 
 NavBar.propTypes = {
 	location: PropTypes.object,
+  onLogout: PropTypes.func,
 };
 
 function mapStateToProps(state){

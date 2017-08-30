@@ -14,10 +14,24 @@ export const store = createStore(
 	responsiveStoreEnhancer
 );
 
+const networkInterface = createNetworkInterface({
+  uri: process.env.API_URL,
+});
+
+networkInterface.use([{
+  applyMiddleware(req, next) {
+    if (!req.options.headers) {
+      req.options.headers = {};  // Create the header object if needed.
+    }
+    // get the authentication token from local storage if it exists
+    const token = store.getState().reducers.me.token;
+    req.options.headers.authorization = token ? token : null;
+    next();
+  }
+}]);
+
 const client = new ApolloClient({
-	networkInterface: createNetworkInterface({
-		uri: process.env.API_URL,
-	}),
+	networkInterface,
 });
 
 export default class App extends React.Component {

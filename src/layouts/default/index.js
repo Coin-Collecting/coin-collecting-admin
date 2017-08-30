@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import SlideMenu from '../../components/slide-menu';
 import { store } from '../../app';
 import { closeSlideMenu } from '../../actions/slide-menu';
+import Auth from '../../auth';
 
 import './style.scss';
 
@@ -18,24 +19,25 @@ class DefaultLayout extends React.Component {
 	}
 
 	render() {
-		const { location, slideMenu } = this.props;
+		const { location, slideMenu, children} = this.props;
+
 		let classes = ["default-layout"];
 		if (slideMenu.open) classes.push('slid-left');
 
 		return (
-			<div className={classes.join(' ')}>
-				<SlideMenu
-					isOpen={slideMenu.open}
-					location={location}
-				/>
-				<NavBar
-					location={location}
-				/>
-				<div className="default-section">
-					{ this.props.children }
+			<Auth>
+				<div className={classes.join(' ')}>
+					<SlideMenu
+						isOpen={slideMenu.open}
+						location={location}
+					/>
+					<NavBar location={location}/>
+					<div className="default-section">
+						{ children }
+					</div>
+					<GlobalFooter/>
 				</div>
-				<GlobalFooter/>
-			</div>
+			</Auth>
 		);
 	}
 }

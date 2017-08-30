@@ -1,0 +1,25 @@
+@import '../../base/palette';
+
+.minimal-layout {
+  .main-navbar {
+    .main-list {
+      li {
+        display: none;
+
+        &:first-child {
+          display: inline-block;
+        }
+      }
+    }
+
+    .fa-bars {
+      display: none;
+    }
+  }
+
+  .minimal-section {
+    box-sizing: border-box;
+    min-height: calc(100vh - 101px - 50px);
+    background-color: $lightestGray;
+  }
+}

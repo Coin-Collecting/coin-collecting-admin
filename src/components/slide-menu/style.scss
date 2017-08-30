@@ -44,7 +44,8 @@
       display: none;
     }
 
-    a {
+    a,
+    .logout-link {
       padding: 20px;
       border-bottom: solid 2px lighten($brandedAlt, 10);
       background-color: transparent;
@@ -52,6 +53,7 @@
       font-size: 18px;
       color: $darkGray;
       opacity: .8;
+      cursor: pointer;
     }
 
     .active {

@@ -45,9 +45,11 @@
     }
   }
 
-  a {
+  a,
+  .logout-link {
     text-decoration: none;
     color: $black;
+    cursor: pointer;
     font-size: 14px;
   }
 

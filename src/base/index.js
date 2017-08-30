@@ -3,6 +3,10 @@ import { Helmet } from "react-helmet";
 import './style.scss';
 
 class Base extends React.Component {
+  componentWillReceiveProps() {
+    window.previousLocation = this.props.location
+  }
+
 	render() {
 		const { location } = this.props;
 

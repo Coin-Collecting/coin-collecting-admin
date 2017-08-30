@@ -6,6 +6,7 @@ import './style.scss';
 const FontAwesome = require('react-fontawesome');
 import AddComposition from '../../components/add-composition';
 import { getCompositionString } from '../../util';
+import DefaultLayout from '../../layouts/default';
 
 class Compositions extends React.Component {
 	constructor(props) {
@@ -16,67 +17,70 @@ class Compositions extends React.Component {
 	}
 
 	render() {
-		const { data, browser } = this.props;
+		const { data, browser, location } = this.props;
 		const { compositions } = data;
 		let classes = ['compositions-page', browser.mediaType];
 
 		return (
-			<section className={classes.join(' ')}>
-				<article className="create-composition-article">
-					<h3>Add a composition</h3>
-					<AddComposition
-						sizeOverride={browser.greaterThan.medium ? 'extraSmall' : null}
-						onSubmit={() => data.refetch()}
-					/>
-				</article>
-					<article className="main-article">
-						<p className="results-header clearfix">
-							<span>Results ({compositions ? compositions.length : 0} of {compositions ? compositions.length : 0})</span>
-						</p>
-						{ data.loading ? <Spinner/> : null }
-						<ul className="compositions-list">
-							{ compositions && compositions.length && !data.loading > 0 ?
-								compositions.map((composition, index) => {
-									return (
-										<li key={'composition:' + composition.id} className="composition-list-item">
-											<p>
-												<FontAwesome
-													name="pencil"
-													onClick={() => {
-														this.setState({
-															editIndex: this.state.editIndex === index ? null : index,
-														})
-													}}
-												/>
-												<span className="name">{getCompositionString(composition)}</span>
-											</p>
-											{ this.state.editIndex === index ?
-												<AddComposition
-													sizeOverride={browser.greaterThan.small ? 'medium' : 'extraSmall'}
-													onSubmit={() => {
-														data.refetch();
-														this.setState({
-															editIndex: null,
-														})
-													}}
-													composition={composition}
-												/>
-											: null }
-										</li>
-									)
-								})
-								:
-								<p className="empty">Time to start composing!</p>
-							}
-						</ul>
+			<DefaultLayout location={location}>
+				<section className={classes.join(' ')}>
+					<article className="create-composition-article">
+						<h3>Add a composition</h3>
+						<AddComposition
+							sizeOverride={browser.greaterThan.medium ? 'extraSmall' : null}
+							onSubmit={() => data.refetch()}
+						/>
 					</article>
-			</section>
+						<article className="main-article">
+							<p className="results-header clearfix">
+								<span>Results ({compositions ? compositions.length : 0} of {compositions ? compositions.length : 0})</span>
+							</p>
+							{ data.loading ? <Spinner/> : null }
+							<ul className="compositions-list">
+								{ compositions && compositions.length && !data.loading > 0 ?
+									compositions.map((composition, index) => {
+										return (
+											<li key={'composition:' + composition.id} className="composition-list-item">
+												<p>
+													<FontAwesome
+														name="pencil"
+														onClick={() => {
+															this.setState({
+																editIndex: this.state.editIndex === index ? null : index,
+															})
+														}}
+													/>
+													<span className="name">{getCompositionString(composition)}</span>
+												</p>
+												{ this.state.editIndex === index ?
+													<AddComposition
+														sizeOverride={browser.greaterThan.small ? 'medium' : 'extraSmall'}
+														onSubmit={() => {
+															data.refetch();
+															this.setState({
+																editIndex: null,
+															})
+														}}
+														composition={composition}
+													/>
+												: null }
+											</li>
+										)
+									})
+									:
+									<p className="empty">Time to start composing!</p>
+								}
+							</ul>
+						</article>
+				</section>
+			</DefaultLayout>
 		);
 	}
 }
 
 Compositions.propTypes = {
 	data: PropTypes.object,
+	location: PropTypes.object,
 };
 
 function mapStateToProps(state){

@@ -174,3 +174,15 @@ export const UpdateCompositionMutation = gql`
 		}
 	}
 `;
+
+export const LoginMutation = gql`
+	mutation (
+		$username: String!,
+		$password: String!,
+	) {
+		loginUser (
+			username: $username,
+			password: $password,
+		)
+	}
+`;
