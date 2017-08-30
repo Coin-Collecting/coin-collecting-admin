@@ -2,6 +2,7 @@ curl -X POST --data "payload={\"text\": \":slack: Starting Build - Web\"}" https
 
 cd /coin-collecting
 git pull origin master
+yarn
 chmod +x build.sh
 
 yarn build
