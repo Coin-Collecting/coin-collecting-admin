@@ -12,6 +12,7 @@ import Coins from './pages/coins';
 import Varieties from './pages/varieties';
 import Compositions from './pages/compositions';
 import Login from './pages/login';
+import Logout from './pages/logout';
 
 export const routes = (
 	<Router>
@@ -24,6 +25,7 @@ export const routes = (
 					<Route exact path="/varieties" component={Varieties}/>
 					<Route exact path="/compositions" component={Compositions}/>
 					<Route exact path="/login" component={Login}/>
+					<Route exact path="/logout" component={Logout}/>
 				</Base>
 			</Switch>
 		</Route>

@@ -16,21 +16,23 @@ class Issues extends React.Component {
 	}
 
 	render() {
-		const { data, browser, location } = this.props;
+		const { data, browser, location, me } = this.props;
 		const { issues } = data;
 		let classes = ['issues-page', browser.mediaType];
 
 		return (
 			<DefaultLayout location={location}>
 				<section className={classes.join(' ')}>
-					<article className="create-issue-article">
-						<h3>Create A New Issue</h3>
-						<AddIssue
-							sizeOverride={browser.greaterThan.medium ? 'small' : null}
-							onSubmit={() => this.props.data.refetch()}
-						/>
-					</article>
-					<article className="main-article">
+					{ me.admin ?
+						<article className="create-issue-article">
+							<h3>Create A New Issue</h3>
+							<AddIssue
+								sizeOverride={browser.greaterThan.medium ? 'small' : null}
+								onSubmit={() => this.props.data.refetch()}
+							/>
+						</article>
+					: null }
+					<article className={me.admin ? "main-article" : "main-article-no-admin"}>
 						<h3>Find an Issue</h3>
 						<div className="filters clearfix">
 							<input type="text" placeholder="Search"/>
@@ -55,14 +57,16 @@ class Issues extends React.Component {
 									return (
 										<li key={'issue:' + issue.id} className="issue-list-item">
 											<p>
-												<FontAwesome
-													name="pencil"
-													onClick={() => {
-														this.setState({
-															editIndex: this.state.editIndex === index ? null : index,
-														})
-													}}
-												/>
+												{ me.admin ?
+														<FontAwesome
+															name="pencil"
+															onClick={() => {
+																this.setState({
+																	editIndex: this.state.editIndex === index ? null : index,
+																})
+															}}
+														/>
+												: null }
 												<span className="name">{ issue.name }</span>
 												<span className="denomination">
 												{ issue.denomination.kind.replace('_', ' ').toLowerCase() }
@@ -100,12 +104,14 @@ class Issues extends React.Component {
 
 Issues.propTypes = {
 	data: PropTypes.object,
+	me: PropTypes.object,
 	location: PropTypes.object,
 };
 
 function mapStateToProps(state){
 	return {
-		browser: state.browser
+		browser: state.browser,
+    me: state.reducers.me,
 	}
 }
 
