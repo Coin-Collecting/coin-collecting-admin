@@ -58,6 +58,9 @@ export const NavList = () => (
 		<li>
 			<NavLink to="/edges">Edges</NavLink>
 		</li>
+		<li>
+			<NavLink to="/mints">Mints</NavLink>
+		</li>
 	</ul>
 );
 
