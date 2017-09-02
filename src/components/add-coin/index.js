@@ -36,6 +36,7 @@ class AddCoin extends React.Component {
 					keyDate: false,
 				});
 				onSubmit();
+        this.nameInput.focus();
 			});
 		}
 
@@ -81,6 +82,7 @@ class AddCoin extends React.Component {
 					</li>
 					<li className="year">
 						<input
+							ref={input => { this.nameInput = input;}}
 							type="text"
 							placeholder="Year"
 							value={this.state.year}

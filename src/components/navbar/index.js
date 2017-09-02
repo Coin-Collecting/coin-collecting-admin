@@ -22,6 +22,9 @@ class NavBar extends React.Component {
 					name="bars"
 					onClick={this.toggleSlideMenu}
 				/>
+				<div className="logout-link">
+					<NavLink to="/logout">Logout</NavLink>
+				</div>
 			</nav>
 		);
 	}
@@ -47,7 +50,13 @@ export const NavList = () => (
 			<NavLink to="/compositions">Compositions</NavLink>
 		</li>
 		<li>
-			<NavLink to="/logout">Logout</NavLink>
+			<NavLink to="/designers">Designers</NavLink>
+		</li>
+		<li>
+			<NavLink to="/denominations">Denominations</NavLink>
+		</li>
+		<li>
+			<NavLink to="/edges">Edges</NavLink>
 		</li>
 	</ul>
 );
