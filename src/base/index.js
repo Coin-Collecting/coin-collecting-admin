@@ -4,7 +4,14 @@ import './style.scss';
 
 class Base extends React.Component {
   componentWillReceiveProps() {
-    window.previousLocation = this.props.location
+  	let ignoreRoutes = [
+  		'/login',
+			'/logout',
+		];
+
+  	if (ignoreRoutes.indexOf(this.props.location.pathname) === -1) {
+      window.previousLocation = this.props.location
+		}
   }
 
 	render() {

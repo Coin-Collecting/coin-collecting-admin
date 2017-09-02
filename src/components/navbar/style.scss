@@ -61,6 +61,11 @@
     margin-right: 20px;
     font-size: 26px;
   }
+
+  .logout-link {
+    float: right;
+    padding: 20px 20px 0 0;
+  }
 }
 
 .main-navbar.infinity,
@@ -77,5 +82,9 @@
 
   .fa-bars {
     display: inline-block;
+  }
+
+  .logout-link {
+    padding: 10px 30px 0 0;
   }
 }

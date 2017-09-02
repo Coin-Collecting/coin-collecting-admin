@@ -1,23 +1,30 @@
 import cookie from 'react-cookies'
 
-let cookieToken = cookie.load('coinToken');
-const initialState = {
-  token: cookieToken ? cookieToken : null,
-  loggedIn: cookieToken ? true : false,
+let coinMe = cookie.load('coinMe');
+const initialState = coinMe ? coinMe : {
+  loggedIn: false,
 };
 
 const me = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOGIN':
-      cookie.save('coinToken', action.token);
-      return {
-        token: action.token,
-        loggedIn: true,
-      };
+    case 'UPDATE_ME':
+      if (action.me) {
+        cookie.save('coinMe', action.me);
+        let { username, email, admin } = action.me;
+        return {
+          username,
+          email,
+          admin,
+          loggedIn: true,
+        };
+      } else {
+        return {
+          loggedIn: false,
+        }
+      }
     case 'LOGOUT':
-      cookie.remove('coinToken');
+      cookie.remove('coinMe');
       return {
-        token: null,
         loggedIn: false,
       };
     default:
@@ -25,4 +32,4 @@ const me = (state = initialState, action) => {
   }
 };
 
-export default me;
+export default me

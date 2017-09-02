@@ -1,12 +1,6 @@
-export const login = token => {
+export const updateMe = me => {
   return {
-    type: 'LOGIN',
-    token,
-  }
-};
-
-export const logout = () => {
-  return {
-    type: 'LOGOUT',
+    type: 'UPDATE_ME',
+    me,
   }
 };

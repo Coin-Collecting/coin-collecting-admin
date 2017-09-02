@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import MinimalLayout from '../../layouts/minimal';
 import { LoginMutation } from '../../mutations';
 import { store } from '../../app';
-import { login } from '../../actions/me';
-import { Redirect } from 'react-router-dom';
+import { login } from '../../actions/token';
+import { withRouter, Redirect } from 'react-router-dom'
 
 import './style.scss';
 
@@ -16,27 +16,31 @@ class Login extends React.Component {
       username: '',
       password: '',
       error: null,
-      redirect: this.props.me.loggedIn || false,
+      redirect: false,
     }
   }
 
   dispatchLogin(token) {
     store.dispatch(login(token));
-    this.setState({ redirect: true });
+    this.props.history.push(window.previousLocation ? window.previousLocation.pathname : '/');
   }
 
   _login() {
     const { login } = this.props;
     login(this.state)
-      .then(({data: { loginUser }}) => this.dispatchLogin(loginUser));
+      .then(({data: { loginUser }}) => this.dispatchLogin(loginUser))
+      .catch(e => {
+        this.setState({
+          error: e.message,
+        })
+      })
   }
 
   render() {
     let classes = ["login-page"];
-    if (this.state.redirect) {
-      return (
-        <Redirect to={window.previousLocation ? window.previousLocation.pathname : '/'}/>
-      )
+
+    if (this.props.me.loggedIn) {
+      return (<Redirect to={window.previousLocation ? window.previousLocation.pathname : '/'}/>)
     }
 
     return (
@@ -90,7 +94,11 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
+  me: PropTypes.object,
   login: PropTypes.func,
+  history: React.PropTypes.shape({
+    push: React.PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 // UPDATE an existing fundraiser
@@ -104,7 +112,6 @@ const loginMutationQuery = graphql(LoginMutation, {
   }),
 });
 
-
 function mapStateToProps(state){
   return {
     me: state.reducers.me,
@@ -112,6 +119,7 @@ function mapStateToProps(state){
 }
 
 export default compose(
+  withRouter,
   connect(mapStateToProps),
   loginMutationQuery,
 )(Login);

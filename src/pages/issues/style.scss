@@ -5,7 +5,7 @@
 .issues-page.medium,
 .issues-page.small,
 .issues-page.extraSmall {
-  padding: 20px 5px;
+  padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
 
@@ -133,7 +133,16 @@
     width: calc(100% - 300px);
     display: inline-block;
     vertical-align: top;
-    padding: 0 20px 20px 60px;
+    padding: 0 20px 20px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .main-article-no-admin {
+    width: 100%;
+    display: block;
+    vertical-align: top;
+    padding: 0 20px 20px;
     margin: 0;
     box-sizing: border-box;
   }
@@ -143,7 +152,7 @@
     width: 300px;
     display: inline-block;
     vertical-align: top;
-    padding: 0 0 0 20px;
+    padding: 0 60px 0 20px;
     margin: 0;
   }
 }

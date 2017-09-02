@@ -2,23 +2,20 @@ import React, { PropTypes } from "react";
 import { store } from '../../app';
 import { closeSlideMenu } from '../../actions/slide-menu';
 import { NavList } from '../navbar';
-import { logout } from '../../actions/me';
+import { compose } from 'react-apollo';
 
 import './style.scss';
 
 class SlideMenu extends React.Component {
 	render() {
-		const { isOpen, location } = this.props;
+		const { isOpen, location, history } = this.props;
 		let classes = ['slide-menu'];
 		if (isOpen) classes.push('open');
 
 		return (
 			<div className={classes.join(' ')}>
 				<aside>
-					<NavList
-						location={location}
-					  onLogout={() => store.dispatch(logout())}
-					/>
+					<NavList location={location}/>
 				</aside>
 				<div
 					onClick={() => store.dispatch(closeSlideMenu())}
@@ -34,4 +31,4 @@ SlideMenu.propTypes = {
 	location: PropTypes.object,
 };
 
-export default SlideMenu;
+export default compose()(SlideMenu);

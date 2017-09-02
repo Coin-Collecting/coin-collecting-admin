@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import { compose } from 'react-apollo';
 import { store } from '../../app';
 import { toggleSlideMenu } from '../../actions/slide-menu';
-import { logout } from '../../actions/me';
 import './style.scss';
 const FontAwesome = require('react-fontawesome');
 
@@ -18,21 +17,20 @@ class NavBar extends React.Component {
 		let classes = ['main-navbar clearfix', browser.mediaType];
 		return (
 			<nav className={classes.join(' ')}>
-				<NavList onLogout={() => {
-          	store.dispatch(logout());
-        	}
-				}
-					/>
+				<NavList />
 				<FontAwesome
 					name="bars"
 					onClick={this.toggleSlideMenu}
 				/>
+				<div className="logout-link">
+					<NavLink to="/logout">Logout</NavLink>
+				</div>
 			</nav>
 		);
 	}
 }
 
-export const NavList = ({onLogout}) => (
+export const NavList = () => (
 	<ul className="main-list">
 		<li>
 			<Link to="/">
@@ -52,7 +50,16 @@ export const NavList = ({onLogout}) => (
 			<NavLink to="/compositions">Compositions</NavLink>
 		</li>
 		<li>
-			<span className="logout-link" onClick={onLogout}>Logout</span>
+			<NavLink to="/designers">Designers</NavLink>
+		</li>
+		<li>
+			<NavLink to="/denominations">Denominations</NavLink>
+		</li>
+		<li>
+			<NavLink to="/edges">Edges</NavLink>
+		</li>
+		<li>
+			<NavLink to="/mints">Mints</NavLink>
 		</li>
 	</ul>
 );

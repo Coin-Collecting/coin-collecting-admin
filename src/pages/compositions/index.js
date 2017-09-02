@@ -17,21 +17,23 @@ class Compositions extends React.Component {
 	}
 
 	render() {
-		const { data, browser, location } = this.props;
+		const { data, browser, location, me } = this.props;
 		const { compositions } = data;
 		let classes = ['compositions-page', browser.mediaType];
 
 		return (
 			<DefaultLayout location={location}>
 				<section className={classes.join(' ')}>
-					<article className="create-composition-article">
-						<h3>Add a composition</h3>
-						<AddComposition
-							sizeOverride={browser.greaterThan.medium ? 'extraSmall' : null}
-							onSubmit={() => data.refetch()}
-						/>
-					</article>
-						<article className="main-article">
+					{ me.admin ?
+						<article className="create-composition-article">
+							<h3>Add a composition</h3>
+							<AddComposition
+								sizeOverride={browser.greaterThan.medium ? 'extraSmall' : null}
+								onSubmit={() => data.refetch()}
+							/>
+						</article>
+					: null }
+						<article className={me.admin ? "main-article" : "main-article-no-admin"}>
 							<p className="results-header clearfix">
 								<span>Results ({compositions ? compositions.length : 0} of {compositions ? compositions.length : 0})</span>
 							</p>
@@ -42,14 +44,16 @@ class Compositions extends React.Component {
 										return (
 											<li key={'composition:' + composition.id} className="composition-list-item">
 												<p>
-													<FontAwesome
-														name="pencil"
-														onClick={() => {
-															this.setState({
-																editIndex: this.state.editIndex === index ? null : index,
-															})
-														}}
-													/>
+													{ me.admin ?
+														<FontAwesome
+															name="pencil"
+															onClick={() => {
+                                this.setState({
+                                  editIndex: this.state.editIndex === index ? null : index,
+                                })
+                              }}
+														/>
+													: null }
 													<span className="name">{getCompositionString(composition)}</span>
 												</p>
 												{ this.state.editIndex === index ?
@@ -81,11 +85,13 @@ class Compositions extends React.Component {
 Compositions.propTypes = {
 	data: PropTypes.object,
 	location: PropTypes.object,
+	me: PropTypes.object,
 };
 
 function mapStateToProps(state){
 	return {
-		browser: state.browser
+		browser: state.browser,
+		me: state.reducers.me,
 	}
 }
 

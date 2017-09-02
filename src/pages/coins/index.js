@@ -28,21 +28,23 @@ class Coins extends React.Component {
 	}
 
 	render() {
-		const { data, browser, location } = this.props;
+		const { data, browser, location, me } = this.props;
 		const { coins } = data;
 		let classes = ['coins-page', browser.mediaType];
 
 		return (
 			<DefaultLayout location={location}>
 				<section className={classes.join(' ')}>
-					<article className="create-coin-article">
-						<h3>Create A New Coin</h3>
-						<AddCoin
-							sizeOverride={browser.greaterThan.medium ? 'small' : null}
-							onSubmit={() => this.props.data.refetch()}
-						/>
-					</article>
-					<article className="main-article">
+          { me.admin ?
+						<article className="create-coin-article">
+							<h3>Create A New Coin</h3>
+							<AddCoin
+								sizeOverride={browser.greaterThan.medium ? 'small' : null}
+								onSubmit={() => this.props.data.refetch()}
+							/>
+						</article>
+					: null }
+					<article className={me.admin ? "main-article" : "main-article-no-admin"}>
 						<h3>Find an Coin</h3>
 						<div className="filters clearfix">
 							<input type="text" placeholder="Search"/>
@@ -68,7 +70,9 @@ class Coins extends React.Component {
 									return (
 										<li key={'coin:' + coin.id}>
 											<p>
-												<FontAwesome name="pencil"/>
+                        { me.admin ?
+													<FontAwesome name="pencil"/>
+                          : null }
 												<a
 													className="ebay"
 													target="_blank"
@@ -101,11 +105,13 @@ Coins.propTypes = {
 	location: PropTypes.object,
 	data: PropTypes.object,
 	createCoin: PropTypes.func,
+	me: PropTypes.object,
 };
 
 function mapStateToProps(state){
 	return {
-		browser: state.browser
+		browser: state.browser,
+		me: state.reducers.me,
 	}
 }
 

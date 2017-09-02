@@ -31,7 +31,7 @@ class Varieties extends React.Component {
 	}
 
 	render() {
-		const { data, browser, location } = this.props;
+		const { data, browser, location, me } = this.props;
 		const { varieties } = data;
 		let classes = [
 			"varieties-page",
@@ -41,14 +41,16 @@ class Varieties extends React.Component {
 		return (
 			<DefaultLayout location={location}>
 				<section className={classes.join(' ')}>
-					<article className="create-variety-article">
-						<h3>Create New Variety</h3>
-						<AddVariety
-							sizeOverride={browser.greaterThan.medium ? 'small' : null}
-							onSubmit={() => this.props.data.refetch()}
-						/>
-					</article>
-					<article className="main-article">
+					{ me.admin ?
+						<article className="create-variety-article">
+							<h3>Create New Variety</h3>
+							<AddVariety
+								sizeOverride={browser.greaterThan.medium ? 'small' : null}
+								onSubmit={() => this.props.data.refetch()}
+							/>
+						</article>
+					: null }
+					<article className={me.admin ? "main-article" : "main-article-no-admin"}>
 						<h3>Find an Variety</h3>
 						<div className="filters clearfix">
 							<input type="text" placeholder="Search"/>
@@ -75,14 +77,16 @@ class Varieties extends React.Component {
 									return (
 										<li key={'variety:' + variety.id} className="varieties-list-item">
 											<p>
-												<FontAwesome
-													name="pencil"
-													onClick={() => {
-														this.setState({
-															editIndex: this.state.editIndex === index ? null : index,
-														})
-													}}
-												/>
+												{ me.admin ?
+													<FontAwesome
+														name="pencil"
+														onClick={() => {
+                              this.setState({
+                                editIndex: this.state.editIndex === index ? null : index,
+                              })
+                            }}
+													/>
+												: null }
 												<span className="name">
 													{ variety.name !== variety.issue.name ?
 														variety.issue.name + ', ' + variety.name : variety.name }
@@ -125,11 +129,13 @@ Varieties.propTypes = {
 	data: PropTypes.object,
 	addVariety: PropTypes.func,
 	location: PropTypes.object,
+	me: PropTypes.object,
 };
 
 function mapStateToProps(state){
 	return {
-		browser: state.browser
+		browser: state.browser,
+		me: state.reducers.me,
 	}
 }
 
