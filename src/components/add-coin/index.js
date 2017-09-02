@@ -39,8 +39,13 @@ class AddCoin extends React.Component {
         this.nameInput.focus();
 			});
 		}
-
 	}
+
+	submit(e) {
+	  e.preventDefault();
+	  this.addCoin();
+	  return false;
+  }
 
 	render() {
 		let { data, browser, sizeOverride } = this.props;
@@ -51,7 +56,7 @@ class AddCoin extends React.Component {
 		];
 
 		return (
-			<div className={classes.join(' ')}>
+			<form onSubmit={this.submit.bind(this)} className={classes.join(' ')}>
 				<ul className="input-list">
 					<li className="variety">
 						<div className="select-wrapper">
@@ -86,14 +91,17 @@ class AddCoin extends React.Component {
 							type="text"
 							placeholder="Year"
 							value={this.state.year}
-							onChange={e => this.setState({
-								year: e.target.value,
-							})}
+							onChange={({ target: { value }}) => {
+							  this.setState({
+                  year: value,
+                });
+							}}
 						/>
 					</li>
 					<li className="mint">
 						<div className="select-wrapper">
 							<MintSelect
+                ref={input => { this.mintInput = input;}}
 								mint={this.state.mint}
 								mints={mints}
 								onChange={e => this.setState({
@@ -126,10 +134,10 @@ class AddCoin extends React.Component {
 						<button
 							disabled={!this.isValid()}
 							onClick={() => this.addCoin()}
-						>Add</button>
+            >Add</button>
 					</li>
 				</ul>
-			</div>
+			</form>
 		);
 	}
 }

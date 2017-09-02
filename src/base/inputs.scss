@@ -14,6 +14,10 @@ select {
   outline: none;
   padding: 0 10px;
   background-color: #fff;
+
+  &:focus {
+    border: solid 1px $primaryColor !important;
+  }
 }
 
 select {
@@ -103,6 +107,10 @@ select {
       left: 22px;
       background: #fff;
     }
+  }
+
+  input[type=checkbox]:focus ~ label {
+    border: solid 1px $primaryColor !important;
   }
 }
 

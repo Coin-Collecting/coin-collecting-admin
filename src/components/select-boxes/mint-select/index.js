@@ -17,7 +17,7 @@ class MintSelect extends React.Component {
 									value={mint.id}
 									key={'mint:' + mint.id}
 								>
-									{ mint.name.replace(/_/g, ' ').toLowerCase() + ' - ' + mint.mark }
+									{ mint.mark + ' - ' + mint.name.replace(/_/g, ' ').toLowerCase() }
 								</option>
 							)
 						})
