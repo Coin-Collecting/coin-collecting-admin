@@ -10,7 +10,7 @@ import queryString from 'query-string';
 
 import './style.scss';
 
-const DEFAULT_COIN_COUNT = 10;
+const DEFAULT_COIN_COUNT = 25;
 
 class Coins extends React.Component {
 	constructor(props) {
@@ -114,9 +114,8 @@ class Coins extends React.Component {
 										onChange={e => this.updateCount(e.target.value)}
 										value={count}
 									>
-										<option value="5">5</option>
 										<option value="10">10</option>
-										<option value="20">20</option>
+										<option value="25">25</option>
 										<option value="50">50</option>
 										<option value="100">100</option>
 									</select>
