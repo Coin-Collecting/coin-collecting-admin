@@ -33,8 +33,8 @@ class Issues extends React.Component {
 						</article>
 					: null }
 					<article className={me.admin ? "main-article" : "main-article-no-admin"}>
-						<h3>Find an Issue</h3>
-						<div className="filters clearfix">
+						<h3>Issues</h3>
+						{/* <div className="filters clearfix">
 							<input type="text" placeholder="Search"/>
 							<div className="sort-by">
 								<div className="select-wrapper">
@@ -46,7 +46,7 @@ class Issues extends React.Component {
 										</select>
 								</div>
 							</div>
-						</div>
+						</div> */}
 						<p className="results-header clearfix">
 							<span>Results ({issues ? issues.length : 0} of {issues ? issues.length : 0})</span>
 						</p>

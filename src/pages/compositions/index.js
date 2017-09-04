@@ -34,6 +34,7 @@ class Compositions extends React.Component {
 						</article>
 					: null }
 						<article className={me.admin ? "main-article" : "main-article-no-admin"}>
+							<h3>Compositions</h3>
 							<p className="results-header clearfix">
 								<span>Results ({compositions ? compositions.length : 0} of {compositions ? compositions.length : 0})</span>
 							</p>

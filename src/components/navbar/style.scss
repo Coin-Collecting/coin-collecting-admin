@@ -14,6 +14,20 @@
     display: inline-block;
   }
 
+  .subnav {
+    background-color: lighten($primaryColor, 40);
+
+    .sub-nav-list {
+      margin: 0;
+      padding: 0 0 0 30px;
+    }
+
+    .active {
+      color: $black;
+      font-weight: 700;
+    }
+  }
+
   img {
     height: 40px;
     vertical-align: center;
@@ -28,21 +42,10 @@
   }
 
   .active {
-    color: $secondaryColor;
+    color: $primaryColor;
     font-weight: 700;
     position: relative;
     cursor: default;
-
-    &:after {
-      content: ' ';
-      display: inline-block;
-      position: absolute;
-      left: 0;
-      bottom: -22px;
-      width: 100%;
-      height: 3px;
-      background-color: $secondaryColor;
-    }
   }
 
   a,
@@ -71,12 +74,15 @@
 .main-navbar.infinity,
 .main-navbar.large,
 .main-navbar.medium {
-  padding-left: 20px;
+  .main-list {
+    padding-left: 20px;
+  }
 }
 
 .main-navbar.small,
 .main-navbar.extraSmall {
-  .main-list {
+  .main-list,
+  .subnav {
     display: none;
   }
 

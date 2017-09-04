@@ -13,7 +13,9 @@ class NavBar extends React.Component {
 	}
 
 	render() {
-		const { browser } = this.props;
+		const { browser, location } = this.props;
+		let showCoinSubNav = location.pathname.includes('/coins');
+
 		let classes = ['main-navbar clearfix', browser.mediaType];
 		return (
 			<nav className={classes.join(' ')}>
@@ -25,12 +27,17 @@ class NavBar extends React.Component {
 				<div className="logout-link">
 					<NavLink to="/logout">Logout</NavLink>
 				</div>
+        { showCoinSubNav ?
+          <div className="subnav">
+            <SubNavList/>
+          </div>
+        : null }
 			</nav>
 		);
 	}
 }
 
-export const NavList = () => (
+export const NavList = ({showCoinSub}) => (
 	<ul className="main-list">
 		<li>
 			<Link to="/">
@@ -39,27 +46,36 @@ export const NavList = () => (
 		</li>
 		<li>
 			<NavLink to="/coins">Coins</NavLink>
+      { showCoinSub ? <SubNavList/> : null }
 		</li>
 		<li>
-			<NavLink to="/varieties">Varieties</NavLink>
+			<NavLink to="/proofs">Proofs</NavLink>
+		</li>
+	</ul>
+);
+
+export const SubNavList = () => (
+	<ul className="sub-nav-list">
+		<li>
+			<NavLink to="/coins/varieties">Varieties</NavLink>
 		</li>
 		<li>
-			<NavLink to="/issues">Issues</NavLink>
+			<NavLink to="/coins/issues">Issues</NavLink>
 		</li>
 		<li>
-			<NavLink to="/compositions">Compositions</NavLink>
+			<NavLink to="/coins/compositions">Compositions</NavLink>
 		</li>
 		<li>
-			<NavLink to="/designers">Designers</NavLink>
+			<NavLink to="/coins/designers">Designers</NavLink>
 		</li>
 		<li>
-			<NavLink to="/denominations">Denominations</NavLink>
+			<NavLink to="/coins/denominations">Denominations</NavLink>
 		</li>
 		<li>
-			<NavLink to="/edges">Edges</NavLink>
+			<NavLink to="/coins/edges">Edges</NavLink>
 		</li>
 		<li>
-			<NavLink to="/mints">Mints</NavLink>
+			<NavLink to="/coins/mints">Mints</NavLink>
 		</li>
 	</ul>
 );

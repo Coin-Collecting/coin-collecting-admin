@@ -15,6 +15,7 @@ class Designers extends React.Component {
       <DefaultLayout location={location}>
         <section className={classes.join(' ')}>
           <article className={"main-article-no-admin"}>
+            <h3>Designers</h3>
             <p className="results-header clearfix">
               <span>Results ({designers ? designers.length : 0} of {designers ? designers.length : 0})</span>
             </p>

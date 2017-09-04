@@ -4,9 +4,9 @@
   aside {
     position: fixed;
     top: 0;
-    right: -150px;
+    right: -170px;
     bottom: 0;
-    width: 150px;
+    width: 170px;
     background-color: $brandedAlt;
     border-left: solid 2px darken($brandedAlt, 20);
     z-index: 999;
@@ -60,6 +60,21 @@
       background-color: #fff;
       font-weight: 700;
       opacity: 1;
+    }
+  }
+
+  .sub-nav-list {
+    list-style: bullet;
+    padding: 0 0 0 25px;
+
+    a {
+      font-size: 14px;
+      background-color: lighten($brandedAlt, 30);
+      padding: 10px;
+
+      &.active {
+        background-color: transparent;
+      }
     }
   }
 }

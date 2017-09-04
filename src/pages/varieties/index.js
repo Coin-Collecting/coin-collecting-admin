@@ -51,8 +51,8 @@ class Varieties extends React.Component {
 						</article>
 					: null }
 					<article className={me.admin ? "main-article" : "main-article-no-admin"}>
-						<h3>Find an Variety</h3>
-						<div className="filters clearfix">
+						<h3>Varieties</h3>
+						{/* <div className="filters clearfix">
 							<input type="text" placeholder="Search"/>
 							<div className="sort-by">
 								<div className="select-wrapper">
@@ -66,7 +66,7 @@ class Varieties extends React.Component {
 									</select>
 								</div>
 							</div>
-						</div>
+						</div>*/}
 						<p className="results-header clearfix">
 							<span>Results ({varieties? varieties.length : 0} of {varieties ? varieties.length : 0})</span>
 						</p>

@@ -11,11 +11,12 @@ class SlideMenu extends React.Component {
 		const { isOpen, location, history } = this.props;
 		let classes = ['slide-menu'];
 		if (isOpen) classes.push('open');
+    let showCoinSubNav = location.pathname.includes('/coins');
 
 		return (
 			<div className={classes.join(' ')}>
 				<aside>
-					<NavList location={location}/>
+					<NavList location={location} showCoinSub={showCoinSubNav}/>
 				</aside>
 				<div
 					onClick={() => store.dispatch(closeSlideMenu())}

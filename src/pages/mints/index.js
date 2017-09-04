@@ -15,6 +15,7 @@ class Mints extends React.Component {
       <DefaultLayout location={location}>
         <section className={classes.join(' ')}>
           <article className={"main-article-no-admin"}>
+            <h3>Mints</h3>
             <p className="results-header clearfix">
               <span>Results ({mints ? mints.length : 0} of {mints ? mints.length : 0})</span>
             </p>

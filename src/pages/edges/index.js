@@ -15,6 +15,7 @@ class Edges extends React.Component {
       <DefaultLayout location={location}>
         <section className={classes.join(' ')}>
           <article className={"main-article-no-admin"}>
+            <h3>Edges</h3>
             <p className="results-header clearfix">
               <span>Results ({edges ? edges.length : 0} of {edges ? edges.length : 0})</span>
             </p>

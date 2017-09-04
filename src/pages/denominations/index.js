@@ -15,6 +15,7 @@ class Denominations extends React.Component {
       <DefaultLayout location={location}>
         <section className={classes.join(' ')}>
           <article className={"main-article-no-admin"}>
+            <h3>Denominations</h3>
             <p className="results-header clearfix">
               <span>Results ({denominations ? denominations.length : 0} of {denominations ? denominations.length : 0})</span>
             </p>
