@@ -16,6 +16,7 @@ class AddCoin extends React.Component {
 			mintage: '',
 			description: '',
 			keyDate: false,
+			isSubmitting: false,
 		}
 	}
 
@@ -27,7 +28,9 @@ class AddCoin extends React.Component {
 
 	addCoin() {
 		const { addCoin, onSubmit } = this.props;
+		if (this.state.isSubmitting) return false;
 		if (this.isValid()) {
+      this.setState({isSubmitting: true});
 			addCoin(this.state).then(() => {
 				this.setState({
 					year: '',
@@ -37,6 +40,7 @@ class AddCoin extends React.Component {
 				});
 				onSubmit();
         this.nameInput.focus();
+        this.setState({isSubmitting: false});
 			});
 		}
 	}
