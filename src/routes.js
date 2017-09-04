@@ -26,20 +26,22 @@ export const routes = (
 		<Route>
 			<Switch>
 				<Base>
-					<Route exact path="/" component={HomePage}/>
-					<Route exact path="/coins" component={Coins}/>
-					<Route exact path="/coins/issues" component={Issues}/>
-					<Route exact path="/coins/varieties" component={Varieties}/>
-					<Route exact path="/coins/compositions" component={Compositions}/>
-					<Route exact path="/coins/designers" component={Designers}/>
-					<Route exact path="/coins/denominations" component={Denominations}/>
-					<Route exact path="/coins/edges" component={Edges}/>
-					<Route exact path="/coins/mints" component={Mints}/>
-					<Route exact path="/proofs" component={Proofs}/>
+					<Switch>
+						<Route exact path="/" component={HomePage}/>
+						<Route exact path="/coins" component={Coins}/>
+						<Route exact path="/coins/issues" component={Issues}/>
+						<Route exact path="/coins/varieties" component={Varieties}/>
+						<Route exact path="/coins/compositions" component={Compositions}/>
+						<Route exact path="/coins/designers" component={Designers}/>
+						<Route exact path="/coins/denominations" component={Denominations}/>
+						<Route exact path="/coins/edges" component={Edges}/>
+						<Route exact path="/coins/mints" component={Mints}/>
+						<Route exact path="/proofs" component={Proofs}/>
 
-					<Route exact path="/login" component={Login}/>
-					<Route exact path="/logout" component={Logout}/>
-					<Route path="*" component={Page404}/>
+						<Route exact path="/login" component={Login}/>
+						<Route exact path="/logout" component={Logout}/>
+						<Route component={Page404}/>
+					</Switch>
 				</Base>
 			</Switch>
 		</Route>
