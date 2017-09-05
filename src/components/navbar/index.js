@@ -14,7 +14,7 @@ class NavBar extends React.Component {
 
 	render() {
 		const { browser, location } = this.props;
-		let showCoinSubNav = location.pathname.includes('/coins');
+		let showCoinSubNav = location ? location.pathname.includes('/coins') : false;
 
 		let classes = ['main-navbar clearfix', browser.mediaType];
 		return (
