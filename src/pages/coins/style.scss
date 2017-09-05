@@ -58,6 +58,10 @@
       color: $lightGray;
     }
 
+    .denomination {
+      margin-left: 15px;
+    }
+
     .fa-pencil,
     .ebay {
       cursor: pointer;
@@ -135,6 +139,7 @@
       }
     }
 
+    .order-select-wrapper,
     .count-select-wrapper {
       float: right;
       display: inline-block;
@@ -153,6 +158,14 @@
 
       select {
         height: 25px;
+      }
+    }
+
+    .order-select-wrapper {
+      margin-right: 15px;
+
+      .select-wrapper {
+        width: 120px;
       }
     }
   }
@@ -185,5 +198,18 @@
     vertical-align: top;
     padding: 0 0 0 20px;
     margin: 0;
+  }
+}
+
+
+.coins-page.small,
+.coins-page.extraSmall {
+  .coins-list {
+    .denomination,
+    span {
+      display: block;
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 }
